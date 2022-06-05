@@ -4,8 +4,8 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<link rel="stylesheet" href="style.css">
+	<script src="js/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" href="css/style.css">
 	<title>ByungJu Kang Portfolio</title>
 </head>
 <body>
@@ -25,8 +25,15 @@
 		</nav>
 	</header>
 	<div id="wrapper">
+		<div class="wrapper-left">
+
+		</div >
+		<div class="wrapper-right">
+
+		</div>
 	</div>
 	<div id="ft">
+		<p class="day"> ©2022 </p>
 	</div>
 </body>
 </html>
@@ -35,4 +42,7 @@
 		let colorCode = "#"+Math.round(Math.random() * 0xffffff).toString(16);
 		$("#hd_wrapper").css("background",colorCode);
 	});
+
+	let date = new Date();
+	$(".day").html(date);
 </script>
