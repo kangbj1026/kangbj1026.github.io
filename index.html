@@ -1,1 +1,38 @@
-hello world
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+	<title>ByungJu Kang Portfolio</title>
+</head>
+<body>
+	<header id="hd">
+		<div id="hd_wrapper">
+			<h2><a href="https://kangbj1026.github.io/index.html">강 병 주</a></h2>
+			<div><span> 1년차 php 개발자 </span></div>
+		</div>
+		<nav class="navbar">
+			<div class="container">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a href="https://kangbj1026.github.io/index.html">main</a></li>
+					<li class="nav-item"><a href="https://kangbj1026.github.io/projects.html">Projects</a></li>
+					<li class="nav-item"><a href="https://kangbj1026.github.io/contact.html">Contact</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<div id="wrapper">
+	</div>
+	<div id="ft">
+	</div>
+</body>
+</html>
+<script>
+	$("#hd_wrapper").click(function() {
+		let colorCode = "#"+Math.round(Math.random() * 0xffffff).toString(16);
+		$("#hd_wrapper").css("background",colorCode);
+	});
+</script>
