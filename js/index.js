@@ -29,7 +29,7 @@ hdWrapper.appendChild(hdWrapperText());
 
 // hd wrapper ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 let para = document.location.href.split("/");
-let linkName = para[4].replace(/(.html)$/,'');
+let linkName = para[3].replace(/(.html)$/,'');
 
 let wrapper = document.getElementById('wrapper');
 let wrapperDivLeft = document.createElement('div');
