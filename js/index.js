@@ -4,32 +4,33 @@ $("#hd_wrapper").click(function() {
 });
 
 // hd ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function hdWrapperLink() {
+function hdWrapperLink(name) {
 	let mainH2 = document.createElement('h2');
 	let mainLink = document.createElement('a');
 	mainLink.href = "https://kangbj1026.github.io";
-	mainLink.innerText = "강 병 주";
+	mainLink.innerText = name;
 	mainH2.appendChild(mainLink);
 
 	return mainH2;
 }
 
-function hdWrapperText() {
+function hdWrapperText(text) {
 	let simpleDiv = document.createElement('div');
 	let simpleText = document.createElement('span');
-	simpleText.innerHTML = " 모르면 배워야하는 생각 ";
+	simpleText.innerHTML = text;
 	simpleDiv.appendChild(simpleText);
 
 	return simpleDiv;
 }
 
 let hdWrapper = document.getElementById("hd_wrapper");
-hdWrapper.appendChild(hdWrapperLink());
-hdWrapper.appendChild(hdWrapperText());
+hdWrapper.appendChild(hdWrapperLink("강 병 주"));
+hdWrapper.appendChild(hdWrapperText(" 모르면 배워야하는 생각 "));
 
 // hd wrapper ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 let para = document.location.href.split("/");
-let linkName = para[3].replace(/(.html)$/,'');
+// let linkName = para[4].replace(/(.html)$/,''); // localhost 적용
+let linkName = para[3].replace(/(.html)$/,''); // github 적용
 
 let wrapper = document.getElementById('wrapper');
 let wrapperDivLeft = document.createElement('div');
@@ -58,7 +59,7 @@ if (linkName == "contact") {
 }
 
 wrapperDivLeft.appendChild(leftList);
-// wrapperDivLeft.appendChild(leftListGithub);
+
 wrapper.appendChild(wrapperDivLeft);
 wrapper.appendChild(wrapperDivRight);
 
