@@ -27,6 +27,41 @@ let hdWrapper = document.getElementById("hd_wrapper");
 hdWrapper.appendChild(hdWrapperLink());
 hdWrapper.appendChild(hdWrapperText());
 
+// hd wrapper ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+let para = document.location.href.split("/");
+let linkName = para[4].replace(/(.html)$/,'');
+
+let wrapper = document.getElementById('wrapper');
+let wrapperDivLeft = document.createElement('div');
+wrapperDivLeft.classList.add('wrapper-left');
+let wrapperDivRight = document.createElement('div');
+wrapperDivRight.classList.add('wrapper-right');
+let leftList = document.createElement('p');
+let leftListGithub = document.createElement('span');
+let leftListLink = document.createElement('a');
+let leftListContent = document.createElement('span');
+
+if (linkName == "contact") {
+	leftListGithub.innerHTML = "Github : ";
+	leftListLink.style.color = "#0400ff";
+	leftListLink.href = "https://github.com/kangbj1026";
+	leftListLink.innerHTML = "https://github.com/kangbj1026";
+	leftListContent.innerHTML = "<h3>"+linkName+"</h3>";
+	leftListGithub.appendChild(leftListLink);
+	leftList.appendChild(leftListContent).appendChild(leftListLink);
+} else if (linkName == "projects") {
+	leftListContent.innerHTML = "<h3>"+linkName+"</h3>";
+	leftList.appendChild(leftListContent);
+} else {
+	leftListContent.innerHTML = "<h3>Hello :) </h3>";
+	leftList.appendChild(leftListContent);
+}
+
+wrapperDivLeft.appendChild(leftList);
+// wrapperDivLeft.appendChild(leftListGithub);
+wrapper.appendChild(wrapperDivLeft);
+wrapper.appendChild(wrapperDivRight);
+
 // Footer ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 let footer = document.getElementById("ft");
 const today = new Date();
