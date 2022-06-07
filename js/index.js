@@ -29,8 +29,8 @@ hdWrapper.appendChild(hdWrapperText(" 모르면 배워야하는 생각 "));
 
 // hd wrapper ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 let para = document.location.href.split("/");
-let linkName = para[4].replace(/(.html)$/,''); // localhost 적용
-// let linkName = para[3].replace(/(.html)$/,''); // github 적용
+// let linkName = para[4].replace(/(.html)$/,''); // localhost 적용
+let linkName = para[3].replace(/(.html)$/,''); // github 적용
 
 let wrapper = document.getElementById('wrapper');
 let wrapperDivLeft = document.createElement('div');
