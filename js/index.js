@@ -11,7 +11,7 @@ function hdWrapperLink(name) {
 	mainLink.innerText = name;
 	mainH2.appendChild(mainLink);
 
-	return mainH2;
+	return mainH2;	
 }
 
 function hdWrapperText(text) {
@@ -29,27 +29,29 @@ hdWrapper.appendChild(hdWrapperText(" 모르면 배워야하는 생각 "));
 
 // hd wrapper ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 let para = document.location.href.split("/");
-// let linkName = para[4].replace(/(.html)$/,''); // localhost 적용
-let linkName = para[3].replace(/(.html)$/,''); // github 적용
+let linkName = para[4].replace(/(.html)$/,''); // localhost 적용
+// let linkName = para[3].replace(/(.html)$/,''); // github 적용
 
 let wrapper = document.getElementById('wrapper');
 let wrapperDivLeft = document.createElement('div');
 wrapperDivLeft.classList.add('wrapper-left');
+
 let wrapperDivRight = document.createElement('div');
 wrapperDivRight.classList.add('wrapper-right');
 let leftList = document.createElement('p');
-let leftListGithub = document.createElement('span');
-let leftListLink = document.createElement('a');
 let leftListContent = document.createElement('span');
 
 if (linkName == "contact") {
+	let leftListGithub = document.createElement('span');
+	let leftListLink = document.createElement('a');
 	leftListGithub.innerHTML = "Github : ";
 	leftListLink.style.color = "#0400ff";
 	leftListLink.href = "https://github.com/kangbj1026";
 	leftListLink.innerHTML = "https://github.com/kangbj1026";
 	leftListContent.innerHTML = "<h3>"+linkName+"</h3>";
 	leftListGithub.appendChild(leftListLink);
-	leftList.appendChild(leftListContent).appendChild(leftListGithub);
+	// let lists = leftListContent.prepend(leftListGithub);
+	leftList.appendChild(leftListContent).appendChild(leftListGithub).appendChild(leftListLink);
 } else if (linkName == "projects") {
 	leftListContent.innerHTML = "<h3>"+linkName+"</h3>";
 	leftList.appendChild(leftListContent);
