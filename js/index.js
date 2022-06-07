@@ -49,7 +49,7 @@ if (linkName == "contact") {
 	leftListLink.innerHTML = "https://github.com/kangbj1026";
 	leftListContent.innerHTML = "<h3>"+linkName+"</h3>";
 	leftListGithub.appendChild(leftListLink);
-	leftList.appendChild(leftListContent).appendChild(leftListLink);
+	leftList.appendChild(leftListContent).appendChild(leftListGithub);
 } else if (linkName == "projects") {
 	leftListContent.innerHTML = "<h3>"+linkName+"</h3>";
 	leftList.appendChild(leftListContent);
