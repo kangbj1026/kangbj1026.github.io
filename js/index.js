@@ -1,90 +1,65 @@
-$("#hd_wrapper").click(function() {
-	let colorCode = "#"+Math.round(Math.random() * 0xffffff).toString(16);
-	$("#hd_wrapper").css("background",colorCode);
-});
-
-// hd ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function hdWrapperLink(name) {
-	let mainH2 = document.createElement('h2');
-	let mainLink = document.createElement('a');
-	mainLink.href = "https://kangbj1026.github.io";
-	mainLink.innerText = name;
-	mainH2.appendChild(mainLink);
-
-	return mainH2;	
-}
-
-function hdWrapperText(text) {
-	let simpleDiv = document.createElement('div');
-	let simpleText = document.createElement('span');
-	simpleText.innerHTML = text;
-	simpleDiv.appendChild(simpleText);
-
-	return simpleDiv;
-}
-
-let hdWrapper = document.getElementById("hd_wrapper");
-hdWrapper.appendChild(hdWrapperLink("강 병 주"));
-hdWrapper.appendChild(hdWrapperText(" 모르면 배워야하는 생각 "));
-
-// hd wrapper ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 let para = document.location.href.split("/");
 // let linkName = para[4].replace(/(.html)$/,''); // localhost 적용
 let linkName = para[3].replace(/(.html)$/,''); // github 적용
 
 let wrapper = document.getElementById('wrapper');
-let wrapperDivLeft = document.createElement('div');
+
+let wrapperDivLeft	= document.createElement('div');
 wrapperDivLeft.classList.add('wrapper-left');
 
 let wrapperDivRight = document.createElement('div');
 wrapperDivRight.classList.add('wrapper-right');
-let leftList = document.createElement('p');
+
+let RightList 		= document.createElement('p');
 let leftListContent = document.createElement('span');
 
+let RightListEmail 	= document.createElement('p');
+
+let RightListPhone 	= document.createElement('p');
+
+let RightListGithub = document.createElement('span');
+let RightListLink	= document.createElement('a');
+
 if (linkName == "contact") {
-	let leftListGithub = document.createElement('span');
-	let leftListLink = document.createElement('a');
-	leftListGithub.innerHTML = "Github : ";
-	leftListLink.style.color = "#0400ff";
-	leftListLink.href = "https://github.com/kangbj1026";
-	leftListLink.innerHTML = "https://github.com/kangbj1026";
 	leftListContent.innerHTML = "<h3>"+linkName+"</h3>";
-	leftListGithub.appendChild(leftListLink);
-	// let lists = leftListContent.prepend(leftListGithub);
-	leftList.appendChild(leftListContent).appendChild(leftListGithub).appendChild(leftListLink);
+
+	RightListEmail.innerHTML = "Email : kangbj1026@naver.com";
+
+	RightListPhone.innerHTML = "Phone : 010-7666-0276";
+
+	RightListGithub.innerHTML = "Github : ";
+	RightListLink.style.color = "#0400ff";
+	RightListLink.href = "https://github.com/kangbj1026";
+	RightListLink.innerHTML = "https://github.com/kangbj1026";
+
+	RightListGithub.appendChild(RightListLink);
 } else if (linkName == "projects") {
 	leftListContent.innerHTML = "<h3>"+linkName+"</h3>";
-	leftList.appendChild(leftListContent);
+	RightList.appendChild(leftListContent);
 } else {
 	leftListContent.innerHTML = "<h3>Hello :) </h3>";
-	leftList.appendChild(leftListContent);
+	RightList.appendChild(leftListContent);
 }
 
-wrapperDivLeft.appendChild(leftList);
+wrapperAll();
 
-wrapper.appendChild(wrapperDivLeft);
-wrapper.appendChild(wrapperDivRight);
+function wrapperAll() {
+	wrapperLeftLine();
+	wrapperRightLine();
 
-// Footer ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-let footer = document.getElementById("ft");
-const today = new Date();
-const year = today.getFullYear();
-const month = ('0' + (today.getMonth()+1)).slice(-2);
-const day = ('0' + (today.getDate())).slice(-2);
-const date = year + "-" + month + "-" + day;
+	wrapper.appendChild(wrapperDivLeft);
+	wrapper.appendChild(wrapperDivRight);
+}
 
-let footerContents = document.createElement('p');
-// footerContents.setAttribute("id","day");
-// footerContents.classList.add("day");
-footerContents.innerHTML = date;
-footer.appendChild(footerContents);
+function wrapperLeftLine() {
+	wrapperDivLeft.appendChild(leftListContent);
+}
 
-// $(".day").text(date);
-// $(".day").text(footerContents);
+function wrapperRightLine() {
+	wrapperDivRight.appendChild(RightList);
 
-// function FooterContents() {
-// 	let footerContents = document.createElement('p');
-// 	footerContents.addClass("a");
-
-// 	return footerContents;
-// }
+	RightList.appendChild(RightListEmail);
+	RightList.appendChild(RightListPhone);
+	RightList.appendChild(RightListGithub);
+	RightList.appendChild(RightListLink);
+}

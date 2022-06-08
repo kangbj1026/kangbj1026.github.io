@@ -8,9 +8,9 @@ function navItems() {
 	// itmesDiv.classList.add("container");
 	// itmesLi.classList.add("nav-item");
     let links = [
-        ['Introduce', '/index.html'],
-        ['Projects', '/projects.html'],
-        ['Contact', '/contact.html']
+        ['Introduce', './index.html'],
+        ['Projects', './projects.html'],
+        ['Contact', './contact.html']
     ];
     
     let navbar = document.getElementsByClassName('navbar');
