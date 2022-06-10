@@ -15,7 +15,7 @@ let leftListContent = document.createElement('span');
 let RightList 		= document.createElement('p');
 
 let RightListIntroduction = document.createElement('h1');
-let RightListMyName = document.createElement('p');
+let RightListMyName	= document.createElement('p');
 let RightListDateBirth = document.createElement('p');
 let RightListResidence = document.createElement('p');
 let RightListCareer = document.createElement('p');

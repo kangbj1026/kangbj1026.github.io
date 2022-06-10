@@ -7,4 +7,4 @@ const date = year + "-" + month + "-" + day;
 
 let footerContents = document.createElement('p');
 footerContents.innerHTML = date;
-footer.appendChild(footerContents);
+footer.appendChild(footerContents); 

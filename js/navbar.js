@@ -25,4 +25,4 @@ function navItems() {
     navDiv.appendChild(navUl);
     navbar[0].appendChild(navDiv);
 }
-navItems();
+navItems(); 
