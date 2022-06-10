@@ -4,7 +4,7 @@ function navItems() {
         ['Projects', './projects.html'],
         ['Contact', './contact.html']
     ];
-
+    
     let navbar = document.getElementsByClassName('navbar');
     let navDiv = document.createElement('div');
     navDiv.classList.add("container");
