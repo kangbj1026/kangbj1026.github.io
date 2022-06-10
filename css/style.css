@@ -5,7 +5,7 @@ a {color:#fff;text-decoration:none;}
 
 /* hd_wrapper */
 #hd #hd_wrapper {background:#000;color:#fff;text-align:center;display:flex;display:flex;justify-content:space-evenly;align-items:center;}
-#hd #hd_wrapper h2 a {font-size:3rem;}
+#hd #hd_wrapper h2 a {font-size:2rem;}
 #hd .navbar {}
 #hd .navbar .container {background:#3f73d3;color:#fff;}
 #hd .navbar .container .navbar-nav {flex-direction:row;display:flex;list-style:none;}
