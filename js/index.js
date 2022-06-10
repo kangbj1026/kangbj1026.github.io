@@ -1,6 +1,6 @@
 let para = document.location.href.split("/");
-// let linkName = para[4].replace(/(.html)$/,''); // localhost 적용
-let linkName = para[3].replace(/(.html)$/,''); // github 적용
+let linkName = para[4].replace(/(.html)$/,''); // localhost 적용
+// let linkName = para[3].replace(/(.html)$/,''); // github 적용
 
 let wrapper = document.getElementById('wrapper');
 
@@ -20,7 +20,10 @@ let RightListDateBirth = document.createElement('p');
 let RightListResidence = document.createElement('p');
 let RightListCareer = document.createElement('p');
 let RightListLanguageOfUse = document.createElement('h1');
-let RightListLanguageList = document.createElement('p');
+let RightListLanguageFront = document.createElement('h3');
+let RightListLanguageFrontList = document.createElement('p');
+let RightListLanguageBack = document.createElement('h3');
+let RightListLanguageBackList = document.createElement('p');
 
 let RightListEmail 	= document.createElement('p');
 let RightListPhone 	= document.createElement('p');
@@ -54,10 +57,15 @@ if (linkName == "contact") {
 	RightListCareer.innerHTML = "경력 : 웹 개발 1년";
 
 	RightListLanguageOfUse.innerHTML = "사용 언어";
-	RightListLanguageList.innerText += "PHP [ 그누보드 , CodeIgniter( 프로젝트 미진행 / 사용가 가이드 ) ]";
-// 	RightListLanguageList.innerText += "\nAPI [ Tmap , kakaomap ]";
-// 	RightListLanguageList.innerText += "\nScript [ JAVAScript , JSP ]";
-// 	RightListLanguageList.innerText += "\nJquery [,]";
+	RightListLanguageFrontList.innerText = "FRONT END \n[ HTML, CSS, JavaScript, JQuery ]\n";
+	RightListLanguageFront.appendChild(RightListLanguageFrontList);
+	RightListLanguageBackList.innerText = "BACK END \n[ PHP, JSP, Python(기초), Kotlin(기초) ]\n";
+	RightListLanguageBack.appendChild(RightListLanguageBackList);
+
+	// PHP [ 그누보드 , CodeIgniter( 프로젝트 미진행 / 기초 강의 습득 ) ] \nJavaScript
+	// [ JAVAScript , Jquery , JSP ]
+	// [ 그누보드 , CodeIgniter( 프로젝트 미진행 / 사용가 가이드 ) ]
+	// API [ Tmap , kakaomap , Script Calendar ]
 }
 
 wrapperAll();
@@ -83,7 +91,8 @@ function wrapperRightLine() {
 	RightList.appendChild(RightListResidence);
 	RightList.appendChild(RightListCareer);
 	RightList.appendChild(RightListLanguageOfUse);
-	RightList.appendChild(RightListLanguageList);
+	RightList.appendChild(RightListLanguageFront);
+	RightList.appendChild(RightListLanguageBack);
 
 	RightList.appendChild(RightListEmail);
 	RightList.appendChild(RightListPhone);

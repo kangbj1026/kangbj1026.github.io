@@ -1,12 +1,4 @@
 function navItems() {
-	// let itmes = [];
-	// let itmesDiv = document.createElement('div');
-	// let itmesUl = document.createElement('ul');
-	// let itmesLi = document.createElement('li');
-	// let itmesLink = document.createElement('a');
-
-	// itmesDiv.classList.add("container");
-	// itmesLi.classList.add("nav-item");
     let links = [
         ['Introduce', './index.html'],
         ['Projects', './projects.html'],
@@ -34,8 +26,3 @@ function navItems() {
     navbar[0].appendChild(navDiv);
 }
 navItems();
-// console.log(linkArr);
-// console.log(navbarNav);
-// d.appendChild(b);
-// d[0].appendChild(b);
-// a.map(link => link.);
