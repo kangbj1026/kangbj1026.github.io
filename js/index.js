@@ -12,7 +12,7 @@ wrapperDivRight.classList.add('wrapper-right');
 
 let leftListContent = document.createElement('span');
 
-let RightList 		= document.createElement('p');
+let RightList = document.createElement('p');
 
 let RightListIntroduction = document.createElement('h1');
 let RightListMyName	= document.createElement('p');
