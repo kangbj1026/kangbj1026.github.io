@@ -20,6 +20,7 @@ let RightListDateBirth = document.createElement('p');
 let RightListResidence = document.createElement('p');
 let RightListCareer = document.createElement('p');
 let RightListLanguageOfUse = document.createElement('h1');
+let RightListLanguageList = document.createElement('p');
 
 let RightListEmail 	= document.createElement('p');
 let RightListPhone 	= document.createElement('p');
@@ -53,6 +54,10 @@ if (linkName == "contact") {
 	RightListCareer.innerHTML = "경력 : 웹 개발 1년";
 
 	RightListLanguageOfUse.innerHTML = "사용 언어";
+	RightListLanguageList.innerText += "PHP [ 그누보드 , CodeIgniter( 프로젝트 미진행 / 사용가 가이드 ) ]";
+	RightListLanguageList.innerText += "\nAPI [ Tmap , kakaomap ]";
+	RightListLanguageList.innerText += "\nScript [ JAVAScript , JSP ]";
+	RightListLanguageList.innerText += "\nJquery [,]";
 }
 
 wrapperAll();
