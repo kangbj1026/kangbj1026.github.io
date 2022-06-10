@@ -83,6 +83,7 @@ function wrapperRightLine() {
 	RightList.appendChild(RightListResidence);
 	RightList.appendChild(RightListCareer);
 	RightList.appendChild(RightListLanguageOfUse);
+	RightList.appendChild(RightListLanguageList);
 
 	RightList.appendChild(RightListEmail);
 	RightList.appendChild(RightListPhone);
