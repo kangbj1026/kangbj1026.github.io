@@ -15,7 +15,7 @@ let leftListContent = document.createElement('span');
 let RightList = document.createElement('p');
 
 let RightListIntroduction = document.createElement('h1');
-let RightListMyName	= document.createElement('p');
+let RightListMyName = document.createElement('p');
 let RightListDateBirth = document.createElement('p');
 let RightListResidence = document.createElement('p');
 let RightListCareer = document.createElement('p');
@@ -25,10 +25,10 @@ let RightListLanguageFrontList = document.createElement('p');
 let RightListLanguageBack = document.createElement('h3');
 let RightListLanguageBackList = document.createElement('p');
 
-let RightListEmail 	= document.createElement('p');
-let RightListPhone 	= document.createElement('p');
+let RightListEmail = document.createElement('p');
+let RightListPhone = document.createElement('p');
 let RightListGithub = document.createElement('span');
-let RightListLink	= document.createElement('a');
+let RightListLink = document.createElement('a');
 
 if (linkName == "contact") {
 	leftListContent.innerHTML = "<h3>"+linkName+"</h3>";
