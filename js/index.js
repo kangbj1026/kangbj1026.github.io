@@ -55,9 +55,9 @@ if (linkName == "contact") {
 
 	RightListLanguageOfUse.innerHTML = "사용 언어";
 	RightListLanguageList.innerText += "PHP [ 그누보드 , CodeIgniter( 프로젝트 미진행 / 사용가 가이드 ) ]";
-	RightListLanguageList.innerText += "\nAPI [ Tmap , kakaomap ]";
-	RightListLanguageList.innerText += "\nScript [ JAVAScript , JSP ]";
-	RightListLanguageList.innerText += "\nJquery [,]";
+// 	RightListLanguageList.innerText += "\nAPI [ Tmap , kakaomap ]";
+// 	RightListLanguageList.innerText += "\nScript [ JAVAScript , JSP ]";
+// 	RightListLanguageList.innerText += "\nJquery [,]";
 }
 
 wrapperAll();
