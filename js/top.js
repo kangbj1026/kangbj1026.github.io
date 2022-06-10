@@ -14,13 +14,16 @@ function headerWrapper() {
 }
 
 function hdWrapperLink(name) {
+	let mainDiv = document.createElement('div');
 	let mainH2 = document.createElement('h2');
 	let mainLink = document.createElement('a');
 	mainLink.href = "https://kangbj1026.github.io";
 	mainLink.innerText = name;
 	mainH2.appendChild(mainLink);
-
-	return mainH2;
+	mainDiv.appendChild(mainH2);
+	mainDiv.classList.add("header_href");
+	
+	return mainDiv;
 }
 
 function hdWrapperText(text) {
