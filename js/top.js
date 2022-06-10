@@ -7,8 +7,8 @@ let hdWrapper = headerWrapper();
 
 function headerWrapper() {
 	let hdWrapper = document.getElementById("hd_wrapper");
-	hdWrapper.appendChild(hdWrapperLink("강 병 주"));
-	hdWrapper.appendChild(hdWrapperText(" 모르면 배워야하는 생각 "));
+	hdWrapper.appendChild(hdWrapperLink("ByungJu Kang's Portfolio"));
+	hdWrapper.appendChild(hdWrapperText(" 채워넣지 못하면 영원히 텅빈 HeadArray "));
 
 	return hdWrapper;
 }
