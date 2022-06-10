@@ -22,3 +22,26 @@ a {color:#fff;text-decoration:none;}
 
 /* ft */
 #ft {background:#000;color:#fff;text-align:center;}
+
+/* media */
+@media (max-width: 969px){
+/* hd_wrapper */
+#hd #hd_wrapper {}
+#hd #hd_wrapper h2 a {}
+#hd .navbar {}
+#hd .navbar .container {}
+#hd .navbar .container .navbar-nav {}
+#hd .navbar .container ul li {}
+
+/* wrapper */
+#wrapper {}
+
+/* wrapper-left */
+#wrapper .wrapper-left {}
+
+/* wrapper-right */
+#wrapper .wrapper-right {}
+
+/* ft */
+#ft {}
+}
