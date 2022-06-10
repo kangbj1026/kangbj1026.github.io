@@ -50,7 +50,7 @@ if (linkName == "contact") {
 	leftListContent.innerHTML = "<h3>Hello :) </h3>";
 
 	RightListIntroduction.innerHTML = "소개";
-	RightListMyName.innerHTML = "이름 : 강 병 주 ( 姜 秉 周 )";
+	RightListMyName.innerHTML = " 이름 : 강 병 주 ( 姜 秉 周 ) ";
 	RightListMyName.style.fontSize = "1.5rem";
 	RightListDateBirth.innerHTML = "생년월일 : 1987 / 06 / 06 ( 만35 )";
 	RightListResidence.innerHTML = "주소 : 인천 계양구";
