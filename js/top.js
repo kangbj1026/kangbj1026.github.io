@@ -8,7 +8,7 @@ let hdWrapper = headerWrapper();
 function headerWrapper() {
 	let hdWrapper = document.getElementById("hd_wrapper");
 	hdWrapper.appendChild(hdWrapperLink("ByungJu Kang's Portfolio"));
-	hdWrapper.appendChild(hdWrapperText(" 채워넣지 못하면 영원히 텅빈 HeadArray "));
+	hdWrapper.appendChild(hdWrapperText(" 채워 넣지 못하면 영원히 텅 빈 HeadArray "));
 
 	return hdWrapper;
 }
