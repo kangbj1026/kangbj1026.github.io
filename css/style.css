@@ -41,7 +41,7 @@ a {color:#fff;text-decoration:none;}
 #hd .navbar .container ul li {padding:1% 0 1% 0;}
 
 /* wrapper */
-#wrapper {}
+#wrapper {display:contents;}
 
 /* wrapper-left */
 #wrapper .wrapper-left {}
