@@ -57,8 +57,8 @@ if (linkName == "contact") {
 
 	rightListGithub.appendChild(rightListLink);
 } else if (linkName == "projects") {
-	leftListContent.innerHTML = "<h3>"+linkName+"</h3>";
-	rightProjects.innerText = "projects";
+	// leftListContent.innerHTML = "<h3>"+linkName+"</h3>";
+	rightProjects.innerText = "PROJECTS";
 
 	let projectDivFirst = document.createElement("div");
 	projectDivFirst.classList.add("project");
