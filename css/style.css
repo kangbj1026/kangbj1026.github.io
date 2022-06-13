@@ -44,10 +44,12 @@ a {color:#fff;text-decoration:none;}
 #wrapper {display:contents;}
 
 /* wrapper-left */
-#wrapper .wrapper-left {}
+#wrapper .wrapper-left {width:100%;}
 
 /* wrapper-right */
-#wrapper .wrapper-right {}
+#wrapper .wrapper-right {width:100%;}
+
+
 #wrapper .wrapper-right .project_url {}
 #wrapper .wrapper-right .project_data {}
 #wrapper .wrapper-right .project_data .project {display:inherit;padding-bottom:10%;}
