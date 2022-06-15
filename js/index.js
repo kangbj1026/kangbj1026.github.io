@@ -106,11 +106,11 @@ if (linkName == "contact") {
 } else if (linkName == "studying") {
 	leftListContent.innerHTML = "<h3>"+linkName+"</h3>";
 
-	rigntStudyIngLanguage.innerHTML = "Python";
+	rigntStudyIngLanguage.innerHTML = "React";
 	studyLectureUrl.classList.add("study_url");
-	studyLectureUrl.innerText = "https://youtu.be/kWiCuklohdY";
+	studyLectureUrl.innerText = "https://nomadcoders.co/react-for-beginners";
 	studyLectureUrl.href = studyLectureUrl.text;
-	studyLecture.innerHTML = "파이썬 코딩 무료 강의 (기본편) / 나도코딩 강좌 / ";
+	studyLecture.innerHTML = "ReactJs 기초 강의 / 노마드 강좌 / ";
 	studyLecture.appendChild(studyLectureUrl);
 } else {
 	leftListContent.innerHTML = "<h3>Hello :) </h3>";
