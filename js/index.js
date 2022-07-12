@@ -219,3 +219,4 @@ function wrapperRightLine() {
 	else if (linkName == "studying") wrapperStudyIng();
 	else wrapperIndex();
 }
+console.log("Hello");
