@@ -42,6 +42,7 @@ let rightListLink = document.createElement('a');
 let rigntStudyIngLanguage = document.createElement('h2');
 let studyLecture = document.createElement('p');
 let studyLectureUrl = document.createElement('a');
+let reactUrl = document.createElement('a');
 
 
 if (linkName == "contact") {
@@ -112,6 +113,11 @@ if (linkName == "contact") {
 	studyLectureUrl.href = studyLectureUrl.text;
 	studyLecture.innerHTML = "ReactJs 기초 강의 / 노마드 강좌 / ";
 	studyLecture.appendChild(studyLectureUrl);
+	reactUrl.classList.add("study_url");
+	reactUrl.innerHTML = "https://kangbj1026.github.io/react1026";
+	reactUrl.href = reactUrl.text;
+	studyLecture.innerHTML += "\n ReactProject / ";
+	studyLecture.appendChild(reactUrl);
 } else {
 	leftListContent.innerHTML = "<h3>Hello :) </h3>";
 
