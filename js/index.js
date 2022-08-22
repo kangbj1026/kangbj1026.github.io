@@ -103,7 +103,7 @@ if (linkName == "contact") {
 	text3 += "메인페이지에서 회차마다 1~5등까지 정보를 확인 할 수 있도록 Ajax로 구현 <br>";
 	text3 += "최신회차번호 게시글과 회원 추첨번호를 모두 비교하여 당첨여부 구현";
 	let infoText3 = projectExp(text3);
-	rightProjectsDiv.appendChild(projectData("로또사이트",2022.04+" ~ "+2022.05,infoText3,"https://lottoh.cafe24.com","/img/lottohMain.png",projectDivThird));
+	rightProjectsDiv.appendChild(projectData("로또사이트",2022.04+" ~ "+2022.05,infoText3,"https://kmwkiin2000.cafe24.com","/img/lottohMain.png",projectDivThird));
 } else if (linkName == "studying") {
 	leftListContent.innerHTML = "<h3>"+linkName+"</h3>";
 
