@@ -3,7 +3,8 @@ function navItems() {
         ['Introduce', './index.html'],
         ['Projects', './projects.html'],
         ['Contact', './contact.html'],
-        ['StudyIng', './studying.html']
+        ['StudyIng', './studying.html'],
+        ['SpringBootMVC', './portfolio']
     ];
 
     let navbar = document.getElementsByClassName('navbar');
