@@ -26,6 +26,8 @@ let rightListFrontLanguage = document.createElement('h3');
 let rightListFrontLanguageList = document.createElement('p');
 let rightListBackLanguage = document.createElement('h3');
 let rightListBackLanguageList = document.createElement('p');
+let rightListBackFramework = document.createElement('h3');
+let rightListBackFrameworkList = document.createElement('p');
 
 
 let rightProjects = document.createElement("h1");
@@ -132,6 +134,8 @@ if (linkName == "contact") {
 	rightListFrontLanguage.appendChild(rightListFrontLanguageList);
 	rightListBackLanguageList.innerText = "BACK END \n[ PHP, JSP, Python(기초), Kotlin(기초) ]\n";
 	rightListBackLanguage.appendChild(rightListBackLanguageList);
+	rightListBackFrameworkList.innerText = "Framework \n[ Spring, Spring Boot, STS, Codeigniter, GitHub ]\n";
+	rightListBackFramework.appendChild(rightListBackFrameworkList);
 }
 
 wrapperAll();
@@ -153,6 +157,7 @@ function wrapperIndex() {
 	rightListDiv.appendChild(rightListSkills);
 	rightListDiv.appendChild(rightListFrontLanguage);
 	rightListDiv.appendChild(rightListBackLanguage);
+	rightListDiv.appendChild(rightListBackFramework);
 }
 
 function wrapperProjects() {
