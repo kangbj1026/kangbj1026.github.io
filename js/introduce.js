@@ -49,7 +49,7 @@ function Div2(articleFirst) {
 
     /* articleFirst f_div2 Info2 Experience */
     const fDiv2Experience = CreateDiv("f_div_experience");
-    const fDiv2ExTitle = CreateH1("f_div_experience","EXPERIENCE");
+    const fDiv2ExTitle = CreateH1("experience_h1","EXPERIENCE");
     const fDivExLists = CreateUl("experience_ul");
     let exList = [
         ['2021.05 ~ 2022.07 두드림\n', 'FRONT END / BACK END 개발\n User 페이지 내 작동하는 기능 구축 및 개발\n 컨펌 된 디자인을 기반으로 웹사이트 내 Publishing 진행']
