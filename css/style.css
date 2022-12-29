@@ -107,6 +107,9 @@ section div {
     font-size: 500%;
     opacity: 1;
     color: var(--text-color3);
+    /*background: linear-gradient(to right top, #861657, #ffa69e);*/
+    /*color: transparent;*/
+    -webkit-background-clip: text;
 }
 .articleFirst .f_div2 {
     font-size: 100%;
@@ -376,9 +379,6 @@ footer {
         justify-content: center;
         align-items: baseline;
     }
-    .articleFirst .f_div1 .fh1 {
-
-    }
     .articleFirst .f_div2 {
         font-size: 100%;
     }
@@ -388,15 +388,12 @@ footer {
     .articleFirst .f_div2 .f_div_info1 {
         width: 40%;
     }
-    .articleFirst .f_div2 h1 {
-        font-size: 4vh;
+    .articleFirst .f_div2 h1, .articleFirst .f_div2 .f_div_info2 h1 {
+        font-size: 3vh;
     }
     .articleFirst .f_div2 .f_div_info2 {
         width: 60%;
         text-align: left;
-    }
-    .articleFirst .f_div2 .f_div_info2 h1 {
-        font-size: 4vh;
     }
 
     /* articleSecond */
