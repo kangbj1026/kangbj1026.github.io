@@ -94,28 +94,6 @@ function Div1(articleSecond) {
     const sDiv = CreateDivs("s_div1","네스틸코리아(주) 2021.11 ~ 2022.01","./img/nesteelMain.png","s_div_ds1","s_div_p1",p1Text,"s_div_ds2","s_div_p2",p2Text);
     articleSecond.appendChild(sDiv);
 }
-function CreateDivs(div1,divTitle,divImg,divDs1,divDs1P1,p1Text,divDs2,divDs2P2,p2Text) {
-    const sDiv1 = CreateDiv(div1);
-    sDiv1.classList.add("slide_item");
-    const sDiv1Name = CreateH1("s_div_name",divTitle);
-    const sDiv1Img = document.createElement("img");
-    sDiv1Img.src = divImg;
-    const sDiv1Ds1 = CreateDiv(divDs1);
-    const sDiv1DsP1 = document.createElement("p");
-    sDiv1DsP1.classList.add(divDs1P1);
-    sDiv1DsP1.innerHTML = p1Text;
-    const sDiv1Ds2 = CreateDiv(divDs2);
-    const sDiv1DsP2 = document.createElement("p");
-    sDiv1DsP2.classList.add(divDs2P2);
-    sDiv1DsP2.innerHTML = p2Text;
-    sDiv1Ds1.appendChild(sDiv1DsP1);
-    sDiv1Ds2.appendChild(sDiv1DsP2);
-    sDiv1.appendChild(sDiv1Ds1);
-    sDiv1.appendChild(sDiv1Ds2);
-    sDiv1.appendChild(sDiv1Img);
-    sDiv1.appendChild(sDiv1Name);
-    return sDiv1;
-}
 function Div2(articleSecond) {
     const p1Text = "Language : PHP, JavaScript\n" +
         "library : Jquery, Jsp, Ajax, Bootstrap\n" +
@@ -167,6 +145,28 @@ function DivPagination(articleSecond) {
     articleSecond.appendChild(pagination);
 }
 
+function CreateDivs(div1,divTitle,divImg,divDs1,divDs1P1,p1Text,divDs2,divDs2P2,p2Text) {
+    const sDiv1 = CreateDiv(div1);
+    sDiv1.classList.add("slide_item");
+    const sDiv1Name = CreateH1("s_div_name",divTitle);
+    const sDiv1Img = document.createElement("img");
+    sDiv1Img.src = divImg;
+    const sDiv1Ds1 = CreateDiv(divDs1);
+    const sDiv1DsP1 = document.createElement("p");
+    sDiv1DsP1.classList.add(divDs1P1);
+    sDiv1DsP1.innerHTML = p1Text;
+    const sDiv1Ds2 = CreateDiv(divDs2);
+    const sDiv1DsP2 = document.createElement("p");
+    sDiv1DsP2.classList.add(divDs2P2);
+    sDiv1DsP2.innerHTML = p2Text;
+    sDiv1Ds1.appendChild(sDiv1DsP1);
+    sDiv1Ds2.appendChild(sDiv1DsP2);
+    sDiv1.appendChild(sDiv1Ds1);
+    sDiv1.appendChild(sDiv1Ds2);
+    sDiv1.appendChild(sDiv1Img);
+    sDiv1.appendChild(sDiv1Name);
+    return sDiv1;
+}
 
 function addEventListenerClick(btn,currSlide,maxSlide,slideWidth,slideItems,paginationItems) {
 

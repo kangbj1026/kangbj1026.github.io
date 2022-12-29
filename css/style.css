@@ -9,7 +9,10 @@
 }
 body {
     margin: 0;
-    font-family: 'Source Sans Pro';
+    font-family: 'East Sea Dokdo';
+}
+h1 {
+    font-family: 'Bebas Neue';
 }
 section {
     /*border: 1px solid #ff0047;*/
@@ -104,7 +107,6 @@ section div {
     font-size: 500%;
     opacity: 1;
     color: var(--text-color3);
-    font-family: "Bebas Neue";
 }
 .articleFirst .f_div2 {
     font-size: 100%;
@@ -126,7 +128,8 @@ section div {
     margin: 2%;
 }
 .articleFirst .f_div2 h1 {
-    font-family: "Bebas Neue";
+    font-size: 6vh;
+    margin: 0;
 }
 .articleFirst .f_div2 p {
     font-size: 3vh;
@@ -135,6 +138,8 @@ section div {
 .articleFirst .f_div2 .f_div_info1 {
     width: 50%;
     font-size: 160%;
+    border-right: 1px solid #706E74;
+    height: 90%;
 }
 .articleFirst .f_div2 .f_div_info1 ul{
     padding: 0;
@@ -159,6 +164,7 @@ section div {
 .articleFirst .f_div2 .f_div_info2 h1 {
     margin: 0;
     font-size: 6vh;
+    border-bottom: 1px solid #706E74;
 }
 .articleFirst .f_div2 .f_div_info2 .f_div_skills li {
     padding: 1%;
@@ -180,7 +186,16 @@ section div {
     width: 100%;
     padding-top: 10%;
 }
-/* s_div1 */
+.s_div_title {
+    position: absolute;
+    width: 100%;
+    font-size: 5vh;
+    color: var(--text-color4);
+}
+.s_div_title h1 {
+    margin: 0;
+    text-align: center;
+}
 .articleSecond .slide_item {
     /* layout */
     display: flex;
@@ -203,13 +218,13 @@ section div {
 .articleSecond .slide_item img {
     position: absolute;
     width: 500px;
-    top: 130px;
+    top: 110px;
     height: 300px;
 }
 .articleSecond .slide_item h1 {
     position: absolute;
-    bottom: 200px;
-    font-size: 5vh;
+    bottom: 230px;
+    font-size: 3vh;
 }
 .articleSecond .slide_item .s_div_ds1 {
     display: flex;
@@ -234,16 +249,6 @@ section div {
 }
 .articleSecond .slide_item p.s_div_p2 {
     font-size: 105%;
-}
-.s_div_title {
-    position: absolute;
-    width: 100%;
-    font-size: 9vh;
-    color: var(--text-color4);
-}
-.s_div_title h1 {
-    margin: 0;
-    text-align: center;
 }
 .s_div1 { /* :nth-child(1) */
     /*background-color: darkgoldenrod;*/
@@ -369,7 +374,10 @@ footer {
         display: flex;
         font-size: 100%;
         justify-content: center;
-        align-items: center;
+        align-items: baseline;
+    }
+    .articleFirst .f_div1 .fh1 {
+
     }
     .articleFirst .f_div2 {
         font-size: 100%;
@@ -380,9 +388,12 @@ footer {
     .articleFirst .f_div2 .f_div_info1 {
         width: 40%;
     }
+    .articleFirst .f_div2 h1 {
+        font-size: 4vh;
+    }
     .articleFirst .f_div2 .f_div_info2 {
         width: 60%;
-        text-align: right;
+        text-align: left;
     }
     .articleFirst .f_div2 .f_div_info2 h1 {
         font-size: 4vh;
@@ -426,11 +437,11 @@ footer {
         width: 50%;
     }
     .articleSecond .slide_item p.s_div_p2 {
-        text-align: right;
+        text-align: left;
         font-size: 50%;
     }
     .articleSecond .slide_button {
-        color: var(--text-color1);
+        color: var(--text-color3);
         font-size: 8vh;
         top: calc(123px);
     }

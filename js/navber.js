@@ -5,7 +5,7 @@ function navItems() {
         ['Home', './'],
         ['Projects', './#projects'],
         ['Studying', './'],
-        ['Spring Boot MVC Portfolio', './react1026']
+        ['Spring Boot MVC Portfolio', './portfolio']
     ];
 
     let navbar = document.querySelector('.navbar');
