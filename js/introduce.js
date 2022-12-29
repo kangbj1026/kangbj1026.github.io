@@ -16,7 +16,7 @@ export function articleFirst() {
 /* Div1 */
 function Div1(articleFirst) {
     const fDiv1 = CreateDiv("f_div1");
-    const fh1 = CreateH1("fh1","Introduce");
+    const fh1 = CreateH1("fh1","INTRODUCE");
     fDiv1.appendChild(fh1);
 
     EventMouse(fDiv1,fh1);
@@ -28,9 +28,10 @@ function Div2(articleFirst) {
     /* articleFirst f_div2 Info1 */
     const fDiv2 = CreateDiv("f_div2");
     const fDiv2Info1 = CreateDiv("f_div_info1");
+    const fDiv2Info1Title = CreateH1("f_div_info1_title","INTRODUCE");
     const fDiv2InfoUl = CreateUl("f_div_info1_ul");
-    const fDiv2InfoList = ["강 병 주\n Kang Byung Ju","1987.06.06","010-7666-0276","kangbj1987@gmail.com","https://github.com/kangbj1026","https://kangbj1026.github.io","인천 계양구", "웹 개발 1년"];
-
+    const fDiv2InfoList = ["강 병 주 ( Kang Byung Ju )","1987.06.06","010-7666-0276","kangbj1987@gmail.com","https://github.com/kangbj1026","https://kangbj1026.github.io"];
+    fDiv2Info1.appendChild(fDiv2Info1Title);
     for (let i = 0; fDiv2InfoList.length > i; i++) {
         const fDiv2InfoLi = CreateLi("info"+i,fDiv2InfoList[i]);
         if (i == 4 || i == 5) {
@@ -48,7 +49,7 @@ function Div2(articleFirst) {
 
     /* articleFirst f_div2 Info2 Experience */
     const fDiv2Experience = CreateDiv("f_div_experience");
-    const fDiv2ExTitle = CreateH1("f_div_experience","Experience");
+    const fDiv2ExTitle = CreateH1("f_div_experience","EXPERIENCE");
     const fDivExLists = CreateUl("experience_ul");
     let exList = [
         ['2021.05 ~ 2022.07 두드림\n', 'FRONT END / BACK END 개발\n User 페이지 내 작동하는 기능 구축 및 개발\n 컨펌 된 디자인을 기반으로 웹사이트 내 Publishing 진행']
@@ -60,7 +61,7 @@ function Div2(articleFirst) {
 
     /* articleFirst f_div2 Info2 Skills */
     const fDiv2Skills = CreateDiv("f_div_skills");
-    const fDiv2SkTitle = CreateH1("skills_h1","Skills");
+    const fDiv2SkTitle = CreateH1("skills_h1","SKILLS");
     const fDivSkLists = CreateUl("skills_ul");
     const skList = [
         ['FRONT END : ',"HTML, CSS, JavaScript, JQuery, React(초급)"],

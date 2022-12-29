@@ -14,9 +14,9 @@ export function Event(eve,fDiv1,h1) {
     const fDiv1Style = fDiv1.style;
     const h1Style = h1.style;
     if (eve.type == "mouseover") {
-        EventStyle(fDiv1Style,h1Style,"0","1.5s","1300%","#00ff2a");
+        EventStyle(fDiv1Style,h1Style,"0","1.5s","800%","#000000");
     } else if (eve.type == "mouseout") {
-        EventStyle(fDiv1Style,h1Style,"1","1.5s","1100%","#282583");
+        EventStyle(fDiv1Style,h1Style,"1","1.5s","500%","#000000");
     }
 }
 /* EventStyle */

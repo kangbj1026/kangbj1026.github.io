@@ -4,7 +4,7 @@ function navItems() {
     let links = [
         ['Home', './'],
         ['Projects', './#projects'],
-        ['StudyIng', './studying.html'],
+        ['Studying', './'],
         ['Spring Boot MVC Portfolio', './portfolio']
     ];
 
