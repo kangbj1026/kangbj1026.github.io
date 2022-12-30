@@ -5,7 +5,7 @@ function navItems() {
         ['Home', './'],
         ['Projects', './#projects'],
         ['Studying', './'],
-        ['Spring Boot MVC Portfolio', './react1026']
+        ['Spring Boot MVC Portfolio', './portfolio']
     ];
 
     let navbar = document.querySelector('.navbar');
@@ -51,15 +51,17 @@ toggleBtn.addEventListener( 'click', (eve) => {
     const navMenu = document.querySelector('.navbar_menu');
     section.classList.toggle('active');
     navMenu.classList.toggle('active');
-    let i = "0";
-    if (section.classList.length > 1) {
-        document.querySelector(".f_div1").style.opacity = i;
-        document.querySelector(".f_div2").style.opacity = i;
+    if (section.classList.length >= 1) {
+        document.querySelector('section *').style.opacity = "0";
+        // document.querySelector('section *').style.transition = "all 1s";
+        // navMenu.style.transition = "all 1s";
+        // document.querySelector(".f_div1").style.opacity = i;
+        // document.querySelector(".f_div2").style.opacity = i;
     } else {
-        document.querySelector(".f_div1").style.removeProperty("opacity");
-        document.querySelector(".f_div1").style.removeProperty("transition-duration");
-        i++;
-        document.querySelector(".f_div1").style.opacity = i;
-        document.querySelector(".f_div2").style.opacity = i;
+        document.querySelector('section article').style.opacity = "1";
+        // document.querySelector(".f_div1").style.removeProperty("opacity");
+        // document.querySelector(".f_div1").style.removeProperty("transition-duration");
+        // document.querySelector(".f_div1").style.opacity = i;
+        // document.querySelector(".f_div2").style.opacity = i;
     }
 })
