@@ -1,0 +1,41 @@
+.loveDiv {
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loveDiv p.result{ 
+	display: inline-block; 
+	font-size:30px; 
+	border-right: 1px solid #000; 
+	padding-right: 2px; 
+	box-sizing: border-box; 
+	animation: cursor 0.4s infinite;
+}
+
+.loveDiv .imgDiv {
+	margin:0 auto;
+}
+
+.loveDiv .imgDiv .first_img {
+	display: none;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
