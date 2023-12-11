@@ -32,14 +32,13 @@
 	display: none;
 }
 
-.loveDiv .imgDiv div img {
-	width: 500px;
-}
-
 /* @media screen and (max-width: 768)  */
 @media screen and (max-width: 768px)
 {
 	.loveDiv .imgDiv {
-
+		display: contents;
+	}
+	.loveDiv img {
+		width: 100%;
 	}
 }
