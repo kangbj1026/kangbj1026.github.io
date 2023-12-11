@@ -1,8 +1,14 @@
 .loveDiv {
+	height: 1200px;
     padding: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
+	background-image: url("../img/background.jpg");
+	background-repeat : round;
+	background-size : cover;
+	animation: fadeIn 5s;
+	overflow : scroll;
 }
 
 .loveDiv p.result{ 
@@ -15,27 +21,25 @@
 }
 
 .loveDiv .imgDiv {
+	width: 1700px;
 	margin:0 auto;
+	display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .loveDiv .imgDiv .first_img {
 	display: none;
 }
 
-@keyframes fadein {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+.loveDiv .imgDiv div img {
+	width: 500px;
 }
 
-@-webkit-keyframes fadein { /* Safari and Chrome */
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+/* @media screen and (max-width: 768)  */
+@media screen and (max-width: 768px)
+{
+	.loveDiv .imgDiv {
+
+	}
 }
