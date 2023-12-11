@@ -32,6 +32,10 @@
 	display: none;
 }
 
+.loveDiv img {
+	width: 500px;
+}
+
 /* @media screen and (max-width: 768)  */
 @media screen and (max-width: 768px)
 {
