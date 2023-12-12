@@ -2,7 +2,7 @@
 body {
     margin: 0;
 	font-family: 'Gowun Dodum', sans-serif;
-	overflow: hidden;
+	overflow: auto;
 }
 h1 {
     font-family: 'Bebas Neue';
