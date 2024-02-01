@@ -42,6 +42,18 @@
 	width: 500px;
 }
 
+#remain-time
+{
+	font-size: 30px;
+	padding-bottom: 50px;
+}
+
+#toDay
+{
+	font-size: 35px;
+	color: #ff0000;
+}
+
 /* @media screen and (max-width: 768)  */
 @media screen and (max-width: 768px)
 {
