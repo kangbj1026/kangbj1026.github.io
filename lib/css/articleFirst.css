@@ -135,5 +135,6 @@ section div {
     }
     .articleFirst .f_div2 .f_div_info2 ul {
         font-size: 1.1vh;
+		padding: 0;
     }
 }
