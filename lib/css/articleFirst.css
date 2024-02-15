@@ -124,7 +124,7 @@ section div {
         width: 40%;
     }
     .articleFirst .f_div2 .f_div_info1 ul {
-        font-size: 30%;
+        font-size: 1.5vh;
     }
     .articleFirst .f_div2 h1, .articleFirst .f_div2 .f_div_info2 h1 {
         font-size: 3vh;
@@ -134,6 +134,6 @@ section div {
         text-align: left;
     }
     .articleFirst .f_div2 .f_div_info2 ul {
-        font-size: 30%;
+        font-size: 1.5vh;
     }
 }
