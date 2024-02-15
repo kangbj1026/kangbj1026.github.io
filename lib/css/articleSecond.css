@@ -65,12 +65,15 @@
 }
 .articleSecond .slide_item div:nth-child(2) {
     right: 0;
+	overflow-x: hidden;
+    height: 25%;
 }
 .articleSecond .slide_item p {
     font-weight: bolder;
     white-space: pre-line;
 }
 .articleSecond .slide_item p.s_div_p1 {
+	width: 400px;
     font-size: 120%;
 }
 .articleSecond .slide_item p.s_div_p2 {
@@ -162,10 +165,13 @@
         left: 20px;
     }
     .articleSecond .slide_item p.s_div_p1 {
+		width: 100%;
         font-size: 50%;
     }
     .articleSecond .slide_item div:nth-child(2) {
         right: 20px;
+		height: 35%;
+		overflow: scroll;
     }
     .articleSecond .slide_item p.s_div_p2 {
         text-align: left;
