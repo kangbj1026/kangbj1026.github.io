@@ -54,6 +54,11 @@
 	color: #ff0000;
 }
 
+.first_img
+{
+	border-radius: 50px;
+}
+
 /* @media screen and (max-width: 768)  */
 @media screen and (max-width: 768px)
 {
