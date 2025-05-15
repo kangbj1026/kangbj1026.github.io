@@ -17,6 +17,7 @@ p {
 }
 li {
     list-style: none;
+	width: fit-content;
 }
 :root {
     --text-color1: #f0f4f5;

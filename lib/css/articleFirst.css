@@ -52,9 +52,10 @@ section #projects {
 }
 #magnifier {
 	position: absolute;
-	width: 20%;
-	height: 100px;
+	width: 50px;
+	height: 50px;
 	border: 2px solid #333;
+    border-radius: 50px;
 	overflow: hidden;
 	display: none; /* 평소엔 숨김 */
 	background: white;
@@ -62,7 +63,23 @@ section #projects {
 }
 .magnifier-content {
 	position: absolute;
-	top: 0; left: 0;
+	width: 9000px;
+	top: 0; left: -15px;
+}
+.disappearing {
+	position: absolute;
+	transform-origin: center;
+	animation: rotateAndDisappear 2s forwards;
+}
+@keyframes rotateAndDisappear {
+	0% {
+		transform: translate(0, 0) rotate(0deg);
+		opacity: 1;
+	}
+	100% {
+		transform: translate(300px, -200px) rotate(720deg);
+		opacity: 0;
+	}
 }
 
 .articleFirst .f_div2 {
