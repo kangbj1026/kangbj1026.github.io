@@ -1,0 +1,29 @@
+@charset "utf-8";
+body {
+    margin: 0;
+	font-family: 'Gowun Dodum', sans-serif;
+}
+
+h1 {
+    font-family: 'Bebas Neue';
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color1);
+}
+p {
+    margin: 0;
+}
+li {
+    list-style: none;
+}
+:root {
+    --text-color1: #f0f4f5;
+    --text-color2: #29a33d;
+    --text-color3: #000000;
+    --text-color4: #282583;
+    --background-color: #644747;
+    --accent-color: #00ff2a;
+    --section-background-color: #3d3083;
+}

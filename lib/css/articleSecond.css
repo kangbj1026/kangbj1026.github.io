@@ -1,0 +1,194 @@
+/* articleSecond */
+.articleSecond {
+    /* layout */
+    display: flex;
+    flex-wrap: nowrap;
+    /* 컨테이너의 내용물이 컨테이너 크기(width, height)를 넘어설 때 보이지 않도록 하기 위해 hidden을 준다. */
+    overflow: hidden;
+
+    /* position */
+    /* slide_button의 position absolute가 컨테이너 안쪽에서 top, left, right offset이 적용될 수 있도록 relative를 준다. (기본값이 static인데, static인 경우 그 상위 컨테이너로 나가면서 현재 코드에선 html을 기준으로 offset을 적용시키기 때문) */
+    position: relative;
+
+    /* size */
+    width: 100%;
+    /* padding-top: 10%; */
+}
+.articleSecond .s_div_title {
+    position: absolute;
+    width: 100%;
+    font-size: 5vh;
+    color: var(--text-color4);
+}
+.articleSecond .s_div_title h1 {
+    margin: 0;
+    text-align: center;
+}
+.articleSecond .slide_item {
+    /* layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* position - 버튼 클릭시 left offset값을 적용시키기 위해 */
+    position: relative;
+    left: 0px;
+
+    /* size */
+    width: 100%;
+    height: 100%;
+    /* flex item의 flex-shrink는 기본값이 1이므로 컨테이너 크기에 맞게 줄어드는데, 슬라이드를 구현할 것이므로 줄어들지 않도록 0을 준다. */
+    flex-shrink: 0;
+
+    /* transition */
+    transition: left 0.15s;
+}
+.articleSecond .slide_item img {
+    position: absolute;
+    width: 500px;
+    top: 110px;
+    height: 300px;
+}
+.articleSecond .slide_item h1 {
+    font-size: 3vh;
+}
+.articleSecond .slide_item div {
+    display: flex;
+    position: absolute;
+    top: 510px;
+    width: 50%;
+}
+.articleSecond .slide_item div:nth-child(1) {
+    display: flex;
+    justify-content: center;
+    margin-top: -120px;
+	width: 100%;
+}
+.articleSecond .slide_item div:nth-child(2) {
+    right: 400px;
+}
+.articleSecond .slide_item div:nth-child(3) {
+    right: 0;
+	overflow-x: hidden;
+    height: 25%;
+}
+.articleSecond .slide_item p {
+    font-weight: bolder;
+    white-space: pre-line;
+}
+.articleSecond .slide_item p.s_div_p1 {
+	width: 400px;
+    font-size: 120%;
+}
+.articleSecond .slide_item p.s_div_p2 {
+    font-size: 105%;
+}
+/* slide_button */
+.articleSecond .slide_button {
+    /* layout */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* position */
+    position: absolute;
+    /* 버튼이 중앙에 위치하게 하기위해 계산 */
+    top: calc(50% - 16px);
+
+    /* size */
+    width: 10%;
+    height: 15%;
+    font-size: 15vh;
+
+    /* style */
+    border-radius: 100%;
+    cursor: pointer;
+}
+.articleSecond .s_div_prev_button {
+    left: 10px;
+}
+.articleSecond .s_div_next_button {
+    right: 10px;
+}
+.articleSecond .s_div_pagination {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    /* layout */
+    display: flex;
+    gap: 5px;
+
+    /* position */
+    position: absolute;
+    bottom: 0;
+    /* left:50%, translateX(-50%)를 하면 가로 가운데로 위치시킬 수 있다. */
+    left: 50%;
+    transform: translateX(-50%);
+}
+.articleSecond .s_div_pagination > li {
+    /* 현재 슬라이드가 아닌 것은 투명도 부여 */
+    color: #7fb5ff88;
+    cursor: pointer;
+    font-size: 25px;
+}
+.articleSecond .s_div_pagination > li.active {
+    /* 현재 슬라이드 색상은 투명도 없이 */
+    color: #7fb5ff;
+}
+
+@media screen and (max-width: 768px){
+    /* articleSecond */
+    .articleSecond {
+        background-image:linear-gradient(
+                to top,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.25) 10%,
+                rgba(255, 255, 255, 0.5) 30%,
+                rgba(255, 255, 255, 0.75) 70%,
+                rgba(255, 255, 255, 1) 80%
+        );
+    }
+    .articleSecond .s_div_title {
+        font-size: 150%;
+        top: 1%;
+    }
+    .articleSecond .slide_item img {
+        width: 40%;
+        height: 40%;
+        top: 10px;
+    }
+    .articleSecond .slide_item h1 {
+        font-size: 2vh;
+    }
+    .articleSecond .slide_item div {
+        width: 43%;
+        top: 57%;
+    }
+	.articleSecond .slide_item div:nth-child(1) {
+		display: flex;
+		justify-content: center;
+		margin-top: -70px;
+		width: 100%;
+	}
+    .articleSecond .slide_item div:nth-child(2) {
+        left: 20px;
+    }
+    .articleSecond .slide_item p.s_div_p1 {
+		width: 100%;
+        font-size: 50%;
+    }
+    .articleSecond .slide_item div:nth-child(3) {
+        right: 20px;
+		height: 35%;
+		overflow: scroll;
+    }
+    .articleSecond .slide_item p.s_div_p2 {
+        text-align: left;
+        font-size: 47%;
+    }
+    .articleSecond .slide_button {
+        color: var(--text-color3);
+        font-size: 8vh;
+        top: calc(123px);
+    }
+}

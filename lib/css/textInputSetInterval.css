@@ -1,0 +1,72 @@
+.loveDiv {
+	height: 250vh;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	background-image: url(/lib/img/background.jpg);
+	background-position: inherit;
+	background-repeat: round;
+	background-size: contain;
+	animation: fadeIn 5s;
+}
+
+.loveDiv .start { 
+	word-break: break-all;
+}
+
+.loveDiv p.result{ 
+	display: inline-block; 
+	font-size:30px; 
+	border-right: 1px solid #000; 
+	padding-right: 2px; 
+	box-sizing: border-box; 
+	animation: cursor 0.4s infinite;
+}
+
+.loveDiv .imgDiv {
+	width: 1700px;
+	margin:0 auto;
+	display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.loveDiv .imgDiv .firstDiv {
+	animation : fadeInDownBig 20s; 
+	display: flex; 
+	align-items : center; 
+	padding: 20px 0 20px 0;
+}
+
+.loveDiv img {
+	width: 500px;
+}
+
+#remain-time
+{
+	font-size: 30px;
+	padding-bottom: 50px;
+}
+
+#toDay
+{
+	font-size: 35px;
+	color: #ff0000;
+}
+
+.first_img
+{
+	border-radius: 50px;
+}
+
+/* @media screen and (max-width: 768)  */
+@media screen and (max-width: 768px)
+{
+	.loveDiv .imgDiv {
+		display: contents;
+	}
+	.loveDiv img {
+		width: 100%;
+		border-radius: 10px;
+	}
+}

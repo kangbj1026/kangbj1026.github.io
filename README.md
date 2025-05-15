@@ -1,2 +1,1 @@
-# kangbj1026.github.io
-Portfolio
+# https://kangbj1026.github.io

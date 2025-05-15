@@ -1,0 +1,8 @@
+/* footer */
+footer {
+    text-align: center;
+    width: 100%;
+    color: var(--text-color1);
+    background-color: var(--background-color);
+    position: absolute;
+}
