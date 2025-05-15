@@ -20,6 +20,7 @@ section #projects {
     /* background-size: contain; */
     padding: 2%;
 	line-height: 2; /* 줄 간격을 2배로 지정 */
+	position: relative;
 }
 .articleFirst .f_div1 .fh1 {
     text-align: left;
@@ -48,6 +49,20 @@ section #projects {
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+#magnifier {
+	position: absolute;
+	width: 20%;
+	height: 100px;
+	border: 2px solid #333;
+	overflow: hidden;
+	display: none; /* 평소엔 숨김 */
+	background: white;
+	box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+.magnifier-content {
+	position: absolute;
+	top: 0; left: 0;
 }
 
 .articleFirst .f_div2 {

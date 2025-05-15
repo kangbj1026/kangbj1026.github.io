@@ -27,3 +27,11 @@ li {
     --accent-color: #00ff2a;
     --section-background-color: #3d3083;
 }
+kbd {
+	font-size: 110%;
+    color: rgb(255, 255, 255);
+    background-color: rgb(51, 51, 51);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px inset;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
