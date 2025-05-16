@@ -152,6 +152,9 @@
         font-size: 150%;
         top: 1%;
     }
+	.articleSecond .slide_item {
+		top: 40px;
+	}
     .articleSecond .slide_item img {
         width: 40%;
         height: 40%;

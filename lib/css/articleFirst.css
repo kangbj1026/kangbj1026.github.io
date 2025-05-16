@@ -147,18 +147,20 @@
 @media screen and (max-width: 768px){
     section div {
         font-size: 110%;
-        height: 50vh;
+        /* height: 50vh; */
     }
     /* .articleFirst */
     .articleFirst {
-        font-size: 50%;
+        font-size: 15px;
     }
     .articleFirst .f_div1 {
-        display: flex;
+		display: flex;
         font-size: 100%;
-        justify-content: center;
-        align-items: baseline;
+        flex-direction: column;
     }
+	.articleFirst .f_div1 .introduce-photo {
+		display: none;
+	}
     .articleFirst .f_div2 {
         font-size: 100%;
     }
