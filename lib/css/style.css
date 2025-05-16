@@ -1,38 +1,48 @@
 @charset "utf-8";
-body {
-    margin: 0;
-	font-family: 'Gowun Dodum', sans-serif;
+body, html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
 }
-
+body {
+	margin: 0;
+	font-family: 'Gowun Dodum', sans-serif;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+section {
+	flex: 1;
+}
 h1 {
-    font-family: 'Bebas Neue';
+	font-family: 'Bebas Neue';
 }
 
 a {
-    text-decoration: none;
-    color: var(--text-color1);
+	text-decoration: none;
+	color: var(--text-color1);
 }
 p {
-    margin: 0;
+	margin: 0;
 }
 li {
-    list-style: none;
+	list-style: none;
 	width: fit-content;
 }
 :root {
-    --text-color1: #f0f4f5;
-    --text-color2: #29a33d;
-    --text-color3: #000000;
-    --text-color4: #282583;
-    --background-color: #644747;
-    --accent-color: #00ff2a;
-    --section-background-color: #3d3083;
+	--text-color1: #f0f4f5;
+	--text-color2: #29a33d;
+	--text-color3: #000000;
+	--text-color4: #282583;
+	--background-color: #644747;
+	--accent-color: #00ff2a;
+	--section-background-color: #3d3083;
 }
 kbd {
 	font-size: 110%;
-    color: rgb(255, 255, 255);
-    background-color: rgb(51, 51, 51);
-    box-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px inset;
-    padding: 2px 4px;
-    border-radius: 3px;
+	color: rgb(255, 255, 255);
+	background-color: rgb(51, 51, 51);
+	box-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px inset;
+	padding: 2px 4px;
+	border-radius: 3px;
 }

@@ -1,11 +1,11 @@
 /* introduce */
-section #projects {
+#projects {
     height: 80vh;
 }
 /* articleFirst */
-.articleFirst {
-    /* font-size: 100%; */
-}
+/* .articleFirst {
+
+} */
 .articleFirst .f_div1 {
     /* position: absolute; */
     /* width: 100%; */
