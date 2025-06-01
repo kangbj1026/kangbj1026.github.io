@@ -44,8 +44,8 @@
 }
 
 .articleFirst .f_div1 .introduce-photo {
-    width: 250px;
-    height: 200px;
+    width: 400px;
+    height: 350px;
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
