@@ -20,11 +20,44 @@
 	color: #333;
 }
 
+/* 테이블 반응형 컨테이너 */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* iOS Safari 스크롤 개선 */
+}
+
 /* 게시글 목록 테이블 스타일 */
 .post-table {
 	width: 100%;
 	border-collapse: collapse;
 	margin-bottom: 20px;
+}
+
+@media (max-width: 650px) {
+    .post-table th:nth-child(1), .post-table td:nth-child(1), /* 번호 */
+    .post-table th:nth-child(4), .post-table td:nth-child(4), /* 작성자 */
+    .post-table th:nth-child(5), .post-table td:nth-child(5)  /* 작성일 */
+    {
+        display: none;
+    }
+
+    /* 숨겨진 열에 맞춰 남은 열들의 너비 조정 (선택 사항, 필요에 따라 조정) */
+    .post-table th:nth-child(2), .post-table td:nth-child(2) { width: 30%; } /* 이미지 */
+    .post-table th:nth-child(3), .post-table td:nth-child(3) { width: 50%; } /* 제목 */
+    .post-table th:nth-child(6), .post-table td:nth-child(6) { width: 20%; } /* 관리 */
+}
+
+@media (max-width: 300px) {
+    .post-table th:nth-child(1), .post-table td:nth-child(1), /* 번호 */
+    .post-table th:nth-child(3), .post-table td:nth-child(3), /* 제목 */
+    .post-table th:nth-child(4), .post-table td:nth-child(4), /* 작성자 */
+    .post-table th:nth-child(5), .post-table td:nth-child(5), /* 작성일 */
+    .post-table th:nth-child(6), .post-table td:nth-child(6)  /* 관리 */
+    {
+        display: none;
+    }
+
+    .post-table th:nth-child(2), .post-table td:nth-child(2) { width: 100%; } /* 이미지 */
 }
 
 .post-table th, .post-table td {
@@ -78,7 +111,7 @@
 	padding: 20px;
 }
 .post-detail-container .emphasis {
-	font-family: 'FontAwesome';
+	font-family: 'emoji';
 }
 
 .post-detail-title {
