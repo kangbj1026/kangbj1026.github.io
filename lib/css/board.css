@@ -144,6 +144,94 @@
 	margin-bottom: 30px;
 }
 
+/* VSCode 스타일 코드 블록 */
+.post-detail-code {
+    background-color: #1e1e1e; /* VSCode의 다크 테마 배경색과 유사하게 설정합니다. */
+    color: #d4d4d4; /* 기본 텍스트 색상을 밝은 회색으로 설정합니다. */
+    padding: 20px; /* 내부 여백을 추가하여 코드와 테두리 사이에 공간을 줍니다. */
+    border-radius: 8px; /* 모서리를 둥글게 처리하여 부드러운 느낌을 줍니다. */
+    overflow-x: auto; /* 코드가 너무 길 경우 가로 스크롤바를 생성합니다. */
+    font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace; /* 코딩용 고정폭 글꼴을 사용합니다. */
+    font-size: 0.95em; /* 기본 폰트 크기를 약간 작게 설정합니다. */
+    line-height: 1.5; /* 줄 간격을 넓혀 가독성을 높입니다. */
+    margin-bottom: 30px; /* 코드 블록 아래에 여백을 추가합니다. */
+}
+
+.post-detail-code pre {
+    margin: 0; /* pre 요소의 기본 마진을 제거합니다. */
+    white-space: pre-wrap; /* 긴 줄이 자동으로 줄바꿈되도록 설정합니다. */
+    word-wrap: break-word; /* 단어가 너무 길 경우 강제로 줄바꿈합니다. */
+}
+
+.post-detail-code code {
+    display: block; /* code 요소를 블록 레벨로 설정하여 한 줄 전체를 차지하도록 합니다. */
+}
+
+/* Syntax Highlighting (Prism.js Tomorrow Night 테마 기반) */
+/* 주석 스타일 */
+.post-detail-code .token.comment,
+.post-detail-code .token.prolog,
+.post-detail-code .token.doctype,
+.post-detail-code .token.cdata {
+    color: #6a9955; /* 녹색 계열로 설정합니다. */
+}
+
+/* 구두점 스타일 */
+.post-detail-code .token.punctuation {
+    color: #d4d4d4; /* 기본 텍스트 색상과 동일하게 설정합니다. */
+}
+
+/* 속성, 태그, 불리언, 숫자 등 스타일 */
+.post-detail-code .token.property,
+.post-detail-code .token.tag,
+.post-detail-code .token.boolean,
+.post-detail-code .token.number,
+.post-detail-code .token.constant,
+.post-detail-code .token.symbol,
+.post-detail-code .token.deleted {
+    color: #b5cea8; /* 밝은 녹색 계열로 설정합니다. */
+}
+
+/* 선택자, 속성 이름, 문자열 등 스타일 */
+.post-detail-code .token.selector,
+.post-detail-code .token.attr-name,
+.post-detail-code .token.string,
+.post-detail-code .token.char,
+.post-detail-code .token.builtin,
+.post-detail-code .token.inserted {
+    color: #ce9178; /* 주황색 계열로 설정합니다. */
+}
+
+/* 연산자, 엔티티, URL 등 스타일 */
+.post-detail-code .token.operator,
+.post-detail-code .token.entity,
+.post-detail-code .token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #d4d4d4; /* 기본 텍스트 색상과 동일하게 설정합니다. */
+}
+
+/* @규칙, 속성 값, 키워드 스타일 */
+.post-detail-code .token.atrule,
+.post-detail-code .token.attr-value,
+.post-detail-code .token.keyword {
+    color: #c586c0; /* 보라색 계열로 설정합니다. */
+}
+
+/* 함수, 클래스 이름 스타일 */
+.post-detail-code .token.function,
+.post-detail-code .token.class-name {
+    color: #dcdcaa; /* 노란색 계열로 설정합니다. */
+}
+
+/* 정규식, 중요한 변수 스타일 */
+.post-detail-code .token.regex,
+.post-detail-code .token.important,
+.post-detail-code .token.variable {
+    color: #9cdcfe; /* 하늘색 계열로 설정합니다. */
+}
+
+
 .back-to-list-btn {
 	background-color: #6c757d;
 	color: white;
