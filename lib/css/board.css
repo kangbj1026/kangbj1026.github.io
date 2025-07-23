@@ -1,7 +1,7 @@
 
 /* 게시판 전체 컨테이너 스타일 */
 .board-container {
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'math', sans-serif;
 	width: 90%;
 	max-width: 1000px;
 	margin: 40px auto;

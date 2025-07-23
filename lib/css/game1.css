@@ -1,0 +1,249 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent scrollbars from appearing on body */
+}
+
+#game-container {
+    position: relative; /* For absolute positioning of children */
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Keep content within the container */
+    font-family: Arial, sans-serif;
+    background-color: #000; /* 배경색 검정색으로 변경 */
+    border: 10px solid #fff; /* 10px 흰색 테두리 추가 */
+    box-sizing: border-box; /* 테두리가 너비/높이에 포함되도록 */
+}
+
+.falling-letter {
+    position: absolute;
+    font-size: 72px; /* 글자 크기 2배 늘림 */
+    font-weight: bold;
+    color: #fff; /* 글자색 흰색으로 변경 */
+    white-space: nowrap;
+}
+
+.bouncing-rolling-letter {
+    position: absolute;
+    font-size: 48px; /* 글자 크기 2배 늘림 */
+    font-weight: bold;
+    color: #fff; /* 글자색 흰색으로 변경 */
+    cursor: grab;
+    animation: roll 5s linear infinite; /* roll 애니메이션만 유지 */
+}
+
+@keyframes roll {
+    0% {
+        transform: translateX(0) rotate(0deg);
+    }
+    100% {
+        transform: translateX(100px) rotate(360deg); /* 굴러다니는 효과 (예시) */
+    }
+}
+
+#score-display {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+#correct-words-display {
+    position: absolute;
+    top: 40px; /* Score Display 바로 아래 */
+    left: 10px;
+    color: #fff;
+    font-size: 18px;
+    z-index: 1000;
+    width: 200px;
+    max-height: calc(100% - 50px); /* 화면 높이에 따라 조절 */
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column; /* 세로 나열 */
+}
+
+#correct-words-display div {
+    margin-bottom: 5px; /* 단어 간 간격 */
+}
+
+#target-area {
+    position: absolute; /* game-container에 대해 절대 위치 */
+    top: 10px;
+    right: 10px;
+    width: 250px; /* 너비 증가 */
+    height: 180px; /* 높이 증가 */
+    background-color: #f8f8f8; /* 답안지처럼 흰색 계열 */
+    border: 1px solid #ccc; /* 연한 회색 테두리 */
+    padding: 15px; /* 패딩 증가 */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap; /* 글자들이 여러 줄로 배치되도록 */
+    align-content: flex-start; /* 글자들이 위에서부터 쌓이도록 */
+    overflow-y: auto; /* 내용이 넘치면 스크롤바 표시 */
+    padding-top: 50px; /* 버튼 공간 확보 */
+    border-radius: 5px; /* 모서리 둥글게 */
+}
+
+#target-area span {
+    color: #333; /* 답안지 글자색 어둡게 */
+    font-size: 1.8em; /* 크기 더 늘림 */
+    margin: 3px; /* 글자 간 간격 */
+    border-bottom: 1px dashed #999; /* 밑줄 추가 */
+    padding-bottom: 2px;
+}
+
+#target-area .button-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: calc(100% - 20px);
+    display: flex;
+    justify-content: space-around;
+    z-index: 1001;
+}
+
+#target-area button {
+    padding: 8px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #28a745; /* 초록색 버튼 */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+#target-area button:hover {
+    background-color: #218838;
+}
+
+#trash-can {
+    position: absolute;
+    right: 10px;
+    top: 45%; /* 우측 중간보다 약간 위로 조정 */
+    transform: translateY(-50%); /* 정확한 중앙 정렬 */
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 0, 0, 0.5); /* 빨간색 반투명 배경 */
+    border: 2px dashed #f00; /* 빨간색 점선 테두리 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 40px; /* 아이콘 크기 키움 */
+    font-weight: bold;
+    z-index: 1000;
+    border-radius: 10px; /* 모서리 둥글게 */
+}
+
+#clean-button {
+    position: absolute;
+    right: 10px;
+    top: calc(40% + 120px); /* 휴지통 아래에 위치 (휴지통 높이 + 여백) */
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#clean-button i {
+    font-size: 20px;
+}
+
+#clean-button:hover {
+    background-color: #5a6268;
+}
+
+@keyframes fly-to-score {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--dx), var(--dy)) scale(0.5) rotate(720deg);
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    #game-container {
+        border: 5px solid #fff;
+    }
+
+    .bouncing-rolling-letter {
+        font-size: 36px;
+    }
+
+    #score-display {
+        font-size: 20px;
+        top: 5px;
+        left: 5px;
+    }
+
+    #correct-words-display {
+        font-size: 16px;
+        top: 30px;
+        left: 5px;
+        width: 150px;
+    }
+
+    #target-area {
+        width: 200px; /* 너비 고정 */
+        height: 120px; /* 높이 고정 */
+        top: 10px; /* 우측 상단으로 이동 */
+        right: 10px;
+        left: auto; /* 중앙 정렬 해제 */
+        margin: 0; /* 중앙 정렬 해제 */
+        bottom: auto; /* 기존 bottom 속성 제거 */
+    }
+
+    #target-area span {
+        font-size: 1.2em;
+    }
+
+    #target-area .button-container {
+        width: calc(100% - 20px);
+        top: 5px;
+        left: 10px;
+    }
+
+    #target-area button {
+        padding: 6px 12px;
+        font-size: 16px;
+    }
+
+    #trash-can {
+        width: 80px;
+        height: 80px;
+        font-size: 30px;
+        right: 10px;
+        top: calc(9px + 175px + 20px); /* 요청하신 값으로 수정 */
+        transform: translateY(0);
+    }
+
+    #clean-button {
+        right: 10px;
+        top: calc(10px + 120px + 60px + 80px + 20px); /* 요청하신 값으로 수정 */
+        padding: 8px 15px;
+        font-size: 16px;
+        transform: translateY(0);
+    }
+}

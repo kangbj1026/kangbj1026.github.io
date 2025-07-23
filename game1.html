@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head id="heads">
+    <title>Java Word Drop</title>
+    <link rel="stylesheet" href="lib/css/game1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav class="nav"></nav>
+	<section>
+        <div id="game-container">
+            <div id="score-display">Score: 0</div>
+            <div id="correct-words-display"></div>
+            <div id="target-area">
+                <div class="button-container">
+                    <button id="check-button">O</button>
+                    <button id="clear-button">X</button>
+                </div>
+            </div>
+            <div id="trash-can"><i class="fas fa-trash-alt"></i></div>
+            <button id="clean-button"><i class="fas fa-broom"></i></button>
+        </div>
+    </section>
+    <footer id="ft"></footer>
+</body>
+
+<script type="module" src="lib/js/common_head.js"></script>
+<script type="module" src="lib/js/nav.js"></script>
+<script type="module" src="lib/js/game1.js"></script>
+<script type="module" src="lib/js/footer.js"></script>
+</html>
