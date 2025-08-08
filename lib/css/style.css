@@ -3,6 +3,7 @@ body, html {
 	margin: 0;
 	padding: 0;
 	height: 100%;
+	transition: background-color 0.3s ease, color 0.3s ease;
 }
 body {
 	margin: 0;
@@ -11,6 +12,11 @@ body {
 	flex-direction: column;
 	min-height: 100vh;
 }
+
+section, article, .nav, footer, kbd, .slide_item, .slide_button, .s_div_pagination li, .board-container, .post-detail-container, .back-to-list-btn, .page-btn {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
 section {
 	flex: 1;
 }
