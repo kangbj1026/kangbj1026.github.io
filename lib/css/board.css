@@ -77,6 +77,11 @@
 	background-color: #f1f1f1;
 }
 
+.post-table tbody tr:hover td:first-child,
+.post-table tbody tr:hover td.fwb {
+	color: #000;
+}
+
 /* 테이블 컬럼 너비 조정 */
 .post-table th:nth-child(1), .post-table td:nth-child(1) { width: 8%; text-align: center; }
 .post-table th:nth-child(2), .post-table td:nth-child(2) { width: 15%; text-align: center; }
