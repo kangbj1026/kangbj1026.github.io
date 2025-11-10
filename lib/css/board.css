@@ -20,6 +20,36 @@
 	color: #333;
 }
 
+/* 검색창 컨테이너 스타일 */
+.search-container {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+#search-input {
+	width: 300px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px 0 0 5px;
+	font-size: 1em;
+}
+
+#search-button {
+	padding: 10px 20px;
+	border: 1px solid #5c67f2;
+	background-color: #5c67f2;
+	color: white;
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+	font-size: 1em;
+	transition: background-color 0.3s;
+}
+
+#search-button:hover {
+	background-color: #4a54e0;
+}
+
 /* 테이블 반응형 컨테이너 */
 .table-responsive {
     overflow-x: auto;
