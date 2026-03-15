@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head id="heads">
+    <link rel="stylesheet" href="lib/css/java_spring_study_guide.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+KR:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="nav"></nav>
+    <div id="scroll-indicator"></div>
+    <section class="study-guide-container">
+        <!-- SIDEBAR -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h1>Study Guide</h1>
+                <p>Java · Spring Boot · SI</p>
+                <input id="search" type="text" placeholder="🔍  주제 검색..." oninput="filterTopics(this.value)">
+            </div>
+
+            <div class="mode-switcher">
+                <button class="mode-btn active-non" id="btn-non" onclick="setGlobalMode('non')">👶 비전공자</button>
+                <button class="mode-btn" id="btn-maj" onclick="setGlobalMode('maj')">🎓 전공자</button>
+            </div>
+
+            <div style="padding:0;">
+                <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+                <div class="progress-text" id="progressText">0 / 38 완료</div>
+            </div>
+
+            <div class="nav-category">
+                <div class="nav-category-label">☕ Java Core</div>
+                <a class="nav-link" onclick="scrollToSection('s1')"><span class="dot" style="background:#ffa657"></span>OOP 핵심 개념</a>
+                <a class="nav-link" onclick="scrollToSection('s2')"><span class="dot" style="background:#ffa657"></span>컬렉션 프레임워크</a>
+                <a class="nav-link" onclick="scrollToSection('s3')"><span class="dot" style="background:#ffa657"></span>예외 처리</a>
+                <a class="nav-link" onclick="scrollToSection('s4')"><span class="dot" style="background:#ffa657"></span>Stream API</a>
+                <a class="nav-link" onclick="scrollToSection('s5')"><span class="dot" style="background:#ffa657"></span>Lambda 표현식</a>
+                <a class="nav-link" onclick="scrollToSection('s6')"><span class="dot" style="background:#ffa657"></span>멀티스레드 기본</a>
+            </div>
+            <div class="nav-category">
+                <div class="nav-category-label">🍃 Spring</div>
+                <a class="nav-link" onclick="scrollToSection('s7')"><span class="dot" style="background:#3fb950"></span>IOC / DI</a>
+                <a class="nav-link" onclick="scrollToSection('s8')"><span class="dot" style="background:#3fb950"></span>Spring Boot 구조</a>
+                <a class="nav-link" onclick="scrollToSection('s9')"><span class="dot" style="background:#3fb950"></span>MVC / DispatcherServlet</a>
+                <a class="nav-link" onclick="scrollToSection('s10')"><span class="dot" style="background:#3fb950"></span>계층 구조</a>
+                <a class="nav-link" onclick="scrollToSection('s11')"><span class="dot" style="background:#3fb950"></span>예외 처리</a>
+                <a class="nav-link" onclick="scrollToSection('s12')"><span class="dot" style="background:#3fb950"></span>Validation</a>
+                <a class="nav-link" onclick="scrollToSection('s13')"><span class="dot" style="background:#3fb950"></span>Logging</a>
+            </div>
+            <div class="nav-category">
+                <div class="nav-category-label">🗃 JPA / DB</div>
+                <a class="nav-link" onclick="scrollToSection('s14')"><span class="dot" style="background:#58a6ff"></span>JPA 기본 사용법</a>
+                <a class="nav-link" onclick="scrollToSection('s15')"><span class="dot" style="background:#58a6ff"></span>Entity 설계</a>
+                <a class="nav-link" onclick="scrollToSection('s16')"><span class="dot" style="background:#58a6ff"></span>영속성 컨텍스트</a>
+                <a class="nav-link" onclick="scrollToSection('s17')"><span class="dot" style="background:#58a6ff"></span>Fetch 전략</a>
+                <a class="nav-link" onclick="scrollToSection('s18')"><span class="dot" style="background:#58a6ff"></span>N+1 문제</a>
+                <a class="nav-link" onclick="scrollToSection('s19')"><span class="dot" style="background:#58a6ff"></span>SQL 기본 문법</a>
+                <a class="nav-link" onclick="scrollToSection('s20')"><span class="dot" style="background:#58a6ff"></span>SQL JOIN</a>
+                <a class="nav-link" onclick="scrollToSection('s21')"><span class="dot" style="background:#58a6ff"></span>GROUP BY / HAVING</a>
+                <a class="nav-link" onclick="scrollToSection('s22')"><span class="dot" style="background:#58a6ff"></span>서브쿼리</a>
+                <a class="nav-link" onclick="scrollToSection('s23')"><span class="dot" style="background:#58a6ff"></span>인덱스(Index)</a>
+                <a class="nav-link" onclick="scrollToSection('s24')"><span class="dot" style="background:#58a6ff"></span>실행계획 EXPLAIN</a>
+            </div>
+            <div class="nav-category">
+                <div class="nav-category-label">🌐 REST / HTTP</div>
+                <a class="nav-link" onclick="scrollToSection('s25')"><span class="dot" style="background:#d2a8ff"></span>REST API 설계</a>
+                <a class="nav-link" onclick="scrollToSection('s26')"><span class="dot" style="background:#d2a8ff"></span>HTTP Method</a>
+                <a class="nav-link" onclick="scrollToSection('s27')"><span class="dot" style="background:#d2a8ff"></span>HTTP Status Code</a>
+                <a class="nav-link" onclick="scrollToSection('s28')"><span class="dot" style="background:#d2a8ff"></span>JSON 구조</a>
+            </div>
+            <div class="nav-category">
+                <div class="nav-category-label">🛠 DevOps / 운영</div>
+                <a class="nav-link" onclick="scrollToSection('s29')"><span class="dot" style="background:#f78166"></span>Git 기본</a>
+                <a class="nav-link" onclick="scrollToSection('s30')"><span class="dot" style="background:#f78166"></span>Git Branch 전략</a>
+                <a class="nav-link" onclick="scrollToSection('s31')"><span class="dot" style="background:#f78166"></span>Tomcat 동작 원리</a>
+                <a class="nav-link" onclick="scrollToSection('s32')"><span class="dot" style="background:#f78166"></span>Apache vs WAS</a>
+                <a class="nav-link" onclick="scrollToSection('s33')"><span class="dot" style="background:#f78166"></span>전자정부프레임워크</a>
+                <a class="nav-link" onclick="scrollToSection('s34')"><span class="dot" style="background:#f78166"></span>SI 개발 프로세스</a>
+                <a class="nav-link" onclick="scrollToSection('s35')"><span class="dot" style="background:#f78166"></span>장애 대응</a>
+                <a class="nav-link" onclick="scrollToSection('s36')"><span class="dot" style="background:#f78166"></span>로그 트러블슈팅</a>
+            </div>
+        </nav>
+
+        <!-- MAIN -->
+        <main id="main">
+            <h1 class="page-title">☕ Java · Spring Boot 학습 가이드</h1>
+            <p class="page-subtitle">38개 핵심 주제 · 비전공자 / 전공자 설명 분리 · 코드 예제 포함 · 학습 완료 체크 가능<br>
+            <span style="color:var(--non-major-text)">👶 비전공자</span> 탭: 일상 비유로 개념 이해 &nbsp;|&nbsp; <span style="color:var(--major-text)">🎓 전공자</span> 탭: 기술 용어 + 코드 예제</p>
+
+            <!-- ════ JAVA CORE ════ -->
+            <div class="section" id="s1">
+                <div class="section-header">
+                    <div class="section-icon" style="background:rgba(255,166,87,.12)">☕</div>
+                    <div class="section-title">Java Core</div>
+                    <span class="section-badge bg-orange">6 Topics</span>
+                </div>
+
+                <!-- 1. OOP -->
+                <div class="topic-card" id="tc-oop" data-title="OOP 객체지향">
+                    <div class="topic-header" onclick="toggleCard('tc-oop')">
+                        <div class="topic-checkbox" id="cb-tc-oop" onclick="event.stopPropagation();toggleCheck('tc-oop')"></div>
+                        <span class="topic-title">① Java 객체지향 프로그래밍(OOP) 핵심 개념</span>
+                        <span class="topic-toggle c-orange">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-oop')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-oop')">🎓 전공자 설명</button>
+                        </div>
+
+                        <!-- 비전공자 -->
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-oop">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🧱 레고 블록으로 이해하기</div>
+                                <div class="analogy-text">
+                                    OOP는 <b>레고 블록</b> 방식으로 프로그램을 만드는 방법입니다.<br><br>
+                                    <b>캡슐화</b>는 레고 블록 안쪽 구조를 숨기고 겉에 있는 버튼만 누르는 것입니다. TV 내부 회로는 몰라도 리모컨 버튼만 누르면 되는 것처럼요.<br><br>
+                                    <b>상속</b>은 기존 설계도를 복사해서 새 기능만 추가하는 것입니다. 일반 자동차 설계도를 받아서 "전기차" 기능만 덧붙이는 것처럼요.<br><br>
+                                    <b>다형성</b>은 같은 명령을 내려도 대상에 따라 다르게 행동하는 것입니다. "소리내!" 라고 하면 개는 "멍멍", 고양이는 "야옹" 하는 것처럼요.<br><br>
+                                    <b>추상화</b>는 공통된 특징만 뽑아서 틀을 만드는 것입니다. "동물"이라는 틀에 "소리 낸다"는 규칙을 정해두는 것처럼요.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">📦</span> <span><b>캡슐화</b> — 내부는 감추고, 정해진 방법으로만 접근 가능하게 한다</span></div>
+                                <div class="simple-point"><span class="emoji">🧬</span> <span><b>상속</b> — 기존 것을 물려받아 재사용하고 새 기능을 추가한다</span></div>
+                                <div class="simple-point"><span class="emoji">🎭</span> <span><b>다형성</b> — 같은 방법으로 호출해도 실제 동작이 다를 수 있다</span></div>
+                                <div class="simple-point"><span class="emoji">📋</span> <span><b>추상화</b> — 공통 규칙을 틀로 만들어 강제한다 (interface / abstract)</span></div>
+                                <div class="simple-point"><span class="emoji">💡</span> <span>이 4가지가 Java 코드 전체를 구성하는 핵심 철학입니다</span></div>
+                            </div>
+                        </div>
+
+                        <!-- 전공자 -->
+                        <div class="exp-panel major-panel" data-panel="maj-tc-oop">
+                            <p class="topic-desc">OOP는 <b>캡슐화·상속·다형성·추상화</b> 4대 원칙으로 구성됩니다. SOLID 원칙과 함께 이해해야 합니다.</p>
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Java — 다형성 예제</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="kw">abstract class</span> <span class="ty">Animal</span> {
+    <span class="kw">private</span> <span class="ty">String</span> name;
+    <span class="kw">public</span> <span class="fn">Animal</span>(<span class="ty">String</span> name) { <span class="kw">this</span>.name = name; }
+    <span class="kw">public abstract</span> <span class="ty">String</span> <span class="fn">sound</span>();
+    <span class="kw">public void</span> <span class="fn">introduce</span>() {
+        <span class="ty">System</span>.out.<span class="fn">println</span>(name + <span class="st">" says: "</span> + <span class="fn">sound</span>());
+    }
+}
+<span class="kw">class</span> <span class="ty">Dog</span> <span class="kw">extends</span> <span class="ty">Animal</span> {
+    <span class="kw">public</span> <span class="fn">Dog</span>(<span class="ty">String</span> n) { <span class="kw">super</span>(n); }
+    <span class="an">@Override</span>
+    <span class="kw">public</span> <span class="ty">String</span> <span class="fn">sound</span>() { <span class="kw">return</span> <span class="st">"Woof!"</span>; }
+}
+<span class="ty">Animal</span> a = <span class="kw">new</span> <span class="fn">Dog</span>(<span class="st">"Rex"</span>); <span class="cm">// 다형성 — Animal 타입으로 참조</span>
+a.<span class="fn">introduce</span>(); <span class="cm">// Rex says: Woof!</span></pre>
+                            </div>
+                            <table>
+                                <tr><th>구분</th><th>Abstract Class</th><th>Interface</th></tr>
+                                <tr><td>상속</td><td>단일 상속</td><td>다중 구현 가능</td></tr>
+                                <tr><td>상태</td><td>인스턴스 변수 가능</td><td>상수(final)만</td></tr>
+                                <tr><td>용도</td><td>is-a 관계, 공통 구현</td><td>can-do 관계, 계약 정의</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Collections -->
+                <div class="topic-card" id="tc-col" data-title="컬렉션 프레임워크 List Set Map">
+                    <div class="topic-header" onclick="toggleCard('tc-col')">
+                        <div class="topic-checkbox" id="cb-tc-col" onclick="event.stopPropagation();toggleCheck('tc-col')"></div>
+                        <span class="topic-title">② Java 컬렉션 프레임워크 (List, Set, Map)</span>
+                        <span class="topic-toggle c-orange">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-col')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-col')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-col">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🗄️ 물건 정리함으로 이해하기</div>
+                                <div class="analogy-text">
+                                    데이터를 담는 그릇의 종류가 다릅니다.<br><br>
+                                    <b>List</b>는 <b>번호표가 붙은 줄서기</b>입니다. 1번, 2번, 3번… 순서가 있고, 같은 값이 여러 개 들어가도 됩니다. "대기 순서"처럼요.<br><br>
+                                    <b>Set</b>은 <b>도장 찍기 통</b>입니다. 같은 것은 한 번만 찍힙니다. "이미 방문한 페이지 목록"처럼 중복을 허용하지 않습니다.<br><br>
+                                    <b>Map</b>은 <b>라벨이 붙은 서랍장</b>입니다. "이름"이라는 열쇠로 꺼내면 "홍길동"이 나오고, "점수"라는 열쇠로 꺼내면 "95"가 나옵니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">📋</span> <span><b>ArrayList</b> — 순서 있는 목록. 인덱스로 빠르게 꺼낸다</span></div>
+                                <div class="simple-point"><span class="emoji">🚫</span> <span><b>HashSet</b> — 중복 없는 목록. "이미 있는지" 확인할 때 유용</span></div>
+                                <div class="simple-point"><span class="emoji">🗝️</span> <span><b>HashMap</b> — 키-값 쌍. 열쇠(key)로 값(value)을 꺼낸다</span></div>
+                                <div class="simple-point"><span class="emoji">⚡</span> <span>어떤 그릇을 쓸지 잘 골라야 성능 차이가 크게 납니다</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-col">
+                            <table>
+                                <tr><th>컬렉션</th><th>구현체</th><th>특징</th><th>탐색 복잡도</th></tr>
+                                <tr><td>List</td><td>ArrayList</td><td>인덱스 접근, 순서 보장</td><td>O(1)</td></tr>
+                                <tr><td>List</td><td>LinkedList</td><td>삽입/삭제 빠름</td><td>O(n)</td></tr>
+                                <tr><td>Set</td><td>HashSet</td><td>중복 불가, 순서 없음</td><td>O(1)</td></tr>
+                                <tr><td>Map</td><td>HashMap</td><td>key-value, 순서 없음</td><td>O(1)</td></tr>
+                                <tr><td>Map</td><td>LinkedHashMap</td><td>삽입 순서 보장</td><td>O(1)</td></tr>
+                                <tr><td>Map</td><td>TreeMap</td><td>key 기준 정렬</td><td>O(log n)</td></tr>
+                            </table>
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Java — Collections 핵심 패턴</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="ty">List</span>&lt;<span class="ty">String</span>&gt; list = <span class="kw">new</span> <span class="ty">ArrayList</span>&lt;&gt;();
+list.<span class="fn">add</span>(<span class="st">"Apple"</span>); list.<span class="fn">add</span>(<span class="st">"Banana"</span>);
+
+<span class="ty">Set</span>&lt;<span class="ty">Integer</span>&gt; set = <span class="kw">new</span> <span class="ty">HashSet</span>&lt;&gt;(<span class="ty">Arrays</span>.<span class="fn">asList</span>(<span class="nu">1</span>,<span class="nu">2</span>,<span class="nu">2</span>,<span class="nu">3</span>));
+<span class="cm">// {1, 2, 3} — 중복 제거됨</span>
+
+<span class="ty">Map</span>&lt;<span class="ty">String</span>,<span class="ty">Integer</span>&gt; map = <span class="kw">new</span> <span class="ty">HashMap</span>&lt;&gt;();
+map.<span class="fn">put</span>(<span class="st">"score"</span>, <span class="nu">95</span>);
+<span class="kw">int</span> v = map.<span class="fn">getOrDefault</span>(<span class="st">"score"</span>, <span class="nu">0</span>); <span class="cm">// 없으면 0</span>
+
+<span class="cm">// HashMap vs HashTable vs ConcurrentHashMap</span>
+<span class="cm">// HashMap — 비동기, null 허용, 성능↑ (단일 스레드 환경)</span>
+<span class="cm">// HashTable — synchronized, null 불허, 레거시</span>
+<span class="cm">// ConcurrentHashMap — 세그먼트 락, 멀티스레드 환경 권장</span></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Exception -->
+                <div class="topic-card" id="tc-ex" data-title="예외 처리 Exception try-catch">
+                    <div class="topic-header" onclick="toggleCard('tc-ex')">
+                        <div class="topic-checkbox" id="cb-tc-ex" onclick="event.stopPropagation();toggleCheck('tc-ex')"></div>
+                        <span class="topic-title">③ Java 예외 처리 (try-catch, 사용자 정의 Exception)</span>
+                        <span class="topic-toggle c-orange">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-ex')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-ex')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-ex">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🚗 내비게이션 경고로 이해하기</div>
+                                <div class="analogy-text">
+                                    예외(Exception)는 프로그램이 실행 중 "예상치 못한 문제"가 생겼다는 신호입니다.<br><br>
+                                    <b>try</b> 블록은 "이 길로 가봐" 라는 시도입니다. <b>catch</b> 블록은 "만약 막혔으면 이렇게 해" 라는 대비책이고, <b>finally</b>는 "길이 막히든 안 막히든 반드시 해야 하는 것"입니다. (예: 차 시동 끄기)<br><br>
+                                    <b>사용자 정의 Exception</b>은 기본 경고음 외에 "이 상황에만 울리는 특별 경고"를 만드는 것입니다. "사용자를 찾을 수 없을 때"만 울리는 경고처럼요.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🔄</span> <span><b>try</b> — 위험할 수 있는 코드를 감싸는 구간</span></div>
+                                <div class="simple-point"><span class="emoji">🛡️</span> <span><b>catch</b> — 문제가 생겼을 때 실행할 대처 코드</span></div>
+                                <div class="simple-point"><span class="emoji">✅</span> <span><b>finally</b> — 성공/실패 상관없이 항상 실행 (자원 반납)</span></div>
+                                <div class="simple-point"><span class="emoji">⚠️</span> <span>Checked(반드시 처리) vs Unchecked(런타임 에러) 구분이 중요</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-ex">
+                            <p class="topic-desc">Checked Exception(컴파일 강제) vs Unchecked Exception(RuntimeException). Spring에서는 RuntimeException 계열 사용 권장.</p>
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Java — 사용자 정의 예외 + try-with-resources</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="cm">// RuntimeException 상속 — 사용자 정의 예외</span>
+<span class="kw">public class</span> <span class="ty">UserNotFoundException</span> <span class="kw">extends</span> <span class="ty">RuntimeException</span> {
+    <span class="kw">private final</span> <span class="ty">Long</span> userId;
+    <span class="kw">public</span> <span class="fn">UserNotFoundException</span>(<span class="ty">Long</span> id) {
+        <span class="kw">super</span>(<span class="st">"User not found: "</span> + id);
+        <span class="kw">this</span>.userId = id;
+    }
+}
+
+<span class="cm">// try-with-resources — AutoCloseable 자동 close</span>
+<span class="kw">try</span> (<span class="ty">BufferedReader</span> br = <span class="kw">new</span> <span class="ty">BufferedReader</span>(<span class="kw">new</span> <span class="ty">FileReader</span>(<span class="st">"f.txt"</span>))) {
+    <span class="ty">String</span> line;
+    <span class="kw">while</span> ((line = br.<span class="fn">readLine</span>()) != <span class="kw">null</span>) <span class="ty">System</span>.out.<span class="fn">println</span>(line);
+} <span class="kw">catch</span> (<span class="ty">IOException</span> e) {
+    log.<span class="fn">error</span>(<span class="st">"File error"</span>, e); <span class="cm">// br.close() 자동 호출됨</span>
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Stream API -->
+                <div class="topic-card" id="tc-stream" data-title="Stream API">
+                    <div class="topic-header" onclick="toggleCard('tc-stream')">
+                        <div class="topic-checkbox" id="cb-tc-stream" onclick="event.stopPropagation();toggleCheck('tc-stream')"></div>
+                        <span class="topic-title">④ Java Stream API 사용법</span>
+                        <span class="topic-toggle c-orange">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-stream')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-stream')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-stream">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🏭 공장 컨베이어 벨트로 이해하기</div>
+                                <div class="analogy-text">
+                                    Stream은 <b>공장 컨베이어 벨트</b>입니다. 물건(데이터)이 벨트 위를 지나가면서 각 작업대를 통과합니다.<br><br>
+                                    <b>filter</b> 작업대 — "불량품 걸러내기" (조건에 안 맞는 것 제외)<br>
+                                    <b>map</b> 작업대 — "모양 바꾸기" (데이터를 다른 형태로 변환)<br>
+                                    <b>collect</b> 작업대 — "최종 박스에 담기" (결과를 모아서 반환)<br><br>
+                                    핵심은 <b>벨트 위에서 일어나는 일들을 한 줄로 연결</b>할 수 있다는 점입니다. 복잡한 for문 반복을 훨씬 읽기 쉽게 표현합니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🔍</span> <span><b>filter</b> — 조건에 맞는 것만 남긴다</span></div>
+                                <div class="simple-point"><span class="emoji">🔄</span> <span><b>map</b> — 각 요소를 다른 형태로 변환한다</span></div>
+                                <div class="simple-point"><span class="emoji">📦</span> <span><b>collect</b> — 결과를 List, Map 등으로 수집한다</span></div>
+                                <div class="simple-point"><span class="emoji">➕</span> <span><b>reduce / sum</b> — 모든 요소를 합산한다</span></div>
+                                <div class="simple-point"><span class="emoji">💡</span> <span>중간 연산(lazy)은 최종 연산이 있어야 실제로 실행됩니다</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-stream">
+                            <p class="topic-desc">Java 8+ Stream API. 중간 연산(lazy 평가)과 최종 연산(eager 평가)의 구분이 핵심입니다.</p>
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Java — Stream 핵심 연산</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="ty">List</span>&lt;<span class="ty">String</span>&gt; names = employees.<span class="fn">stream</span>()
+    .<span class="fn">filter</span>(e -> e.<span class="fn">getSalary</span>() > <span class="nu">5000</span>)          <span class="cm">// 중간</span>
+    .<span class="fn">sorted</span>(<span class="ty">Comparator</span>.<span class="fn">comparing</span>(<span class="ty">Employee</span>::<span class="fn">getName</span>)) <span class="cm">// 중간</span>
+    .<span class="fn">map</span>(<span class="ty">Employee</span>::<span class="fn">getName</span>)                        <span class="cm">// 중간</span>
+    .<span class="fn">collect</span>(<span class="ty">Collectors</span>.<span class="fn">toList</span>());                <span class="cm">// 최종</span>
+
+<span class="cm">// groupingBy — 부서별 그룹화</span>
+<span class="ty">Map</span>&lt;<span class="ty">String</span>,<span class="ty">List</span>&lt;<span class="ty">Employee</span>&gt;&gt; byDept = employees.<span class="fn">stream</span>()
+    .<span class="fn">collect</span>(<span class="ty">Collectors</span>.<span class="fn">groupingBy</span>(<span class="ty">Employee</span>::<span class="fn">getDepartment</span>));
+
+<span class="cm">// flatMap — 중첩 컬렉션 평탄화</span>
+<span class="ty">List</span>&lt;<span class="ty">String</span>&gt; allSkills = employees.<span class="fn">stream</span>()
+    .<span class="fn">flatMap</span>(e -> e.<span class="fn">getSkills</span>().<span class="fn">stream</span>())
+    .<span class="fn">distinct</span>()
+    .<span class="fn">collect</span>(<span class="ty">Collectors</span>.<span class="fn">toList</span>());</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Lambda -->
+                <div class="topic-card" id="tc-lambda" data-title="Lambda 표현식 함수형">
+                    <div class="topic-header" onclick="toggleCard('tc-lambda')">
+                        <div class="topic-checkbox" id="cb-tc-lambda" onclick="event.stopPropagation();toggleCheck('tc-lambda')"></div>
+                        <span class="topic-title">⑤ Java Lambda 표현식</span>
+                        <span class="topic-toggle c-orange">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-lambda')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-lambda')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-lambda">
+                            <div class="analogy-box">
+                                <div class="analogy-label">📝 쪽지 지시사항으로 이해하기</div>
+                                <div class="analogy-text">
+                                    원래는 "이렇게 해줘"라는 지시를 하려면 클래스를 만들고, 메서드를 만들고, 오버라이드하고… 복잡했습니다.<br><br>
+                                    Lambda는 <b>그냥 쪽지 한 장에 지시사항을 적어 건네는 것</b>입니다.<br><br>
+                                    예를 들어 "각 이름을 출력해줘" 라고 하려면:<br>
+                                    <code style="background:var(--bg3);padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px">names.forEach(name -> System.out.println(name))</code><br><br>
+                                    화살표(<code style="background:var(--bg3);padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px">-></code>) 왼쪽은 "무엇을 받아서", 오른쪽은 "무엇을 한다"입니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">✂️</span> <span>코드를 짧고 간결하게 표현하는 방법</span></div>
+                                <div class="simple-point"><span class="emoji">➡️</span> <span><code style="background:var(--bg3);padding:1px 5px;border-radius:3px;font-size:11px">(받는 것) -> { 할 일 }</code> 형태로 씁니다</span></div>
+                                <div class="simple-point"><span class="emoji">🔗</span> <span>Stream과 함께 쓰면 매우 강력합니다</span></div>
+                                <div class="simple-point"><span class="emoji">📌</span> <span><b>@FunctionalInterface</b> — 메서드가 딱 하나인 인터페이스에 사용 가능</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-lambda">
+                            <p class="topic-desc">Lambda는 <b>함수형 인터페이스(단일 추상 메서드)</b>의 익명 구현체. Java 8+.</p>
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Java — Lambda & 함수형 인터페이스 4종</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="ty">Predicate</span>&lt;<span class="ty">String</span>&gt;  isEmpty  = s -> s.<span class="fn">isEmpty</span>();       <span class="cm">// T → boolean</span>
+<span class="ty">Function</span>&lt;<span class="ty">String</span>,<span class="ty">Integer</span>&gt; len = s -> s.<span class="fn">length</span>();    <span class="cm">// T → R</span>
+<span class="ty">Consumer</span>&lt;<span class="ty">String</span>&gt;  printer  = s -> <span class="ty">System</span>.out.<span class="fn">println</span>(s); <span class="cm">// T → void</span>
+<span class="ty">Supplier</span>&lt;<span class="ty">String</span>&gt;  hello    = () -> <span class="st">"Hello"</span>;           <span class="cm">// () → T</span>
+
+<span class="cm">// 메서드 참조 (:: 연산자)</span>
+names.<span class="fn">forEach</span>(<span class="ty">System</span>.out::println);     <span class="cm">// 정적 메서드 참조</span>
+names.<span class="fn">stream</span>().<span class="fn">map</span>(<span class="ty">String</span>::<span class="fn">toUpperCase</span>); <span class="cm">// 인스턴스 메서드 참조</span></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Multithreading -->
+                <div class="topic-card" id="tc-thread" data-title="멀티스레드 Thread 동시성">
+                    <div class="topic-header" onclick="toggleCard('tc-thread')">
+                        <div class="topic-checkbox" id="cb-tc-thread" onclick="event.stopPropagation();toggleCheck('tc-thread')"></div>
+                        <span class="topic-title">⑥ Java 멀티스레드 기본 개념</span>
+                        <span class="topic-toggle c-orange">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-thread')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-thread')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-thread">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🍳 주방 요리사로 이해하기</div>
+                                <div class="analogy-text">
+                                    단일 스레드는 요리사가 한 명입니다. 국 끓이고, 다 되면 반찬 만들고, 다 되면 밥 차립니다. 순서대로 하나씩이라 느립니다.<br><br>
+                                    <b>멀티스레드</b>는 요리사가 여러 명입니다. 한 명은 국, 한 명은 반찬, 한 명은 밥을 동시에 만들어 빠릅니다.<br><br>
+                                    문제는 <b>재료(공유 자원)를 동시에 잡으려 할 때</b>입니다. 두 요리사가 같은 칼을 동시에 쓰려 하면 충돌이 생깁니다. 이걸 방지하는 것이 <b>synchronized</b>입니다. "이 칼은 내가 쓰는 동안 다른 사람 손대지 마" 표시를 붙이는 것입니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🔀</span> <span><b>Thread</b> — 프로그램 안에서 동시에 실행되는 작업 단위</span></div>
+                                <div class="simple-point"><span class="emoji">🔒</span> <span><b>synchronized</b> — 한 번에 하나의 스레드만 접근 허용 (자물쇠)</span></div>
+                                <div class="simple-point"><span class="emoji">👁️</span> <span><b>volatile</b> — 변수 값을 항상 최신 상태로 읽도록 강제</span></div>
+                                <div class="simple-point"><span class="emoji">⚠️</span> <span><b>데드락</b> — 두 요리사가 서로의 재료를 기다리며 아무도 못 움직이는 상태</span></div>
+                                <div class="simple-point"><span class="emoji">🏊</span> <span><b>ExecutorService</b> — 요리사(스레드) 팀을 미리 만들어 관리하는 팀장</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-thread">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Java — Thread & ExecutorService</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="cm">// ExecutorService — 실무 권장 방식</span>
+<span class="ty">ExecutorService</span> executor = <span class="ty">Executors</span>.<span class="fn">newFixedThreadPool</span>(<span class="nu">4</span>);
+executor.<span class="fn">submit</span>(() -> <span class="fn">processTask</span>());
+executor.<span class="fn">shutdown</span>();
+
+<span class="cm">// synchronized — 임계 영역 보호</span>
+<span class="kw">public class</span> <span class="ty">Counter</span> {
+    <span class="kw">private int</span> count = <span class="nu">0</span>;
+    <span class="kw">public synchronized void</span> <span class="fn">increment</span>() { count++; }
+}
+
+<span class="cm">// CompletableFuture — 비동기 처리</span>
+<span class="ty">CompletableFuture</span>.<span class="fn">supplyAsync</span>(() -> <span class="fn">fetchData</span>())
+    .<span class="fn">thenApply</span>(<span class="ty">String</span>::<span class="fn">toUpperCase</span>)
+    .<span class="fn">exceptionally</span>(e -> <span class="st">"Error: "</span> + e.<span class="fn">getMessage</span>());</pre>
+                            </div>
+                            <div class="key-points">
+                                <div class="key-point">데드락 4조건: 상호배제·점유대기·비선점·순환대기 → 하나라도 깨면 방지</div>
+                                <div class="key-point">volatile — 가시성 보장. 원자성은 보장 안 함</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ════ SPRING ════ -->
+            <div class="section" id="s7">
+                <div class="section-header">
+                    <div class="section-icon" style="background:rgba(63,185,80,.12)">🍃</div>
+                    <div class="section-title">Spring Framework</div>
+                    <span class="section-badge bg-green">7 Topics</span>
+                </div>
+
+                <!-- 7. IOC/DI -->
+                <div class="topic-card" id="tc-ioc" data-title="IOC DI 의존성 주입 스프링">
+                    <div class="topic-header" onclick="toggleCard('tc-ioc')">
+                        <div class="topic-checkbox" id="cb-tc-ioc" onclick="event.stopPropagation();toggleCheck('tc-ioc')"></div>
+                        <span class="topic-title">⑦ Spring IoC / DI (제어의 역전 / 의존성 주입)</span>
+                        <span class="topic-toggle c-green">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-ioc')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-ioc')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-ioc">
+                            <div class="analogy-box">
+                                <div class="analogy-label">☕ 카페 바리스타로 이해하기</div>
+                                <div class="analogy-text">
+                                    원래는 커피를 마시려면 내가 직접 원두 갈고, 물 끓이고, 추출했습니다 (<code style="background:var(--bg3);padding:2px 5px;border-radius:3px;font-size:11px">new Coffee()</code>).<br><br>
+                                    <b>IoC(제어의 역전)</b>는 "이제 바리스타(Spring)가 알아서 만들어줄게. 넌 그냥 받아 마셔"입니다. 객체를 내가 만드는 게 아니라 Spring이 만들어 줍니다.<br><br>
+                                    <b>DI(의존성 주입)</b>는 바리스타가 만든 커피를 내 손에 쥐어주는 행위 자체입니다. Spring이 필요한 객체를 만들어서 사용할 곳에 직접 넣어줍니다.<br><br>
+                                    덕분에 나는 커피 만드는 법을 몰라도 됩니다. 코드가 서로 덜 엮이게(느슨한 결합) 됩니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🏭</span> <span>Spring 컨테이너가 객체(Bean)를 만들고 관리한다</span></div>
+                                <div class="simple-point"><span class="emoji">💉</span> <span>내가 <code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">new</code> 안 해도 Spring이 알아서 넣어준다</span></div>
+                                <div class="simple-point"><span class="emoji">🔧</span> <span>생성자 주입 방식이 가장 안전하고 권장된다</span></div>
+                                <div class="simple-point"><span class="emoji">🧩</span> <span>덕분에 코드 교체·테스트가 쉬워진다</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-ioc">
+                            <p class="topic-desc">IoC: 객체 생성·라이프사이클을 Spring 컨테이너가 관리. DI는 IoC의 구현 방식. <b>생성자 주입 권장</b> — 불변성·순환 의존성 탐지·테스트 용이.</p>
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Java — 생성자 주입 (권장)</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="cm">// ✅ 생성자 주입 + @RequiredArgsConstructor</span>
+<span class="an">@Service</span>
+<span class="an">@RequiredArgsConstructor</span>
+<span class="kw">public class</span> <span class="ty">UserService</span> {
+    <span class="kw">private final</span> <span class="ty">UserRepository</span> userRepository; <span class="cm">// final → 불변</span>
+    <span class="kw">private final</span> <span class="ty">PasswordEncoder</span> passwordEncoder;
+}
+
+<span class="cm">// ❌ 필드 주입 (테스트·불변성 어려움, 지양)</span>
+<span class="an">@Autowired</span>
+<span class="kw">private</span> <span class="ty">UserRepository</span> userRepository;</pre>
+                            </div>
+                            <table>
+                                <tr><th>Scope</th><th>설명</th></tr>
+                                <tr><td><span class="tag bg-green">singleton</span></td><td>기본값. 컨테이너당 인스턴스 1개</td></tr>
+                                <tr><td><span class="tag bg-blue">prototype</span></td><td>요청마다 새 인스턴스</td></tr>
+                                <tr><td><span class="tag bg-purple">request</span></td><td>HTTP 요청마다 (웹 전용)</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Spring Boot 구조 -->
+                <div class="topic-card" id="tc-boot" data-title="Spring Boot 프로젝트 구조">
+                    <div class="topic-header" onclick="toggleCard('tc-boot')">
+                        <div class="topic-checkbox" id="cb-tc-boot" onclick="event.stopPropagation();toggleCheck('tc-boot')"></div>
+                        <span class="topic-title">⑧ Spring Boot 프로젝트 구조 이해</span>
+                        <span class="topic-toggle c-green">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-boot')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-boot')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-boot">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🏢 회사 건물 층별 구조로 이해하기</div>
+                                <div class="analogy-text">
+                                    Spring Boot 프로젝트는 <b>잘 정리된 회사 건물</b>과 같습니다.<br><br>
+                                    <b>controller/</b> — 1층 안내 데스크. 손님(HTTP 요청)을 맞이하고 적절한 부서로 안내<br>
+                                    <b>service/</b> — 실무 부서. 실제 업무(비즈니스 로직)를 처리<br>
+                                    <b>repository/</b> — 지하 창고(DB). 데이터를 저장하고 꺼내오는 곳<br>
+                                    <b>domain/</b> — 회사에서 다루는 자료의 양식(Entity, DTO)<br>
+                                    <b>application.yml</b> — 회사 운영 규칙 (DB 주소, 포트 번호 등 설정)
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🚀</span> <span>Spring Boot = Spring + 자동 설정. 복잡한 XML 설정 없이 바로 실행 가능</span></div>
+                                <div class="simple-point"><span class="emoji">📦</span> <span>내장 Tomcat 포함 — jar 파일 하나로 서버 실행 가능</span></div>
+                                <div class="simple-point"><span class="emoji">⚙️</span> <span>application.yml 파일 하나로 대부분의 설정을 관리</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-boot">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Directory Structure</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre>src/main/java/com/example/
+├── <span class="c-orange">AppApplication.java</span>   ← @SpringBootApplication (진입점)
+├── <span class="c-cyan">controller/</span>           ← HTTP 요청·응답
+├── <span class="c-green">service/</span>              ← 비즈니스 로직
+├── <span class="c-blue">repository/</span>           ← DB 접근
+├── <span class="c-purple">domain/</span>               ← Entity
+├── dto/                  ← 요청/응답 객체
+├── config/               ← 설정 클래스
+└── exception/            ← 예외 클래스
+
+src/main/resources/
+├── <span class="c-yellow">application.yml</span>       ← 공통 설정
+├── application-dev.yml   ← 개발 환경
+└── application-prod.yml  ← 운영 환경</pre>
+                            </div>
+                            <div class="key-points">
+                                <div class="key-point">@SpringBootApplication = @Configuration + @EnableAutoConfiguration + @ComponentScan</div>
+                                <div class="key-point">Auto-Configuration: classpath 내 라이브러리 기반으로 Bean 자동 등록</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Spring MVC -->
+                <div class="topic-card" id="tc-mvc" data-title="Spring MVC DispatcherServlet">
+                    <div class="topic-header" onclick="toggleCard('tc-mvc')">
+                        <div class="topic-checkbox" id="cb-tc-mvc" onclick="event.stopPropagation();toggleCheck('tc-mvc')"></div>
+                        <span class="topic-title">⑨ Spring MVC 동작 원리 (DispatcherServlet)</span>
+                        <span class="topic-toggle c-green">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-mvc')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-mvc')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-mvc">
+                            <div class="analogy-box">
+                                <div class="analogy-label">📮 콜센터 교환원으로 이해하기</div>
+                                <div class="analogy-text">
+                                    웹 요청이 들어오면 <b>DispatcherServlet은 콜센터 교환원</b>입니다. 모든 전화(요청)가 교환원에게 먼저 옵니다.<br><br>
+                                    교환원은 "이 요청은 어느 담당자(Controller)한테 연결해야 하지?" 를 <b>HandlerMapping</b>(전화번호부)에서 찾아봅니다.<br><br>
+                                    담당자가 처리를 마치면 결과를 다시 교환원에게 돌려주고, 교환원이 전화를 건 손님에게 최종 답변을 전달합니다.<br><br>
+                                    핵심은 <b>모든 요청이 한 곳(DispatcherServlet)을 통과</b>한다는 점입니다. 덕분에 공통 처리(보안, 로깅 등)를 한 곳에 집중시킬 수 있습니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🚦</span> <span>모든 HTTP 요청이 DispatcherServlet을 먼저 거친다</span></div>
+                                <div class="simple-point"><span class="emoji">📖</span> <span>HandlerMapping이 URL → Controller를 매핑한다</span></div>
+                                <div class="simple-point"><span class="emoji">🔄</span> <span>Controller 처리 후 응답을 클라이언트에게 돌려준다</span></div>
+                                <div class="simple-point"><span class="emoji">💡</span> <span>@RestController면 JSON으로 직접 응답, @Controller면 화면(View)을 반환</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-mvc">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">HTTP Request Flow</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre>HTTP Request
+  │
+  ▼
+<span class="c-orange">DispatcherServlet</span>       Front Controller 패턴
+  │
+  ▼
+<span class="c-cyan">HandlerMapping</span>          URL → Handler 매핑
+  │
+  ▼
+<span class="c-purple">HandlerAdapter</span>          Handler 실행 위임
+  │
+  ▼
+<span class="c-green">Controller</span>              비즈니스 로직
+  │ (REST: @ResponseBody → Jackson 직렬화)
+  ▼
+<span class="c-yellow">ViewResolver</span>            논리뷰 → 실제 파일 (MVC only)
+  │
+  ▼
+HTTP Response</pre>
+                            </div>
+                            <div class="key-points">
+                                <div class="key-point">Filter — Servlet 앞단. 인증, 인코딩 처리</div>
+                                <div class="key-point">Interceptor — HandlerAdapter 전/후. 로깅, 권한 체크</div>
+                                <div class="key-point">@Controller vs @RestController — 후자는 @ResponseBody 포함</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10. 계층 구조 -->
+                <div class="topic-card" id="tc-layer" data-title="Controller Service Repository 계층 구조">
+                    <div class="topic-header" onclick="toggleCard('tc-layer')">
+                        <div class="topic-checkbox" id="cb-tc-layer" onclick="event.stopPropagation();toggleCheck('tc-layer')"></div>
+                        <span class="topic-title">⑩ Controller / Service / Repository 계층 구조</span>
+                        <span class="topic-toggle c-green">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-layer')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-layer')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-layer">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🍽️ 식당으로 이해하기</div>
+                                <div class="analogy-text">
+                                    식당 운영을 생각해보면:<br><br>
+                                    <b>Controller (웨이터)</b> — 손님(클라이언트)의 주문을 받아 주방에 전달합니다. 손님이 뭘 원하는지 파악하고 결과를 테이블에 가져다 줍니다.<br><br>
+                                    <b>Service (주방장)</b> — 실제 요리(비즈니스 로직)를 담당합니다. "제육볶음이면 돼지고기+고추장+…" 같은 복잡한 조리 과정을 처리합니다.<br><br>
+                                    <b>Repository (창고지기/식재료 담당)</b> — 냉장고(DB)에서 재료를 꺼내오거나 저장합니다. 주방장이 원하는 재료를 가져다 줍니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🏷️</span> <span>각 계층은 딱 자신의 역할만 합니다 — 역할 분리</span></div>
+                                <div class="simple-point"><span class="emoji">📬</span> <span>Controller는 직접 DB에 접근하지 않습니다</span></div>
+                                <div class="simple-point"><span class="emoji">🔄</span> <span>데이터는 Entity(DB용) ↔ DTO(API용)으로 변환해서 주고받습니다</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-layer">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Java — 3계층 구조</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="an">@RestController</span> <span class="an">@RequestMapping</span>(<span class="st">"/api/users"</span>) <span class="an">@RequiredArgsConstructor</span>
+<span class="kw">public class</span> <span class="ty">UserController</span> {
+    <span class="kw">private final</span> <span class="ty">UserService</span> userService;
+    <span class="an">@GetMapping</span>(<span class="st">"/{id}"</span>)
+    <span class="kw">public</span> <span class="ty">ResponseEntity</span>&lt;<span class="ty">UserResponse</span>&gt; <span class="fn">get</span>(<span class="an">@PathVariable</span> <span class="ty">Long</span> id) {
+        <span class="kw">return</span> <span class="ty">ResponseEntity</span>.<span class="fn">ok</span>(userService.<span class="fn">findById</span>(id));
+    }
+}
+
+<span class="an">@Service</span> <span class="an">@Transactional</span>(<span class="fn">readOnly</span>=<span class="kw">true</span>) <span class="an">@RequiredArgsConstructor</span>
+<span class="kw">public class</span> <span class="ty">UserService</span> {
+    <span class="kw">private final</span> <span class="ty">UserRepository</span> userRepository;
+    <span class="kw">public</span> <span class="ty">UserResponse</span> <span class="fn">findById</span>(<span class="ty">Long</span> id) {
+        <span class="ty">User</span> user = userRepository.<span class="fn">findById</span>(id)
+            .<span class="fn">orElseThrow</span>(() -> <span class="kw">new</span> <span class="ty">UserNotFoundException</span>(id));
+        <span class="kw">return</span> <span class="ty">UserResponse</span>.<span class="fn">from</span>(user); <span class="cm">// Entity → DTO</span>
+    }
+}
+
+<span class="kw">public interface</span> <span class="ty">UserRepository</span> <span class="kw">extends</span> <span class="ty">JpaRepository</span>&lt;<span class="ty">User</span>, <span class="ty">Long</span>&gt; {
+    <span class="ty">Optional</span>&lt;<span class="ty">User</span>&gt; <span class="fn">findByEmail</span>(<span class="ty">String</span> email);
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11. Spring Exception -->
+                <div class="topic-card" id="tc-springex" data-title="Spring 예외처리 ExceptionHandler ControllerAdvice">
+                    <div class="topic-header" onclick="toggleCard('tc-springex')">
+                        <div class="topic-checkbox" id="cb-tc-springex" onclick="event.stopPropagation();toggleCheck('tc-springex')"></div>
+                        <span class="topic-title">⑪ Spring Boot 예외 처리 (@ControllerAdvice)</span>
+                        <span class="topic-toggle c-green">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-springex')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-springex')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-springex">
+                            <div class="analogy-box">
+                                <div class="analogy-label">☎️ 고객센터 불만 처리 창구로 이해하기</div>
+                                <div class="analogy-text">
+                                    서비스에서 문제가 생기면 각 직원(Controller)이 알아서 대응하면 중구난방이 됩니다.<br><br>
+                                    <b>@ControllerAdvice</b>는 <b>중앙 고객센터 불만 처리 창구</b>입니다. 어떤 부서에서 문제가 생기든 한 곳에 모아서 일관된 형태로 고객(클라이언트)에게 안내해줍니다.<br><br>
+                                    "회원을 찾을 수 없어요" → 404 에러 + 친절한 메시지<br>
+                                    "입력값이 잘못되었어요" → 400 에러 + 어느 항목이 문제인지 안내<br>
+                                    "서버가 터졌어요" → 500 에러 + 상세 내용은 숨기고 일반 메시지만
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🎯</span> <span>전체 앱에서 발생하는 예외를 한 곳에서 처리</span></div>
+                                <div class="simple-point"><span class="emoji">📤</span> <span>클라이언트에게 일관된 형태의 에러 응답 제공</span></div>
+                                <div class="simple-point"><span class="emoji">🔒</span> <span>운영 환경에서는 내부 에러 메시지를 노출하면 안 됨 (보안)</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-springex">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Java — 전역 예외 처리기</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="an">@RestControllerAdvice</span> <span class="cm">// = @ControllerAdvice + @ResponseBody</span>
+<span class="kw">public class</span> <span class="ty">GlobalExceptionHandler</span> {
+
+    <span class="an">@ExceptionHandler</span>(<span class="ty">UserNotFoundException</span>.<span class="kw">class</span>)
+    <span class="kw">public</span> <span class="ty">ResponseEntity</span>&lt;<span class="ty">ErrorResponse</span>&gt; <span class="fn">handleNotFound</span>(<span class="ty">UserNotFoundException</span> e) {
+        <span class="kw">return</span> <span class="ty">ResponseEntity</span>.<span class="fn">status</span>(<span class="ty">HttpStatus</span>.NOT_FOUND)
+            .<span class="fn">body</span>(<span class="ty">ErrorResponse</span>.<span class="fn">of</span>(<span class="st">"USER_NOT_FOUND"</span>, e.<span class="fn">getMessage</span>()));
+    }
+
+    <span class="an">@ExceptionHandler</span>(<span class="ty">MethodArgumentNotValidException</span>.<span class="kw">class</span>)
+    <span class="kw">public</span> <span class="ty">ResponseEntity</span>&lt;<span class="ty">ErrorResponse</span>&gt; <span class="fn">handleValidation</span>(<span class="ty">MethodArgumentNotValidException</span> e) {
+        <span class="ty">String</span> msg = e.<span class="fn">getBindingResult</span>().<span class="fn">getFieldErrors</span>().<span class="fn">stream</span>()
+            .<span class="fn">map</span>(fe -> fe.<span class="fn">getField</span>() + <span class="st">": "</span> + fe.<span class="fn">getDefaultMessage</span>())
+            .<span class="fn">collect</span>(<span class="ty">Collectors</span>.<span class="fn">joining</span>(<span class="st">", "</span>));
+        <span class="kw">return</span> <span class="ty">ResponseEntity</span>.<span class="fn">badRequest</span>().<span class="fn">body</span>(<span class="ty">ErrorResponse</span>.<span class="fn">of</span>(<span class="st">"VALIDATION_FAILED"</span>, msg));
+    }
+
+    <span class="an">@ExceptionHandler</span>(<span class="ty">Exception</span>.<span class="kw">class</span>)
+    <span class="kw">public</span> <span class="ty">ResponseEntity</span>&lt;<span class="ty">ErrorResponse</span>&gt; <span class="fn">handleGeneral</span>(<span class="ty">Exception</span> e) {
+        <span class="cm">// 운영: 내부 메시지 절대 노출 금지</span>
+        <span class="kw">return</span> <span class="ty">ResponseEntity</span>.<span class="fn">internalServerError</span>()
+            .<span class="fn">body</span>(<span class="ty">ErrorResponse</span>.<span class="fn">of</span>(<span class="st">"INTERNAL_ERROR"</span>, <span class="st">"서버 오류가 발생했습니다."</span>));
+    }
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12. Validation -->
+                <div class="topic-card" id="tc-valid" data-title="Validation @Valid Bean Validation">
+                    <div class="topic-header" onclick="toggleCard('tc-valid')">
+                        <div class="topic-checkbox" id="cb-tc-valid" onclick="event.stopPropagation();toggleCheck('tc-valid')"></div>
+                        <span class="topic-title">⑫ Spring Boot Validation (@Valid)</span>
+                        <span class="topic-toggle c-green">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-valid')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-valid')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-valid">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🪪 클럽 입장 신분증 검사로 이해하기</div>
+                                <div class="analogy-text">
+                                    서버로 데이터가 들어올 때 <b>입구 경비원이 신분증을 검사</b>하는 것입니다.<br><br>
+                                    "이름은 반드시 있어야 해", "이메일 형식이어야 해", "나이는 0~150 사이여야 해"처럼 규칙을 정해두면, 규칙에 안 맞는 요청은 아예 안으로 들여보내지 않습니다.<br><br>
+                                    덕분에 Service나 DB까지 쓰레기 데이터가 들어오는 것을 막을 수 있습니다. 각 Controller마다 검사 코드를 짤 필요 없이 <b>어노테이션만 붙이면 자동으로</b> 검사해줍니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">📋</span> <span>DTO 필드에 <code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">@NotBlank</code>, <code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">@Email</code> 등 규칙을 붙인다</span></div>
+                                <div class="simple-point"><span class="emoji">✅</span> <span>Controller에서 <code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">@Valid</code>를 붙이면 자동으로 검사 실행</span></div>
+                                <div class="simple-point"><span class="emoji">❌</span> <span>검사 실패 시 자동으로 400 에러 반환</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-valid">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Java — DTO Validation</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="an">@Getter</span>
+<span class="kw">public class</span> <span class="ty">UserCreateRequest</span> {
+    <span class="an">@NotBlank</span>(<span class="fn">message</span>=<span class="st">"이름은 필수입니다"</span>) <span class="an">@Size</span>(<span class="fn">max</span>=<span class="nu">50</span>)
+    <span class="kw">private</span> <span class="ty">String</span> name;
+
+    <span class="an">@NotNull</span> <span class="an">@Email</span>(<span class="fn">message</span>=<span class="st">"이메일 형식 오류"</span>)
+    <span class="kw">private</span> <span class="ty">String</span> email;
+
+    <span class="an">@Min</span>(<span class="nu">0</span>) <span class="an">@Max</span>(<span class="nu">150</span>)
+    <span class="kw">private</span> <span class="ty">Integer</span> age;
+}
+
+<span class="an">@PostMapping</span>
+<span class="kw">public</span> <span class="ty">ResponseEntity</span>&lt;<span class="ty">UserResponse</span>&gt; <span class="fn">create</span>(
+        <span class="an">@Valid</span> <span class="an">@RequestBody</span> <span class="ty">UserCreateRequest</span> req) {
+    <span class="cm">// 검사 실패 → MethodArgumentNotValidException 자동 발생</span>
+    <span class="kw">return</span> <span class="ty">ResponseEntity</span>.<span class="fn">status</span>(<span class="ty">HttpStatus</span>.CREATED)
+        .<span class="fn">body</span>(userService.<span class="fn">create</span>(req));
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 13. Logging -->
+                <div class="topic-card" id="tc-log" data-title="Logging logback slf4j">
+                    <div class="topic-header" onclick="toggleCard('tc-log')">
+                        <div class="topic-checkbox" id="cb-tc-log" onclick="event.stopPropagation();toggleCheck('tc-log')"></div>
+                        <span class="topic-title">⑬ Spring Boot Logging (Logback, SLF4J)</span>
+                        <span class="topic-toggle c-green">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-log')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-log')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-log">
+                            <div class="analogy-box">
+                                <div class="analogy-label">📹 CCTV / 블랙박스로 이해하기</div>
+                                <div class="analogy-text">
+                                    로그(Log)는 프로그램이 실행되면서 남기는 <b>블랙박스 기록</b>입니다.<br><br>
+                                    서버에 문제가 생겼을 때 "언제, 어디서, 무슨 일이 있었는지" 로그를 보면 알 수 있습니다.<br><br>
+                                    기록의 중요도에 따라 레벨이 나뉩니다:<br>
+                                    🔵 <b>DEBUG</b> — "지금 이 함수 실행 중" (개발할 때만)<br>
+                                    🟢 <b>INFO</b> — "주문 완료됨" (일반 기록)<br>
+                                    🟡 <b>WARN</b> — "처리가 좀 느리네" (주의 필요)<br>
+                                    🔴 <b>ERROR</b> — "결제 실패!" (즉시 확인 필요)
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">📝</span> <span>SLF4J는 로그 인터페이스, Logback은 실제 로그를 저장하는 구현체</span></div>
+                                <div class="simple-point"><span class="emoji">🏷️</span> <span><code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">@Slf4j</code> 어노테이션 하나로 <code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">log.info()</code> 사용 가능</span></div>
+                                <div class="simple-point"><span class="emoji">🚫</span> <span>로그에 비밀번호, 카드번호 등 개인정보 절대 출력 금지</span></div>
+                                <div class="simple-point"><span class="emoji">⚡</span> <span><code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">log.info("값: " + val)</code> 말고 <code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">log.info("값: {}", val)</code> 사용 (성능)</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-log">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Java — SLF4J + application.yml</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="an">@Slf4j</span> <span class="an">@Service</span>
+<span class="kw">public class</span> <span class="ty">OrderService</span> {
+    <span class="kw">public void</span> <span class="fn">process</span>(<span class="ty">Order</span> order) {
+        log.<span class="fn">debug</span>(<span class="st">"Processing order: {}"</span>, order.<span class="fn">getId</span>());
+        log.<span class="fn">info</span>(<span class="st">"Order {} completed"</span>, order.<span class="fn">getId</span>());
+        log.<span class="fn">warn</span>(<span class="st">"Slow: {}ms"</span>, elapsed);
+        log.<span class="fn">error</span>(<span class="st">"Order failed"</span>, e); <span class="cm">// 예외 스택트레이스 포함</span>
+    }
+}
+
+<span class="cm"># application.yml</span>
+<span class="cm"># logging:</span>
+<span class="cm">#   level:</span>
+<span class="cm">#     root: INFO</span>
+<span class="cm">#     com.example.app: DEBUG</span>
+<span class="cm">#     org.hibernate.SQL: DEBUG  # JPA SQL 출력</span></pre>
+                            </div>
+                            <div class="key-points">
+                                <div class="key-point">레벨 순서 (낮→높): TRACE → DEBUG → INFO → WARN → ERROR</div>
+                                <div class="key-point">운영: INFO, 개발: DEBUG 권장</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ════ JPA/DB ════ -->
+            <div class="section" id="s14">
+                <div class="section-header">
+                    <div class="section-icon" style="background:rgba(88,166,255,.12)">🗃</div>
+                    <div class="section-title">JPA / Database</div>
+                    <span class="section-badge bg-blue">11 Topics</span>
+                </div>
+
+                <!-- 14. JPA 기본 -->
+                <div class="topic-card" id="tc-jpa" data-title="JPA Spring Data 기본 사용법">
+                    <div class="topic-header" onclick="toggleCard('tc-jpa')">
+                        <div class="topic-checkbox" id="cb-tc-jpa" onclick="event.stopPropagation();toggleCheck('tc-jpa')"></div>
+                        <span class="topic-title">⑭ Spring Data JPA 기본 사용법</span>
+                        <span class="topic-toggle c-blue">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-jpa')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-jpa')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-jpa">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🔄 번역기로 이해하기</div>
+                                <div class="analogy-text">
+                                    데이터베이스는 SQL이라는 언어를 쓰고, Java는 객체(class)를 씁니다. 이 둘은 언어가 달라서 직접 소통이 어렵습니다.<br><br>
+                                    <b>JPA</b>는 Java 객체 ↔ DB 테이블을 <b>자동으로 번역해주는 통역사</b>입니다.<br><br>
+                                    <code style="background:var(--bg3);padding:2px 6px;border-radius:4px;font-size:11px">userRepository.findById(1L)</code> 라고 Java 코드로 쓰면 JPA가 알아서 <code style="background:var(--bg3);padding:2px 6px;border-radius:4px;font-size:11px">SELECT * FROM users WHERE id=1</code>로 번역해서 실행합니다.<br><br>
+                                    심지어 <b>메서드 이름만으로도 쿼리를 자동 생성</b>해줍니다. <code style="background:var(--bg3);padding:2px 6px;border-radius:4px;font-size:11px">findByEmail(email)</code>이라고 메서드를 만들면 이메일로 조회하는 쿼리가 자동으로 만들어집니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">📝</span> <span>SQL 직접 안 써도 Java 메서드로 DB 작업 가능</span></div>
+                                <div class="simple-point"><span class="emoji">🔍</span> <span><code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">findByXxx</code> 메서드명 규칙으로 쿼리 자동 생성</span></div>
+                                <div class="simple-point"><span class="emoji">📄</span> <span>복잡한 쿼리는 <code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">@Query</code>로 직접 작성 가능</span></div>
+                                <div class="simple-point"><span class="emoji">📖</span> <span>페이징도 <code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">Pageable</code>로 쉽게 처리</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-jpa">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Java — JpaRepository 활용</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="kw">public interface</span> <span class="ty">UserRepository</span> <span class="kw">extends</span> <span class="ty">JpaRepository</span>&lt;<span class="ty">User</span>, <span class="ty">Long</span>&gt; {
+    <span class="ty">Optional</span>&lt;<span class="ty">User</span>&gt; <span class="fn">findByEmail</span>(<span class="ty">String</span> email);
+    <span class="ty">List</span>&lt;<span class="ty">User</span>&gt; <span class="fn">findByAgeGreaterThanOrderByNameAsc</span>(<span class="kw">int</span> age);
+    <span class="kw">boolean</span> <span class="fn">existsByEmail</span>(<span class="ty">String</span> email);
+
+    <span class="an">@Query</span>(<span class="st">"SELECT u FROM User u WHERE u.name LIKE %:name%"</span>)
+    <span class="ty">List</span>&lt;<span class="ty">User</span>&gt; <span class="fn">searchByName</span>(<span class="an">@Param</span>(<span class="st">"name"</span>) <span class="ty">String</span> name);
+
+    <span class="ty">Page</span>&lt;<span class="ty">User</span>&gt; <span class="fn">findAll</span>(<span class="ty">Pageable</span> pageable);
+}
+
+<span class="cm">// 페이징 사용</span>
+<span class="ty">Page</span>&lt;<span class="ty">User</span>&gt; page = userRepository.<span class="fn">findAll</span>(
+    <span class="ty">PageRequest</span>.<span class="fn">of</span>(<span class="nu">0</span>, <span class="nu">20</span>, <span class="ty">Sort</span>.<span class="fn">by</span>(<span class="st">"createdAt"</span>).<span class="fn">descending</span>()));</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 15. Entity 설계 -->
+                <div class="topic-card" id="tc-entity" data-title="JPA Entity 설계">
+                    <div class="topic-header" onclick="toggleCard('tc-entity')">
+                        <div class="topic-checkbox" id="cb-tc-entity" onclick="event.stopPropagation();toggleCheck('tc-entity')"></div>
+                        <span class="topic-title">⑮ JPA Entity 설계</span>
+                        <span class="topic-toggle c-blue">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-entity')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-entity')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-entity">
+                            <div class="analogy-box">
+                                <div class="analogy-label">📊 엑셀 시트 설계도로 이해하기</div>
+                                <div class="analogy-text">
+                                    DB 테이블은 엑셀 시트입니다. <b>Entity는 그 시트의 한 행(row)을 Java 객체로 표현한 것</b>입니다.<br><br>
+                                    엑셀에 "users" 시트가 있고 컬럼이 id, name, email이라면, Java에 <code style="background:var(--bg3);padding:2px 5px;border-radius:3px;font-size:11px">User</code> 클래스를 만들고 각 컬럼에 해당하는 필드를 만드는 겁니다.<br><br>
+                                    <code style="background:var(--bg3);padding:2px 5px;border-radius:3px;font-size:11px">@Entity</code> — "이 클래스는 DB 테이블이야"<br>
+                                    <code style="background:var(--bg3);padding:2px 5px;border-radius:3px;font-size:11px">@Id</code> — "이 필드가 기본키(primary key)야"<br>
+                                    <code style="background:var(--bg3);padding:2px 5px;border-radius:3px;font-size:11px">@Column</code> — "이 필드는 DB의 이 컬럼과 연결돼"
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🗂️</span> <span>하나의 Entity 클래스 = DB의 하나의 테이블</span></div>
+                                <div class="simple-point"><span class="emoji">🔑</span> <span><code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">@Id</code>는 기본키, <code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">@GeneratedValue</code>로 자동 증가</span></div>
+                                <div class="simple-point"><span class="emoji">🔗</span> <span>테이블 간 관계는 <code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">@ManyToOne</code>, <code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">@OneToMany</code> 로 표현</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-entity">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Java — Entity 베스트 프랙티스</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="an">@Entity</span> <span class="an">@Table</span>(<span class="fn">name</span>=<span class="st">"users"</span>)
+<span class="an">@Getter</span>
+<span class="an">@NoArgsConstructor</span>(<span class="fn">access</span>=<span class="ty">AccessLevel</span>.PROTECTED) <span class="cm">// JPA 기본 생성자</span>
+<span class="kw">public class</span> <span class="ty">User</span> {
+    <span class="an">@Id</span> <span class="an">@GeneratedValue</span>(<span class="fn">strategy</span>=<span class="ty">GenerationType</span>.IDENTITY)
+    <span class="kw">private</span> <span class="ty">Long</span> id;
+
+    <span class="an">@Column</span>(<span class="fn">nullable</span>=<span class="kw">false</span>, <span class="fn">length</span>=<span class="nu">50</span>)
+    <span class="kw">private</span> <span class="ty">String</span> name;
+
+    <span class="an">@Enumerated</span>(<span class="ty">EnumType</span>.STRING) <span class="cm">// ORDINAL 사용 금지</span>
+    <span class="kw">private</span> <span class="ty">UserRole</span> role;
+
+    <span class="an">@ManyToOne</span>(<span class="fn">fetch</span>=<span class="ty">FetchType</span>.LAZY) <span class="cm">// LAZY 권장</span>
+    <span class="an">@JoinColumn</span>(<span class="fn">name</span>=<span class="st">"team_id"</span>)
+    <span class="kw">private</span> <span class="ty">Team</span> team;
+
+    <span class="an">@CreatedDate</span> <span class="an">@Column</span>(<span class="fn">updatable</span>=<span class="kw">false</span>)
+    <span class="kw">private</span> <span class="ty">LocalDateTime</span> createdAt;
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 16. 영속성 컨텍스트 -->
+                <div class="topic-card" id="tc-pc" data-title="JPA 영속성 컨텍스트 Persistence Context">
+                    <div class="topic-header" onclick="toggleCard('tc-pc')">
+                        <div class="topic-checkbox" id="cb-tc-pc" onclick="event.stopPropagation();toggleCheck('tc-pc')"></div>
+                        <span class="topic-title">⑯ JPA 영속성 컨텍스트</span>
+                        <span class="topic-toggle c-blue">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-pc')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-pc')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-pc">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🗒️ 메모장 + 자동 저장으로 이해하기</div>
+                                <div class="analogy-text">
+                                    JPA는 DB에서 데이터를 꺼내오면 즉시 버리지 않고 <b>메모장(1차 캐시)에 잠깐 올려두고</b> 관리합니다.<br><br>
+                                    같은 id로 다시 조회하면 DB에 다시 가지 않고 메모장에서 바로 꺼내줍니다 (빠름).<br><br>
+                                    그리고 수정을 해도 <code style="background:var(--bg3);padding:2px 5px;border-radius:3px;font-size:11px">save()</code>를 따로 안 불러도 됩니다. 메모장에 있는 동안 변화를 감지해서 <b>트랜잭션이 끝날 때 자동으로 DB에 반영</b>합니다. 이것이 "변경 감지(Dirty Checking)"입니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">💾</span> <span><b>1차 캐시</b> — 같은 트랜잭션 안에서 같은 데이터는 DB 재조회 없이 반환</span></div>
+                                <div class="simple-point"><span class="emoji">🔍</span> <span><b>변경 감지</b> — 엔티티 수정 후 save() 없어도 트랜잭션 끝에 자동 UPDATE</span></div>
+                                <div class="simple-point"><span class="emoji">⏱️</span> <span><b>쓰기 지연</b> — INSERT/UPDATE를 모아뒀다가 한 번에 실행</span></div>
+                                <div class="simple-point"><span class="emoji">⚠️</span> <span>트랜잭션 밖에서는 영속성 컨텍스트가 없어 Lazy 로딩 불가</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-pc">
+                            <div class="key-points">
+                                <div class="key-points-title">엔티티 4가지 상태</div>
+                                <div class="key-point"><b>비영속(Transient)</b> — new 생성, 컨텍스트와 무관</div>
+                                <div class="key-point"><b>영속(Managed)</b> — em.persist() / 조회. 변경 감지 대상</div>
+                                <div class="key-point"><b>준영속(Detached)</b> — em.detach() / 컨텍스트 종료. 변경 감지 안 됨</div>
+                                <div class="key-point"><b>삭제(Removed)</b> — em.remove(). flush 시 DELETE</div>
+                            </div>
+                            <div class="key-points">
+                                <div class="key-points-title">핵심 기능</div>
+                                <div class="key-point">1차 캐시 — 동일 트랜잭션 내 같은 ID 재조회 시 DB hit 없음</div>
+                                <div class="key-point">동일성 보장 — 같은 ID 엔티티 == 비교 true</div>
+                                <div class="key-point">Dirty Checking — flush 시점에 스냅샷과 비교, 변경분만 UPDATE</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 17. Fetch 전략 -->
+                <div class="topic-card" id="tc-fetch" data-title="JPA Fetch 전략 Lazy Eager">
+                    <div class="topic-header" onclick="toggleCard('tc-fetch')">
+                        <div class="topic-checkbox" id="cb-tc-fetch" onclick="event.stopPropagation();toggleCheck('tc-fetch')"></div>
+                        <span class="topic-title">⑰ JPA Fetch 전략 (Lazy / Eager)</span>
+                        <span class="topic-toggle c-blue">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-fetch')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-fetch')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-fetch">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🍱 배달 vs 즉석 조리로 이해하기</div>
+                                <div class="analogy-text">
+                                    User를 조회할 때 관련된 Team 정보를 언제 가져올지의 전략입니다.<br><br>
+                                    <b>EAGER(즉시 로딩)</b> — 음식 주문하면서 바로 모든 사이드 메뉴까지 다 시키는 것. User 조회할 때 Team도 무조건 같이 가져옵니다. 쓸 일이 없어도 항상 가져와서 낭비가 생깁니다.<br><br>
+                                    <b>LAZY(지연 로딩)</b> — 일단 메인만 시키고, 사이드 메뉴는 먹고 싶을 때 추가 주문. User만 먼저 가져오고, Team이 실제 필요한 순간에 추가로 조회합니다. 필요할 때만 가져오므로 효율적입니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">✅</span> <span><b>LAZY 권장</b> — 필요한 시점에만 DB 조회. 성능 절약</span></div>
+                                <div class="simple-point"><span class="emoji">⚠️</span> <span>EAGER는 예상치 못한 추가 쿼리와 N+1 문제를 유발</span></div>
+                                <div class="simple-point"><span class="emoji">🔗</span> <span>LAZY + FETCH JOIN으로 필요할 때만 한 번에 가져오는 것이 실무 패턴</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-fetch">
+                            <table>
+                                <tr><th>전략</th><th>로딩 시점</th><th>기본값</th><th>권장</th></tr>
+                                <tr><td>LAZY</td><td>실제 접근 시점</td><td>@OneToMany, @ManyToMany</td><td>✅ 권장</td></tr>
+                                <tr><td>EAGER</td><td>엔티티 로딩 즉시</td><td>@ManyToOne, @OneToOne</td><td>⚠️ 지양</td></tr>
+                            </table>
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Java — LAZY + FETCH JOIN</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="an">@ManyToOne</span>(<span class="fn">fetch</span>=<span class="ty">FetchType</span>.LAZY) <span class="cm">// 기본값 EAGER → 반드시 LAZY로</span>
+<span class="kw">private</span> <span class="ty">Team</span> team;
+
+<span class="cm">// 필요 시 FETCH JOIN으로 한 번에</span>
+<span class="an">@Query</span>(<span class="st">"SELECT u FROM User u JOIN FETCH u.team WHERE u.id = :id"</span>)
+<span class="ty">Optional</span>&lt;<span class="ty">User</span>&gt; <span class="fn">findByIdWithTeam</span>(<span class="an">@Param</span>(<span class="st">"id"</span>) <span class="ty">Long</span> id);</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 18. N+1 -->
+                <div class="topic-card" id="tc-n1" data-title="JPA N+1 문제">
+                    <div class="topic-header" onclick="toggleCard('tc-n1')">
+                        <div class="topic-checkbox" id="cb-tc-n1" onclick="event.stopPropagation();toggleCheck('tc-n1')"></div>
+                        <span class="topic-title">⑱ JPA N+1 문제</span>
+                        <span class="topic-toggle c-blue">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-n1')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-n1')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-n1">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🛒 편의점 심부름으로 이해하기</div>
+                                <div class="analogy-text">
+                                    학생 100명의 소속 반 정보를 가져오려 할 때의 비효율을 생각해보세요.<br><br>
+                                    <b>N+1 문제:</b><br>
+                                    1. "학생 목록 가져와" (1번 조회)<br>
+                                    2. "1번 학생 반 정보 가져와" (1번 조회)<br>
+                                    3. "2번 학생 반 정보 가져와" (1번 조회)<br>
+                                    … 100번 반복 = 총 101번 DB 조회 😱<br><br>
+                                    <b>해결책:</b> "학생이랑 반 정보 같이 한 번에 가져와" (JOIN FETCH) = 총 1번 DB 조회 ✅<br><br>
+                                    이것이 N+1 문제입니다. 1번 조회해서 N개의 결과가 나오면, 각각에 대해 N번 추가 조회가 발생하는 현상.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">💣</span> <span>1번 조회 결과에서 N번 추가 조회가 발생하는 성능 문제</span></div>
+                                <div class="simple-point"><span class="emoji">🔧</span> <span>해결책 1: FETCH JOIN — 한 번의 쿼리로 연관 데이터 같이 조회</span></div>
+                                <div class="simple-point"><span class="emoji">🔧</span> <span>해결책 2: @EntityGraph — FETCH JOIN보다 간편한 선언 방식</span></div>
+                                <div class="simple-point"><span class="emoji">🔧</span> <span>해결책 3: @BatchSize — IN 절로 묶어서 쿼리 수 감소</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-n1">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Java — N+1 발생 & 해결</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="cm">// ❌ N+1: users(1) + team 조회(N번)</span>
+users.<span class="fn">forEach</span>(u -> <span class="ty">System</span>.out.<span class="fn">println</span>(u.<span class="fn">getTeam</span>().<span class="fn">getName</span>()));
+
+<span class="cm">// ✅ 해결 1: FETCH JOIN</span>
+<span class="an">@Query</span>(<span class="st">"SELECT DISTINCT u FROM User u JOIN FETCH u.team"</span>)
+<span class="ty">List</span>&lt;<span class="ty">User</span>&gt; <span class="fn">findAllWithTeam</span>();
+
+<span class="cm">// ✅ 해결 2: @EntityGraph</span>
+<span class="an">@EntityGraph</span>(<span class="fn">attributePaths</span>={<span class="st">"team"</span>})
+<span class="ty">List</span>&lt;<span class="ty">User</span>&gt; <span class="fn">findAll</span>();
+
+<span class="cm">// ✅ 해결 3: @BatchSize (컬렉션)</span>
+<span class="an">@BatchSize</span>(<span class="fn">size</span>=<span class="nu">100</span>)
+<span class="an">@OneToMany</span>(<span class="fn">mappedBy</span>=<span class="st">"user"</span>, <span class="fn">fetch</span>=<span class="ty">FetchType</span>.LAZY)
+<span class="kw">private</span> <span class="ty">List</span>&lt;<span class="ty">Order</span>&gt; orders;</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 19~24 SQL 묶음 -->
+                <div class="topic-card" id="tc-sql" data-title="SQL 기본 문법 SELECT INSERT UPDATE DELETE">
+                    <div class="topic-header" onclick="toggleCard('tc-sql')">
+                        <div class="topic-checkbox" id="cb-tc-sql" onclick="event.stopPropagation();toggleCheck('tc-sql')"></div>
+                        <span class="topic-title">⑲ SQL 기본 문법 (SELECT, INSERT, UPDATE, DELETE)</span>
+                        <span class="topic-toggle c-blue">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-sql')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-sql')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-sql">
+                            <div class="analogy-box">
+                                <div class="analogy-label">📚 도서관 사서로 이해하기</div>
+                                <div class="analogy-text">
+                                    DB는 거대한 도서관입니다. SQL은 사서에게 내리는 명령어입니다.<br><br>
+                                    <b>SELECT</b> — "이 조건에 맞는 책 찾아줘" (조회)<br>
+                                    <b>INSERT</b> — "새 책을 이 위치에 꽂아줘" (추가)<br>
+                                    <b>UPDATE</b> — "이 책의 제목을 바꿔줘" (수정)<br>
+                                    <b>DELETE</b> — "이 책 버려줘" (삭제)<br><br>
+                                    ⚠️ DELETE는 WHERE 없이 쓰면 모든 책이 사라집니다. 운영 DB에서 실수하면 큰일 납니다!
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🔍</span> <span>SELECT — 데이터 조회. WHERE로 조건, ORDER BY로 정렬</span></div>
+                                <div class="simple-point"><span class="emoji">➕</span> <span>INSERT — 새 행(row) 추가</span></div>
+                                <div class="simple-point"><span class="emoji">✏️</span> <span>UPDATE — 기존 데이터 수정. <b>WHERE 필수!</b></span></div>
+                                <div class="simple-point"><span class="emoji">🗑️</span> <span>DELETE — 행 삭제. <b>WHERE 필수!</b> 없으면 전체 삭제</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-sql">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">SQL — CRUD 기본</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="kw">SELECT</span> id, name, salary <span class="kw">FROM</span> employees
+<span class="kw">WHERE</span> department = <span class="st">'개발팀'</span> <span class="kw">AND</span> salary > <span class="nu">3000000</span>
+<span class="kw">ORDER BY</span> salary <span class="kw">DESC</span> <span class="kw">LIMIT</span> <span class="nu">10</span> <span class="kw">OFFSET</span> <span class="nu">0</span>;
+
+<span class="kw">INSERT INTO</span> users (name, email, created_at)
+<span class="kw">VALUES</span> (<span class="st">'홍길동'</span>, <span class="st">'hong@example.com'</span>, <span class="fn">NOW</span>());
+
+<span class="kw">UPDATE</span> users <span class="kw">SET</span> name=<span class="st">'김철수'</span>, updated_at=<span class="fn">NOW</span>()
+<span class="kw">WHERE</span> id=<span class="nu">1</span>; <span class="cm">-- WHERE 없으면 전체 수정!</span>
+
+<span class="kw">DELETE FROM</span> users <span class="kw">WHERE</span> id=<span class="nu">1</span>; <span class="cm">-- WHERE 없으면 전체 삭제!</span></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card" id="tc-join" data-title="SQL JOIN INNER LEFT RIGHT OUTER">
+                    <div class="topic-header" onclick="toggleCard('tc-join')">
+                        <div class="topic-checkbox" id="cb-tc-join" onclick="event.stopPropagation();toggleCheck('tc-join')"></div>
+                        <span class="topic-title">⑳ SQL JOIN (INNER, LEFT, RIGHT)</span>
+                        <span class="topic-toggle c-blue">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-join')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-join')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-join">
+                            <div class="analogy-box">
+                                <div class="analogy-label">👥 두 명부 합치기로 이해하기</div>
+                                <div class="analogy-text">
+                                    학생 명부(A)와 도서 대출 명부(B)를 합쳐서 "누가 무슨 책을 빌렸나" 보고 싶다면:<br><br>
+                                    <b>INNER JOIN</b> — 양쪽 명부에 모두 있는 학생만 보여줌 (책을 빌린 학생만)<br>
+                                    <b>LEFT JOIN</b> — 학생 명부(A) 기준. 책을 안 빌린 학생도 포함, 대출 정보 없으면 빈칸<br>
+                                    <b>RIGHT JOIN</b> — 대출 명부(B) 기준. 퇴학한 학생이 빌린 책도 포함<br><br>
+                                    실무에서는 LEFT JOIN을 가장 많이 씁니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🔵</span> <span>INNER JOIN — 두 테이블 모두에 일치하는 행만</span></div>
+                                <div class="simple-point"><span class="emoji">⬅️</span> <span>LEFT JOIN — 왼쪽 테이블 전체 + 오른쪽 일치하는 행 (불일치는 NULL)</span></div>
+                                <div class="simple-point"><span class="emoji">⚠️</span> <span>NULL 값이 섞이므로 IS NULL 체크를 잊지 말 것</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-join">
+                            <table>
+                                <tr><th>JOIN</th><th>결과</th></tr>
+                                <tr><td>INNER JOIN</td><td>양쪽 모두 일치하는 행</td></tr>
+                                <tr><td>LEFT JOIN</td><td>왼쪽 전체 + 오른쪽 일치 (불일치=NULL)</td></tr>
+                                <tr><td>RIGHT JOIN</td><td>오른쪽 전체 + 왼쪽 일치 (불일치=NULL)</td></tr>
+                            </table>
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">SQL — LEFT JOIN</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="kw">SELECT</span> c.name, <span class="fn">COUNT</span>(o.id) <span class="kw">AS</span> order_count
+<span class="kw">FROM</span> customers c
+<span class="kw">LEFT JOIN</span> orders o <span class="kw">ON</span> c.id = o.customer_id
+<span class="kw">GROUP BY</span> c.id, c.name
+<span class="kw">ORDER BY</span> order_count <span class="kw">DESC</span>;</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card" id="tc-group" data-title="SQL GROUP BY HAVING 집계">
+                    <div class="topic-header" onclick="toggleCard('tc-group')">
+                        <div class="topic-checkbox" id="cb-tc-group" onclick="event.stopPropagation();toggleCheck('tc-group')"></div>
+                        <span class="topic-title">㉑ SQL GROUP BY / HAVING</span>
+                        <span class="topic-toggle c-blue">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-group')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-group')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-group">
+                            <div class="analogy-box">
+                                <div class="analogy-label">📊 반별 평균 성적 계산으로 이해하기</div>
+                                <div class="analogy-text">
+                                    전체 학생 성적표가 있을 때 "반별 평균 점수"를 구하고 싶다면:<br><br>
+                                    <b>GROUP BY 반</b> — 1반끼리, 2반끼리, 3반끼리 묶기<br>
+                                    <b>AVG(점수)</b> — 각 그룹의 평균 계산<br>
+                                    <b>HAVING AVG(점수) >= 80</b> — 그 중에서 평균 80점 이상인 반만 보여줘<br><br>
+                                    <b>WHERE vs HAVING 차이:</b><br>
+                                    WHERE는 "묶기 전에" 걸러냄 (전학생 제외 후 집계)<br>
+                                    HAVING은 "묶은 후에" 걸러냄 (집계 결과에 조건)
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🗂️</span> <span>GROUP BY — 같은 값끼리 묶어서 집계 (COUNT, SUM, AVG, MAX, MIN)</span></div>
+                                <div class="simple-point"><span class="emoji">🔍</span> <span>HAVING — GROUP BY 후 집계 결과에 조건 적용</span></div>
+                                <div class="simple-point"><span class="emoji">💡</span> <span>WHERE는 집계 전 필터, HAVING은 집계 후 필터</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-group">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">SQL — GROUP BY / HAVING</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="kw">SELECT</span> department, <span class="fn">COUNT</span>(*) <span class="kw">AS</span> cnt, <span class="fn">AVG</span>(salary) <span class="kw">AS</span> avg_sal
+<span class="kw">FROM</span> employees
+<span class="kw">WHERE</span> active = <span class="nu">1</span>           <span class="cm">-- 그룹화 전 조건</span>
+<span class="kw">GROUP BY</span> department
+<span class="kw">HAVING</span> <span class="fn">COUNT</span>(*) >= <span class="nu">5</span>       <span class="cm">-- 그룹화 후 조건 (집계함수 사용 가능)</span>
+<span class="kw">ORDER BY</span> avg_sal <span class="kw">DESC</span>;</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card" id="tc-sub" data-title="SQL 서브쿼리 subquery">
+                    <div class="topic-header" onclick="toggleCard('tc-sub')">
+                        <div class="topic-checkbox" id="cb-tc-sub" onclick="event.stopPropagation();toggleCheck('tc-sub')"></div>
+                        <span class="topic-title">㉒ SQL 서브쿼리</span>
+                        <span class="topic-toggle c-blue">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-sub')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-sub')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-sub">
+                            <div class="analogy-box">
+                                <div class="analogy-label">❓ 질문 속의 질문으로 이해하기</div>
+                                <div class="analogy-text">
+                                    "평균 점수보다 높은 학생을 보여줘"라는 요청을 생각해보세요.<br><br>
+                                    이걸 처리하려면 먼저 "평균 점수가 얼마야?"를 물어봐야 합니다. 그 답을 가지고 "그것보다 높은 학생"을 찾습니다.<br><br>
+                                    <b>서브쿼리</b>는 이처럼 <b>쿼리(질문) 안에 또 다른 쿼리(질문)를 넣는 것</b>입니다. 괄호 안에 작은 SELECT를 넣어 그 결과를 바깥 쿼리에서 사용합니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🔲</span> <span>괄호() 안에 또 다른 SELECT문을 넣는 구조</span></div>
+                                <div class="simple-point"><span class="emoji">📌</span> <span>WHERE 안에서 동적인 비교값을 구할 때 유용</span></div>
+                                <div class="simple-point"><span class="emoji">💡</span> <span>IN, EXISTS로 목록 포함 여부도 확인 가능</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-sub">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">SQL — 서브쿼리 패턴 4종</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="cm">-- ① 스칼라 서브쿼리</span>
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> employees
+<span class="kw">WHERE</span> salary > (<span class="kw">SELECT</span> <span class="fn">AVG</span>(salary) <span class="kw">FROM</span> employees);
+
+<span class="cm">-- ② IN 서브쿼리</span>
+<span class="kw">SELECT</span> name <span class="kw">FROM</span> employees
+<span class="kw">WHERE</span> department_id <span class="kw">IN</span> (
+    <span class="kw">SELECT</span> id <span class="kw">FROM</span> departments <span class="kw">WHERE</span> location=<span class="st">'서울'</span>);
+
+<span class="cm">-- ③ EXISTS</span>
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> customers c
+<span class="kw">WHERE</span> <span class="kw">EXISTS</span> (
+    <span class="kw">SELECT</span> <span class="nu">1</span> <span class="kw">FROM</span> orders o <span class="kw">WHERE</span> o.customer_id=c.id);
+
+<span class="cm">-- ④ FROM 인라인 뷰</span>
+<span class="kw">SELECT</span> dept, avg_sal <span class="kw">FROM</span> (
+    <span class="kw">SELECT</span> department <span class="kw">AS</span> dept, <span class="fn">AVG</span>(salary) <span class="kw">AS</span> avg_sal
+    <span class="kw">FROM</span> employees <span class="kw">GROUP BY</span> department) sub
+<span class="kw">WHERE</span> avg_sal > <span class="nu">4000000</span>;</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card" id="tc-idx" data-title="SQL 인덱스 Index B-Tree">
+                    <div class="topic-header" onclick="toggleCard('tc-idx')">
+                        <div class="topic-checkbox" id="cb-tc-idx" onclick="event.stopPropagation();toggleCheck('tc-idx')"></div>
+                        <span class="topic-title">㉓ SQL 인덱스(Index) 기본 개념</span>
+                        <span class="topic-toggle c-blue">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-idx')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-idx')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-idx">
+                            <div class="analogy-box">
+                                <div class="analogy-label">📖 책의 목차/색인으로 이해하기</div>
+                                <div class="analogy-text">
+                                    500페이지 책에서 "영속성 컨텍스트"를 찾을 때, 책을 처음부터 한 장씩 넘기는 것(풀스캔)과 뒤 색인(Index)에서 바로 쪽수를 찾는 것의 차이입니다.<br><br>
+                                    <b>DB 인덱스</b>는 특정 컬럼의 색인 파일을 따로 만들어 두는 것입니다. "email" 컬럼에 인덱스를 만들면 이메일로 검색할 때 전체 테이블을 안 보고 색인만 보면 됩니다.<br><br>
+                                    ⚠️ 단점도 있습니다. 색인 파일을 따로 유지해야 하므로, 데이터 추가/수정/삭제 시 색인도 같이 업데이트해야 해서 쓰기가 느려집니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">⚡</span> <span>인덱스 있으면 검색이 엄청 빨라짐 (전체 조회 → 인덱스 조회)</span></div>
+                                <div class="simple-point"><span class="emoji">⚠️</span> <span>INSERT/UPDATE/DELETE는 느려짐 (인덱스도 같이 갱신)</span></div>
+                                <div class="simple-point"><span class="emoji">🎯</span> <span>중복이 적은 컬럼(이메일, 주민번호)에 효과적</span></div>
+                                <div class="simple-point"><span class="emoji">🚫</span> <span>함수 적용(<code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">YEAR(date)</code>), 앞 와일드카드(<code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">'%홍%'</code>)는 인덱스 무효화</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-idx">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">SQL — 인덱스 생성 & 주의사항</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="kw">CREATE INDEX</span> idx_users_email <span class="kw">ON</span> users(email);
+<span class="kw">CREATE INDEX</span> idx_orders_user_date <span class="kw">ON</span> orders(user_id, created_at);
+
+<span class="cm">// ❌ 인덱스 무효화 (Full Scan 발생)</span>
+<span class="kw">WHERE</span> <span class="fn">YEAR</span>(created_at) = <span class="nu">2024</span>   <span class="cm">-- 함수</span>
+<span class="kw">WHERE</span> name <span class="kw">LIKE</span> <span class="st">'%홍%'</span>            <span class="cm">-- 앞 와일드카드</span>
+
+<span class="cm">// ✅ 인덱스 활용</span>
+<span class="kw">WHERE</span> created_at >= <span class="st">'2024-01-01'</span>  <span class="cm">-- 범위 조건</span>
+<span class="kw">WHERE</span> name <span class="kw">LIKE</span> <span class="st">'홍%'</span>              <span class="cm">-- 접두사 검색</span></pre>
+                            </div>
+                            <div class="key-points">
+                                <div class="key-point">클러스터드 인덱스: PK 기준 물리 정렬 (테이블당 1개)</div>
+                                <div class="key-point">복합 인덱스: 선두 컬럼부터 적용됨. 순서 중요</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card" id="tc-explain" data-title="SQL 실행계획 EXPLAIN">
+                    <div class="topic-header" onclick="toggleCard('tc-explain')">
+                        <div class="topic-checkbox" id="cb-tc-explain" onclick="event.stopPropagation();toggleCheck('tc-explain')"></div>
+                        <span class="topic-title">㉔ SQL 실행계획 (EXPLAIN)</span>
+                        <span class="topic-toggle c-blue">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-explain')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-explain')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-explain">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🗺️ 내비게이션 경로 미리보기로 이해하기</div>
+                                <div class="analogy-text">
+                                    운전 전에 내비게이션에서 "경로 미리보기"를 하면 어떤 길로 갈지, 막히는 구간이 있는지, 예상 시간은 얼마인지 미리 알 수 있습니다.<br><br>
+                                    <b>EXPLAIN</b>은 SQL을 실제로 실행하기 전에 "DB가 어떤 방식으로 처리할 예정인지" 미리 보는 기능입니다.<br><br>
+                                    인덱스를 쓰는지, 전체 테이블을 다 뒤지는지(Full Scan), 몇 개의 행을 읽을 예정인지 등을 확인해서 느린 쿼리를 최적화할 수 있습니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🔬</span> <span>EXPLAIN을 붙여서 쿼리 처리 계획을 미리 확인</span></div>
+                                <div class="simple-point"><span class="emoji">🚨</span> <span>type이 ALL이면 풀스캔 → 인덱스 추가 검토</span></div>
+                                <div class="simple-point"><span class="emoji">📉</span> <span>rows 값이 클수록 비효율 → 조건 추가나 인덱스로 줄여야</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-explain">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">SQL — EXPLAIN</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="kw">EXPLAIN SELECT</span> * <span class="kw">FROM</span> users <span class="kw">WHERE</span> email = <span class="st">'test@example.com'</span>;</pre>
+                            </div>
+                            <table>
+                                <tr><th>컬럼</th><th>설명</th><th>좋은 값</th></tr>
+                                <tr><td>type</td><td>접근 방식</td><td>const > ref > range > ALL</td></tr>
+                                <tr><td>key</td><td>사용된 인덱스</td><td>NULL = 풀스캔 주의</td></tr>
+                                <tr><td>rows</td><td>예상 읽기 행 수</td><td>낮을수록 좋음</td></tr>
+                                <tr><td>Extra</td><td>추가 정보</td><td>Using filesort/temporary 주의</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ════ REST/HTTP ════ -->
+            <div class="section" id="s25">
+                <div class="section-header">
+                    <div class="section-icon" style="background:rgba(210,168,255,.12)">🌐</div>
+                    <div class="section-title">REST API / HTTP</div>
+                    <span class="section-badge bg-purple">4 Topics</span>
+                </div>
+
+                <div class="topic-card" id="tc-rest" data-title="REST API 설계 원칙">
+                    <div class="topic-header" onclick="toggleCard('tc-rest')">
+                        <div class="topic-checkbox" id="cb-tc-rest" onclick="event.stopPropagation();toggleCheck('tc-rest')"></div>
+                        <span class="topic-title">㉕ REST API 설계 Best Practice</span>
+                        <span class="topic-toggle c-purple">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-rest')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-rest')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-rest">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🍽️ 식당 메뉴 규칙으로 이해하기</div>
+                                <div class="analogy-text">
+                                    REST API는 서버에 요청하는 <b>주소(URL) 설계 규칙</b>입니다. 규칙을 지키면 누구나 보기만 해도 "이 API가 뭘 하는지" 바로 알 수 있습니다.<br><br>
+                                    좋은 메뉴판: "사용자 목록 주세요" → <code style="background:var(--bg3);padding:2px 5px;border-radius:3px;font-size:11px">GET /users</code><br>
+                                    좋은 메뉴판: "1번 사용자 주세요" → <code style="background:var(--bg3);padding:2px 5px;border-radius:3px;font-size:11px">GET /users/1</code><br><br>
+                                    나쁜 메뉴판: <code style="background:var(--bg3);padding:2px 5px;border-radius:3px;font-size:11px">GET /getUser?id=1</code>, <code style="background:var(--bg3);padding:2px 5px;border-radius:3px;font-size:11px">POST /deleteUser</code> (동사 사용 금지)
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">📌</span> <span>URL에는 명사(자원)만 쓴다. 동사는 HTTP Method로 표현</span></div>
+                                <div class="simple-point"><span class="emoji">📂</span> <span>복수형 사용: <code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">/user</code> ❌ → <code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">/users</code> ✅</span></div>
+                                <div class="simple-point"><span class="emoji">🏗️</span> <span>계층 구조: <code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">/users/1/orders</code> (1번 사용자의 주문들)</span></div>
+                                <div class="simple-point"><span class="emoji">🔢</span> <span>버전 관리: <code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">/api/v1/users</code></span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-rest">
+                            <table>
+                                <tr><th>원칙</th><th>Bad</th><th>Good</th></tr>
+                                <tr><td>명사 사용</td><td>GET /getUsers</td><td>GET /users</td></tr>
+                                <tr><td>복수형</td><td>GET /user/1</td><td>GET /users/1</td></tr>
+                                <tr><td>계층 표현</td><td>GET /getUserOrders</td><td>GET /users/1/orders</td></tr>
+                                <tr><td>소문자+하이픈</td><td>/userProfile</td><td>/user-profile</td></tr>
+                                <tr><td>버전 관리</td><td>/users</td><td>/api/v1/users</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card" id="tc-http" data-title="HTTP Method GET POST PUT DELETE PATCH">
+                    <div class="topic-header" onclick="toggleCard('tc-http')">
+                        <div class="topic-checkbox" id="cb-tc-http" onclick="event.stopPropagation();toggleCheck('tc-http')"></div>
+                        <span class="topic-title">㉖ HTTP Method (GET, POST, PUT, DELETE, PATCH)</span>
+                        <span class="topic-toggle c-purple">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-http')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-http')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-http">
+                            <div class="analogy-box">
+                                <div class="analogy-label">📬 우편물 종류로 이해하기</div>
+                                <div class="analogy-text">
+                                    같은 서버(우체국)에 요청하더라도 요청의 "성격"을 구분합니다.<br><br>
+                                    🔵 <b>GET</b> — "이것 보여줘" (조회. 데이터 변경 없음)<br>
+                                    🟢 <b>POST</b> — "새것 만들어줘" (생성)<br>
+                                    🟡 <b>PUT</b> — "이것 전체를 이걸로 바꿔줘" (전체 수정)<br>
+                                    🟠 <b>PATCH</b> — "이것 중 이 부분만 바꿔줘" (일부 수정)<br>
+                                    🔴 <b>DELETE</b> — "이것 지워줘" (삭제)
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🔁</span> <span><b>멱등성</b>: 같은 요청을 여러 번 해도 결과가 동일한가 (GET/PUT/DELETE = ✅)</span></div>
+                                <div class="simple-point"><span class="emoji">🆚</span> <span>PUT vs PATCH: PUT은 전체 교체, PATCH는 특정 필드만 수정</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-http">
+                            <table>
+                                <tr><th>메서드</th><th>용도</th><th>멱등성</th><th>바디</th></tr>
+                                <tr><td><span class="tag bg-blue">GET</span></td><td>조회</td><td>✅</td><td>없음</td></tr>
+                                <tr><td><span class="tag bg-green">POST</span></td><td>생성</td><td>❌</td><td>있음</td></tr>
+                                <tr><td><span class="tag bg-orange">PUT</span></td><td>전체 수정</td><td>✅</td><td>있음</td></tr>
+                                <tr><td><span class="tag bg-purple">PATCH</span></td><td>부분 수정</td><td>❌</td><td>있음</td></tr>
+                                <tr><td><span class="tag bg-red">DELETE</span></td><td>삭제</td><td>✅</td><td>없음</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card" id="tc-status" data-title="HTTP Status Code 상태코드">
+                    <div class="topic-header" onclick="toggleCard('tc-status')">
+                        <div class="topic-checkbox" id="cb-tc-status" onclick="event.stopPropagation();toggleCheck('tc-status')"></div>
+                        <span class="topic-title">㉗ HTTP Status Code</span>
+                        <span class="topic-toggle c-purple">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-status')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-status')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-status">
+                            <div class="analogy-box">
+                                <div class="analogy-label">📦 배달 알림 상태로 이해하기</div>
+                                <div class="analogy-text">
+                                    서버가 요청을 받으면 "잘 됐어", "네 잘못이야", "내 잘못이야"를 숫자로 알려줍니다.<br><br>
+                                    🟢 <b>2xx 성공</b> — 배달 완료. 200(OK), 201(생성됨), 204(삭제됨)<br>
+                                    🟡 <b>3xx 리다이렉트</b> — 주소가 바뀌었어요. 새 주소로 가세요<br>
+                                    🟠 <b>4xx 클라이언트 오류</b> — 요청이 잘못됨. 400(형식오류), 401(로그인 필요), 403(권한없음), 404(없음)<br>
+                                    🔴 <b>5xx 서버 오류</b> — 서버가 터짐. 500(내부오류), 503(서버 과부하)
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🆚</span> <span>401 vs 403: 401은 "로그인 안 됨", 403은 "로그인은 됐지만 권한 없음"</span></div>
+                                <div class="simple-point"><span class="emoji">💡</span> <span>4xx는 클라이언트(요청자) 잘못, 5xx는 서버 잘못</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-status">
+                            <table>
+                                <tr><th>코드</th><th>의미</th><th>사용 예</th></tr>
+                                <tr><td><span class="tag bg-green">200</span></td><td>OK</td><td>GET 성공</td></tr>
+                                <tr><td><span class="tag bg-green">201</span></td><td>Created</td><td>POST 생성 성공</td></tr>
+                                <tr><td><span class="tag bg-green">204</span></td><td>No Content</td><td>DELETE 성공</td></tr>
+                                <tr><td><span class="tag bg-orange">400</span></td><td>Bad Request</td><td>유효성 실패</td></tr>
+                                <tr><td><span class="tag bg-orange">401</span></td><td>Unauthorized</td><td>인증 필요</td></tr>
+                                <tr><td><span class="tag bg-orange">403</span></td><td>Forbidden</td><td>권한 없음</td></tr>
+                                <tr><td><span class="tag bg-orange">404</span></td><td>Not Found</td><td>리소스 없음</td></tr>
+                                <tr><td><span class="tag bg-orange">409</span></td><td>Conflict</td><td>중복 데이터</td></tr>
+                                <tr><td><span class="tag bg-red">500</span></td><td>Internal Server Error</td><td>서버 오류</td></tr>
+                                <tr><td><span class="tag bg-red">503</span></td><td>Service Unavailable</td><td>과부하/점검</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card" id="tc-json" data-title="JSON 데이터 구조">
+                    <div class="topic-header" onclick="toggleCard('tc-json')">
+                        <div class="topic-checkbox" id="cb-tc-json" onclick="event.stopPropagation();toggleCheck('tc-json')"></div>
+                        <span class="topic-title">㉘ JSON 데이터 구조</span>
+                        <span class="topic-toggle c-purple">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-json')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-json')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-json">
+                            <div class="analogy-box">
+                                <div class="analogy-label">📋 택배 송장으로 이해하기</div>
+                                <div class="analogy-text">
+                                    서버와 클라이언트가 데이터를 주고받을 때 쓰는 <b>표준 데이터 형식</b>입니다. 마치 국제 택배 송장처럼, 어떤 언어(Java, Python, JS)를 쓰는 시스템이든 같은 형식으로 데이터를 주고받습니다.<br><br>
+                                    <code style="background:var(--bg3);padding:2px 5px;border-radius:3px;font-size:11px">{"이름": "홍길동", "나이": 30, "취미": ["독서", "게임"]}</code><br><br>
+                                    중괄호{} 안에 "키": 값 형태, 배열은 대괄호[] 사용. 사람이 읽기도 쉽고 기계도 파싱하기 쉬운 포맷입니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🔤</span> <span>문자열은 큰따옴표, 숫자는 그대로, 불린은 true/false</span></div>
+                                <div class="simple-point"><span class="emoji">📅</span> <span>날짜/시간은 ISO 8601 형식 사용: <code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">2024-01-15T10:30:00</code></span></div>
+                                <div class="simple-point"><span class="emoji">🔧</span> <span>Spring에서 Jackson 라이브러리가 자동으로 Java ↔ JSON 변환</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-json">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">JSON — 표준 API 응답 구조</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre>{
+  <span class="st">"success"</span>: <span class="kw">true</span>,
+  <span class="st">"code"</span>: <span class="st">"SUCCESS"</span>,
+  <span class="st">"data"</span>: {
+    <span class="st">"id"</span>: <span class="nu">1</span>,
+    <span class="st">"name"</span>: <span class="st">"홍길동"</span>,
+    <span class="st">"roles"</span>: [<span class="st">"ADMIN"</span>, <span class="st">"USER"</span>],
+    <span class="st">"createdAt"</span>: <span class="st">"2024-01-15T10:30:00"</span>
+  },
+  <span class="st">"timestamp"</span>: <span class="st">"2024-01-15T10:30:00"</span>
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ════ DEVOPS ════ -->
+            <div class="section" id="s29">
+                <div class="section-header">
+                    <div class="section-icon" style="background:rgba(247,129,102,.12)">🛠</div>
+                    <div class="section-title">DevOps / 인프라 / 운영</div>
+                    <span class="section-badge bg-red">8 Topics</span>
+                </div>
+
+                <div class="topic-card" id="tc-git" data-title="Git 기본 clone commit push pull">
+                    <div class="topic-header" onclick="toggleCard('tc-git')">
+                        <div class="topic-checkbox" id="cb-tc-git" onclick="event.stopPropagation();toggleCheck('tc-git')"></div>
+                        <span class="topic-title">㉙ Git 기본 사용법</span>
+                        <span class="topic-toggle c-red">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-git')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-git')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-git">
+                            <div class="analogy-box">
+                                <div class="analogy-label">📸 구글 독스 버전 기록으로 이해하기</div>
+                                <div class="analogy-text">
+                                    구글 독스에서 "버전 기록"을 보면 언제 누가 무엇을 수정했는지 볼 수 있고, 과거로 되돌릴 수도 있죠. <b>Git은 코드를 위한 그 기능</b>입니다.<br><br>
+                                    📸 <b>commit</b> — "지금 이 상태를 사진으로 찍어 저장" (버전 저장)<br>
+                                    ⬆️ <b>push</b> — "내 사진을 공용 앨범(GitHub)에 올리기"<br>
+                                    ⬇️ <b>pull</b> — "공용 앨범에서 최신 사진 받아오기"<br>
+                                    📥 <b>clone</b> — "공용 앨범 전체를 내 PC에 복사"
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">💾</span> <span>commit = 저장 시점 만들기. 메시지는 명확하게</span></div>
+                                <div class="simple-point"><span class="emoji">🌐</span> <span>push = 내 작업을 원격 저장소에 공유</span></div>
+                                <div class="simple-point"><span class="emoji">🔄</span> <span>pull = 다른 사람 작업 내려받기 (conflict 주의)</span></div>
+                                <div class="simple-point"><span class="emoji">🗂️</span> <span>add → commit → push 순서가 기본 흐름</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-git">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Shell — Git 핵심 명령어</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre>git clone https://github.com/org/repo.git
+git checkout -b feature/user-login   <span class="cm"># 브랜치 생성+이동</span>
+
+git status                            <span class="cm"># 변경 확인</span>
+git add .                             <span class="cm"># 전체 스테이징</span>
+git commit -m <span class="st">"feat: 로그인 기능 추가"</span>
+
+git pull origin develop               <span class="cm"># 최신화</span>
+git push origin feature/user-login   <span class="cm"># 푸시</span>
+
+git reset HEAD~1                      <span class="cm"># 마지막 커밋 취소 (변경 유지)</span>
+git stash / git stash pop             <span class="cm"># 임시 저장/꺼내기</span></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card" id="tc-branch" data-title="Git Branch 전략 feature develop main gitflow">
+                    <div class="topic-header" onclick="toggleCard('tc-branch')">
+                        <div class="topic-checkbox" id="cb-tc-branch" onclick="event.stopPropagation();toggleCheck('tc-branch')"></div>
+                        <span class="topic-title">㉚ Git Branch 전략 (feature, develop, main)</span>
+                        <span class="topic-toggle c-red">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-branch')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-branch')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-branch">
+                            <div class="analogy-box">
+                                <div class="analogy-label">📋 문서 작업 복사본으로 이해하기</div>
+                                <div class="analogy-text">
+                                    중요한 문서를 직접 수정하지 않고 <b>복사본을 만들어서 작업</b>하는 것입니다.<br><br>
+                                    <b>main</b> — 고객에게 배포된 최종 공식 문서. 절대 직접 수정 안 함<br>
+                                    <b>develop</b> — 여러 팀원이 작업을 모아두는 초안 문서<br>
+                                    <b>feature/로그인</b> — "로그인 기능" 작업용 개인 복사본<br><br>
+                                    각자 복사본에서 작업 → 초안에 합침 → 검토 후 최종 문서에 반영<br>
+                                    덕분에 실수해도 원본이 안전하고, 여러 명이 동시에 다른 기능을 만들 수 있습니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🌿</span> <span>feature/* — 새 기능 개발용. develop에서 분기 후 완료되면 다시 합침</span></div>
+                                <div class="simple-point"><span class="emoji">🔧</span> <span>hotfix/* — 운영 긴급 수정. main에서 직접 분기</span></div>
+                                <div class="simple-point"><span class="emoji">📝</span> <span>커밋 메시지 규칙: feat/fix/docs/refactor: 설명</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-branch">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Git Flow 전략</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre>main              ← 운영 배포. 항상 안정적
+  ├─ develop      ← 개발 통합 브랜치
+  │   ├─ feature/login
+  │   └─ feature/payment
+  ├─ release/1.2  ← QA/스테이징 (develop→main 전 검증)
+  └─ hotfix/001   ← 운영 긴급패치 (main에서 직접 분기)</pre>
+                            </div>
+                            <table>
+                                <tr><th>브랜치</th><th>역할</th><th>PR 대상</th></tr>
+                                <tr><td>feature/*</td><td>기능 개발</td><td>develop</td></tr>
+                                <tr><td>release/*</td><td>배포 준비</td><td>main + develop</td></tr>
+                                <tr><td>hotfix/*</td><td>긴급 수정</td><td>main + develop</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card" id="tc-tomcat" data-title="Tomcat 서버 동작 원리">
+                    <div class="topic-header" onclick="toggleCard('tc-tomcat')">
+                        <div class="topic-checkbox" id="cb-tc-tomcat" onclick="event.stopPropagation();toggleCheck('tc-tomcat')"></div>
+                        <span class="topic-title">㉛ Tomcat 서버 동작 원리</span>
+                        <span class="topic-toggle c-red">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-tomcat')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-tomcat')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-tomcat">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🏢 건물 수위/관리인으로 이해하기</div>
+                                <div class="analogy-text">
+                                    Tomcat은 Java 웹 애플리케이션을 실행하기 위한 <b>서버 프로그램</b>입니다.<br><br>
+                                    비유하자면 건물 관리인과 같습니다. 외부에서 방문객(HTTP 요청)이 오면 관리인이 맞아서 "몇 호실 가세요?"(URL 확인) 하고 적절한 사무실(Servlet/Controller)로 안내합니다.<br><br>
+                                    Spring Boot는 Tomcat을 내장해서 별도 설치 없이 <code style="background:var(--bg3);padding:2px 5px;border-radius:3px;font-size:11px">java -jar app.jar</code> 한 줄로 서버를 바로 실행할 수 있습니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🚪</span> <span>기본 포트 8080에서 HTTP 요청 대기</span></div>
+                                <div class="simple-point"><span class="emoji">🏊</span> <span>스레드 풀로 동시 요청 처리 (기본 200개)</span></div>
+                                <div class="simple-point"><span class="emoji">📦</span> <span>Spring Boot = 내장 Tomcat 포함. 별도 설치 불필요</span></div>
+                                <div class="simple-point"><span class="emoji">📤</span> <span>전통적 배포: WAR 파일 → 외장 Tomcat webapps 폴더에 배치</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-tomcat">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Tomcat 요청 처리 흐름</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre>HTTP :8080
+  ▼
+<span class="c-orange">Connector</span>   포트 리스닝, HTTP 파싱, Request 객체 생성
+  ▼
+<span class="c-cyan">Engine</span>      가상 호스트 라우팅
+  ▼
+<span class="c-green">Host</span>        도메인 매핑 (localhost)
+  ▼
+<span class="c-purple">Context</span>     웹 애플리케이션 (WAR 단위)
+  ▼
+<span class="c-yellow">Servlet</span>     DispatcherServlet 실행
+  ▼
+HTTP Response</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card" id="tc-apawas" data-title="Apache 웹서버 WAS 차이 Nginx Tomcat">
+                    <div class="topic-header" onclick="toggleCard('tc-apawas')">
+                        <div class="topic-checkbox" id="cb-tc-apawas" onclick="event.stopPropagation();toggleCheck('tc-apawas')"></div>
+                        <span class="topic-title">㉜ Apache 웹 서버와 WAS 차이</span>
+                        <span class="topic-toggle c-red">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-apawas')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-apawas')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-apawas">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🏬 편의점 안내데스크 vs 뒷주방으로 이해하기</div>
+                                <div class="analogy-text">
+                                    <b>웹 서버 (Apache/Nginx)</b> — 편의점 안내 데스크입니다. 사전에 준비된 물건(정적 파일: 이미지, CSS, HTML)을 그냥 꺼내줍니다. 빠르고 단순합니다.<br><br>
+                                    <b>WAS (Tomcat)</b> — 뒷주방입니다. "커피 한 잔 만들어줘"처럼 요청에 따라 동적으로 작업(Java 코드 실행, DB 조회)을 수행합니다.<br><br>
+                                    실무에서는 <b>Nginx가 앞에서 정적 파일 처리 + SSL + 부하분산</b>을 담당하고, 뒤에 Tomcat이 비즈니스 로직을 처리하는 구조로 같이 씁니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🖼️</span> <span>웹 서버 — 이미지, CSS, HTML 같은 정적 파일 제공 특화</span></div>
+                                <div class="simple-point"><span class="emoji">⚙️</span> <span>WAS — Java 코드 실행, DB 조회 등 동적 처리</span></div>
+                                <div class="simple-point"><span class="emoji">🔗</span> <span>보통 Nginx(웹서버) → Tomcat(WAS) → DB 구조로 구성</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-apawas">
+                            <table>
+                                <tr><th>구분</th><th>Web Server</th><th>WAS</th></tr>
+                                <tr><td>처리</td><td>정적 콘텐츠</td><td>동적 콘텐츠 (Java)</td></tr>
+                                <tr><td>예시</td><td>Apache httpd, Nginx</td><td>Tomcat, JBoss, WebLogic</td></tr>
+                                <tr><td>역할</td><td>리버스 프록시, SSL 처리</td><td>비즈니스 로직 실행</td></tr>
+                            </table>
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">실무 아키텍처</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre>Client → <span class="c-orange">Nginx</span> (SSL, 정적파일, L7 LB) → <span class="c-cyan">Tomcat</span> → <span class="c-green">DB</span></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card" id="tc-egov" data-title="전자정부프레임워크 eGovFrame 구조">
+                    <div class="topic-header" onclick="toggleCard('tc-egov')">
+                        <div class="topic-checkbox" id="cb-tc-egov" onclick="event.stopPropagation();toggleCheck('tc-egov')"></div>
+                        <span class="topic-title">㉝ 전자정부프레임워크 구조 이해</span>
+                        <span class="topic-toggle c-red">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-egov')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-egov')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-egov">
+                            <div class="analogy-box">
+                                <div class="analogy-label">📐 공공기관 표준 업무 매뉴얼로 이해하기</div>
+                                <div class="analogy-text">
+                                    공공기관은 업무를 저마다 다르게 처리하면 혼란스럽습니다. 그래서 정부가 "이 방식으로 만들어라"는 <b>표준 매뉴얼(전자정부프레임워크)</b>을 만들었습니다.<br><br>
+                                    Spring 기반으로 만들어진 공공부문 표준입니다. SI 공공 프로젝트에 참여하면 이 프레임워크를 씁니다.<br><br>
+                                    일반 Spring Boot와 가장 큰 차이는 <b>JPA 대신 MyBatis</b>를 씁니다. MyBatis는 SQL을 XML 파일에 직접 작성하는 방식입니다.
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🏛️</span> <span>공공기관 SI 프로젝트의 사실상 표준 프레임워크</span></div>
+                                <div class="simple-point"><span class="emoji">🗄️</span> <span>JPA 대신 MyBatis 사용 — SQL을 XML에 직접 작성</span></div>
+                                <div class="simple-point"><span class="emoji">📦</span> <span>배포: WAR 파일 → 외장 Tomcat (Spring Boot 내장 Tomcat 방식이 아님)</span></div>
+                                <div class="simple-point"><span class="emoji">🔒</span> <span>공통 컴포넌트 제공: 파일 업로드, 엑셀, 페이징, 암호화 등</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-egov">
+                            <div class="key-points">
+                                <div class="key-point">기반: Spring Framework 4.x + MyBatis (SQL Mapper)</div>
+                                <div class="key-point">MVC: Spring MVC + Tiles (레이아웃)</div>
+                                <div class="key-point">보안: Spring Security 기반, ARIA 암호화 지원</div>
+                                <div class="key-point">배포: 외장 Tomcat + WAR 방식</div>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">XML — MyBatis Mapper 구조</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre>&lt;<span class="kw">mapper</span> <span class="fn">namespace</span>=<span class="st">"com.example.mapper.UserMapper"</span>&gt;
+  &lt;<span class="kw">select</span> <span class="fn">id</span>=<span class="st">"selectUserList"</span> <span class="fn">resultType</span>=<span class="st">"UserVO"</span>&gt;
+    SELECT USER_ID, USER_NM FROM TB_USER
+    &lt;<span class="kw">where</span>&gt;
+      &lt;<span class="kw">if</span> <span class="fn">test</span>=<span class="st">"userName != null"</span>&gt;
+        AND USER_NM LIKE '%' || #{userName} || '%'
+      &lt;/<span class="kw">if</span>&gt;
+    &lt;/<span class="kw">where</span>&gt;
+  &lt;/<span class="kw">select</span>&gt;
+&lt;/<span class="kw">mapper</span>&gt;</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card" id="tc-si" data-title="SI 프로젝트 개발 프로세스">
+                    <div class="topic-header" onclick="toggleCard('tc-si')">
+                        <div class="topic-checkbox" id="cb-tc-si" onclick="event.stopPropagation();toggleCheck('tc-si')"></div>
+                        <span class="topic-title">㉞ SI 프로젝트 개발 프로세스</span>
+                        <span class="topic-toggle c-red">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-si')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-si')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-si">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🏗️ 건물 건축 순서로 이해하기</div>
+                                <div class="analogy-text">
+                                    소프트웨어 개발 프로세스는 건물 짓는 과정과 비슷합니다.<br><br>
+                                    📋 <b>요구분석</b> — "건물에 방이 몇 개 필요해?" 고객 요구사항 수집<br>
+                                    📐 <b>설계</b> — 건축 설계도 그리기 (화면설계, DB설계, API설계)<br>
+                                    🔨 <b>개발(구현)</b> — 실제 건물 공사<br>
+                                    🔍 <b>테스트</b> — 완공 후 안전 점검<br>
+                                    🚀 <b>배포(이행)</b> — 입주 (운영 서버에 반영)<br>
+                                    🛠️ <b>유지보수</b> — 건물 관리 (버그 수정, 기능 개선)
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">📄</span> <span>각 단계마다 "산출물"(문서)이 필요합니다</span></div>
+                                <div class="simple-point"><span class="emoji">🧪</span> <span>테스트: 단위(UT) → 통합(IT) → 시스템(ST) → 인수(UAT)</span></div>
+                                <div class="simple-point"><span class="emoji">📊</span> <span>WBS로 일정 관리, Git으로 소스 형상 관리</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-si">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">SI 개발 표준 단계</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre>① <span class="c-yellow">제안/계약</span>     RFP 분석, 제안서, 계약
+② <span class="c-orange">요구분석</span>     요구사항 정의서, 업무기술서, 인터뷰
+③ <span class="c-purple">설계</span>         화면설계(UI), DB설계(ERD), API정의서
+④ <span class="c-cyan">구현</span>         기능 개발, 단위 테스트
+⑤ <span class="c-green">테스트</span>       UT → IT → ST → UAT
+⑥ <span class="c-blue">이행</span>         데이터 이행, 컷오버, 병행 운영
+⑦ 운영/유지보수  장애 대응, 하자보수, 기능 개선</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card" id="tc-incident" data-title="웹서비스 운영 장애 대응">
+                    <div class="topic-header" onclick="toggleCard('tc-incident')">
+                        <div class="topic-checkbox" id="cb-tc-incident" onclick="event.stopPropagation();toggleCheck('tc-incident')"></div>
+                        <span class="topic-title">㉟ 웹 서비스 운영 장애 대응 방법</span>
+                        <span class="topic-toggle c-red">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-incident')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-incident')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-incident">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🚒 소방서 출동 프로토콜로 이해하기</div>
+                                <div class="analogy-text">
+                                    서버 장애는 화재와 같습니다. 침착하게 절차대로 대응해야 합니다.<br><br>
+                                    🚨 <b>1. 탐지</b> — 모니터링 알람 or 사용자 신고로 화재 감지<br>
+                                    📢 <b>2. 알림</b> — 담당자에게 즉시 연락 (비상 연락망 가동)<br>
+                                    💧 <b>3. 초기 진화</b> — 서버 재시작 or 최근 배포 롤백 (서비스 복구 최우선)<br>
+                                    🔍 <b>4. 원인 파악</b> — 로그 분석, DB 확인, 배포 이력 확인<br>
+                                    🔧 <b>5. 근본 해결</b> — 코드 수정 후 재배포<br>
+                                    📋 <b>6. 사후 보고</b> — 장애 보고서 작성, 재발 방지 대책
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">⚡</span> <span>서비스 복구가 원인 파악보다 먼저다 (롤백 > 디버깅)</span></div>
+                                <div class="simple-point"><span class="emoji">📊</span> <span>CPU, 메모리, 에러율, 응답시간을 실시간 모니터링해야 함</span></div>
+                                <div class="simple-point"><span class="emoji">📝</span> <span>장애 보고서: 발생시각, 영향범위, 원인, 조치, 재발방지</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-incident">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">장애 대응 프로세스 (Incident Response)</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre>1. <span class="c-red">탐지</span>         모니터링 알람 / 사용자 신고
+2. <span class="c-orange">초기 대응</span>    장애 등급 분류(P1/P2/P3), 비상 연락망 가동
+3. <span class="c-yellow">원인 파악</span>    로그 → 에러 시각/스택트레이스, 최근 배포 확인
+4. <span class="c-green">임시 조치</span>    재시작 / 롤백 (서비스 복구 최우선)
+5. <span class="c-blue">RCA 분석</span>     코드버그 / 인프라 / 외부 연동 중 원인 확정
+6. <span class="c-purple">영구 조치</span>    코드 수정 → QA → 배포
+7. <span class="c-cyan">사후 보고</span>    장애 보고서, 타임라인, 재발 방지 공유</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card" id="tc-trouble" data-title="로그 기반 트러블슈팅">
+                    <div class="topic-header" onclick="toggleCard('tc-trouble')">
+                        <div class="topic-checkbox" id="cb-tc-trouble" onclick="event.stopPropagation();toggleCheck('tc-trouble')"></div>
+                        <span class="topic-title">㊱ 로그 기반 트러블슈팅 방법</span>
+                        <span class="topic-toggle c-red">▼</span>
+                    </div>
+                    <div class="topic-body">
+                        <div class="exp-tabs">
+                            <button class="exp-tab non-major active" onclick="switchTab(this,'non','tc-trouble')">👶 비전공자 설명</button>
+                            <button class="exp-tab major" onclick="switchTab(this,'maj','tc-trouble')">🎓 전공자 설명</button>
+                        </div>
+                        <div class="exp-panel non-panel visible" data-panel="non-tc-trouble">
+                            <div class="analogy-box">
+                                <div class="analogy-label">🔍 블랙박스 영상 분석으로 이해하기</div>
+                                <div class="analogy-text">
+                                    사고가 나면 블랙박스 영상을 보고 "언제, 어디서, 무슨 일이 있었는지" 파악하듯, 서버 로그로 문제를 추적합니다.<br><br>
+                                    <b>트러블슈팅 순서:</b><br>
+                                    1. 에러 로그에서 발생 시각과 에러 메시지 확인<br>
+                                    2. 에러 직전에 어떤 동작을 했는지 추적<br>
+                                    3. 최근 배포가 있었으면 배포 전후 로그 비교<br>
+                                    4. DB 슬로우 쿼리 로그도 함께 확인<br><br>
+                                    핵심 명령어: <code style="background:var(--bg3);padding:2px 5px;border-radius:3px;font-size:11px">grep "ERROR" app.log</code> — 에러만 뽑아보기
+                                </div>
+                            </div>
+                            <div class="simple-points">
+                                <div class="simple-point"><span class="emoji">🔎</span> <span>grep 명령으로 로그에서 에러만 필터링</span></div>
+                                <div class="simple-point"><span class="emoji">📡</span> <span>tail -f 로 실시간 로그 모니터링</span></div>
+                                <div class="simple-point"><span class="emoji">🏷️</span> <span>MDC(요청 추적 ID)로 특정 요청의 전체 흐름 추적 가능</span></div>
+                                <div class="simple-point"><span class="emoji">⚠️</span> <span>OOM, 데드락 등은 스레드 덤프/힙 덤프 분석 필요</span></div>
+                            </div>
+                        </div>
+                        <div class="exp-panel major-panel" data-panel="maj-tc-trouble">
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Shell — 로그 분석 핵심 명령</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre>tail -f /logs/app.log | grep <span class="st">"ERROR"</span>                        <span class="cm"># 실시간</span>
+grep <span class="st">"ERROR"</span> app.log | awk <span class="st">'{print $4}'</span> | sort | uniq -c   <span class="cm"># 빈도 집계</span>
+grep -A 30 <span class="st">"NullPointerException"</span> app.log | head -50         <span class="cm"># 스택트레이스</span></pre>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-header"><span class="code-lang">Java — MDC 요청 추적</span><button class="copy-btn" onclick="copyCode(this)">복사</button></div>
+                                <pre><span class="an">@Component</span>
+<span class="kw">public class</span> <span class="ty">RequestIdFilter</span> <span class="kw">implements</span> <span class="ty">Filter</span> {
+    <span class="kw">public void</span> <span class="fn">doFilter</span>(<span class="ty">ServletRequest</span> req, <span class="ty">ServletResponse</span> res, <span class="ty">FilterChain</span> chain) {
+        <span class="ty">MDC</span>.<span class="fn">put</span>(<span class="st">"requestId"</span>, <span class="ty">UUID</span>.<span class="fn">randomUUID</span>().<span class="fn">toString</span>().<span class="fn">substring</span>(<span class="nu">0</span>,<span class="nu">8</span>));
+        <span class="kw">try</span> { chain.<span class="fn">doFilter</span>(req,res); }
+        <span class="kw">finally</span> { <span class="ty">MDC</span>.<span class="fn">clear</span>(); } <span class="cm">// 스레드 풀 오염 방지</span>
+    }
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+    <footer id="ft"></footer>
+</body>
+
+<script type="module" src="lib/js/common_head.js"></script>
+<script type="module" src="lib/js/nav.js"></script>
+<script type="module" src="lib/js/java_spring_study_guide.js"></script>
+<script type="module" src="lib/js/footer.js"></script>
+<script type="module" src="lib/js/night-mode.js"></script>
+
+</html>
