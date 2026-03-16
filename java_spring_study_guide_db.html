@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head id="heads">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+KR:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loading" class="loading-overlay">데이터를 불러오는 중...</div>
+    <nav class="nav"></nav>
+    <div id="scroll-indicator"></div>
+
+    <section class="study-guide-container">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h1>Study Guide</h1>
+                <p>Java · Spring Boot · SI</p>
+                <a href="java_spring_study_guide" class="version-btn-db">📄 Static Version으로 보기</a>
+                <input id="search" type="text" placeholder="🔍  주제 검색..." oninput="filterTopics(this.value)">
+            </div>
+
+            <div class="mode-switcher">
+                <button class="mode-btn active-non" id="btn-non" onclick="setGlobalMode('non')">👶 비전공자</button>
+                <button class="mode-btn" id="btn-maj" onclick="setGlobalMode('maj')">🎓 전공자</button>
+            </div>
+
+            <div style="padding:0;">
+                <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+                <div class="progress-text" id="progressText">0 / 0 완료</div>
+            </div>
+
+            <div id="sidebar-content"></div>
+        </nav>
+
+        <main id="main">
+            <h1 class="page-title">☕ Java · Spring Boot 학습 가이드</h1>
+            <p class="page-subtitle">실시간 DB 연동 버전 · 비전공자 / 전공자 설명 분리 · 학습 완료 체크 가능</p>
+            <div id="main-content"></div>
+        </main>
+    </section>
+
+    <footer id="ft"></footer>
+
+    <!-- 공통 라이브러리 및 설정 -->
+    <script type="module" src="lib/js/common_head.js"></script>
+    <script type="module" src="lib/js/nav.js"></script>
+    <script type="module" src="lib/js/footer.js"></script>
+    <script type="module" src="lib/js/night-mode.js"></script>
+    
+    <!-- 학습 가이드 관련 스크립트 -->
+    <script type="module" src="lib/js/java_spring_study_guide_db.js"></script>
+</body>
+</html>

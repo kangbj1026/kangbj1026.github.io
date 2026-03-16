@@ -1,3 +1,4 @@
 .gradle
 ### data ###
 /data
+lib/js/config.js
